@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Module 4 JavaScript Fundamentals notes in simple Hinglish with detailed practical examples and line-by-line code explanation.">
+  <title>Module 4 JavaScript Fundamentals Notes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <p class="tag">Module 4</p>
+      <h1>JavaScript Fundamentals - Complete Teaching Notes</h1>
+      <p class="subtitle">Simple Hinglish notes with theory, practical examples, line-by-line explanation, and an interactive web application project.</p>
+    </div>
+  </header>
+
+  <main class="wrap layout">
+    <aside class="toc">
+      <h2>Index</h2>
+      <a href="#goal">Module Goal</a>
+      <a href="#setup">VS Code Setup</a>
+      <a href="#syntax">1. JavaScript Syntax</a>
+      <a href="#variables">2. Variables & Data Types</a>
+      <a href="#conditions">3. Conditions</a>
+      <a href="#loops">4. Loops</a>
+      <a href="#functions">5. Functions & Scope</a>
+      <a href="#arrays">6. Arrays</a>
+      <a href="#objects">7. Objects</a>
+      <a href="#dom">8. DOM Manipulation</a>
+      <a href="#events">9. Events</a>
+      <a href="#logic">10. Client-Side Logic</a>
+      <a href="#project">Project 4</a>
+      <a href="#reference">Quick Reference</a>
+    </aside>
+
+    <article class="paper">
+      <section id="goal">
+        <h2>Module Goal</h2>
+        <p>Is module ka goal hai learners ko JavaScript ka foundation samjhana. HTML page ka structure banata hai, CSS usko design deta hai, aur JavaScript page ko interactive banata hai. Simple words mein: HTML body hai, CSS dressing hai, aur JavaScript brain hai jo page ko user ke action ke according react karna sikhata hai.</p>
+        <p>Real-world example: agar user form submit karta hai aur email blank hai, page turant error show karta hai. Agar user button click karta hai, text change hota hai. Agar user product quantity change karta hai, total price update hota hai. Yeh sab JavaScript se hota hai.</p>
+
+        <table>
+          <tr>
+            <th>Topic</th>
+            <th>Simple Meaning</th>
+            <th>Real Website Mein Use</th>
+          </tr>
+          <tr>
+            <td>Syntax & Basics</td>
+            <td>JavaScript likhne ka basic rule.</td>
+            <td>Variables, statements, comments, console output.</td>
+          </tr>
+          <tr>
+            <td>Variables & Data Types</td>
+            <td>Data store karna and type samajhna.</td>
+            <td>Name, age, price, login status, list data store karna.</td>
+          </tr>
+          <tr>
+            <td>Conditions & Loops</td>
+            <td>Decision and repetition.</td>
+            <td>Validation, offers, lists render karna.</td>
+          </tr>
+          <tr>
+            <td>Functions & Scope</td>
+            <td>Reusable code block.</td>
+            <td>Calculate total, validate form, update UI.</td>
+          </tr>
+          <tr>
+            <td>Arrays & Objects</td>
+            <td>Multiple values and structured data.</td>
+            <td>Products, students, users, cart items.</td>
+          </tr>
+          <tr>
+            <td>DOM & Events</td>
+            <td>HTML elements ko JS se control karna.</td>
+            <td>Button click, input change, dynamic messages.</td>
+          </tr>
+        </table>
+      </section>
+
+      <section id="setup">
+        <h2>VS Code Setup And File Structure</h2>
+        <p>JavaScript practice ke liye learners ko ek simple folder banwana hai. Is module mein hum browser-based JavaScript karenge, isliye HTML file, CSS file, and JavaScript file teenon ka use hoga. JavaScript ko browser run karega.</p>
+        <pre><code>javascript-fundamentals/
+  index.html
+  styles.css
+  script.js</code></pre>
+        <table>
+          <tr>
+            <th>File</th>
+            <th>Kaam</th>
+            <th>Class Mein Kaise Samjhao</th>
+          </tr>
+          <tr>
+            <td><code>index.html</code></td>
+            <td>Page ka structure.</td>
+            <td>Buttons, input boxes, headings, and output area yahan rahenge.</td>
+          </tr>
+          <tr>
+            <td><code>styles.css</code></td>
+            <td>Page ka design.</td>
+            <td>Colors, spacing, button style, card look yahan se aayega.</td>
+          </tr>
+          <tr>
+            <td><code>script.js</code></td>
+            <td>Page ka behavior.</td>
+            <td>User click kare, type kare, submit kare, toh kya response aayega woh yahan likhenge.</td>
+          </tr>
+        </table>
+        <div class="note">Important: JavaScript file ko HTML ke end mein connect karna best practice hai, jaise <code>&lt;script src="script.js"&gt;&lt;/script&gt;</code>. End mein script rakhne se HTML elements pehle load ho jaate hain, phir JavaScript unko safely access kar sakti hai.</div>
+      </section>
+
+      <section id="syntax">
+        <h2>1. JavaScript Syntax & Basics</h2>
+        <p>Syntax ka matlab hota hai language likhne ka rule. Jaise English sentence mein grammar hoti hai, waise JavaScript mein statements, braces, semicolon, comments, and keywords hote hain. Browser JavaScript ko line by line read karta hai aur instructions execute karta hai.</p>
+        <p>JavaScript code ko browser console mein test kar sakte ho, ya HTML file ke saath <code>script.js</code> mein likh sakte ho. Beginners ke liye <code>console.log()</code> sabse useful tool hai, kyunki yeh output browser console mein show karta hai.</p>
+
+        <h3>Practical Example: First JavaScript Output</h3>
+        <pre><code>// This is a comment
+console.log("Hello JavaScript");
+console.log(10 + 5);</code></pre>
+        <table>
+          <tr>
+            <th>Line / Code</th>
+            <th>Detailed Simple Hinglish Explanation</th>
+          </tr>
+          <tr>
+            <td><code>// This is a comment</code></td>
+            <td><code>//</code> se comment start hota hai. Comment browser execute nahi karta. Yeh sirf developer ke samajhne ke liye hota hai. Jaise notebook mein side note likhte ho, waise code mein comment hota hai.</td>
+          </tr>
+          <tr>
+            <td><code>console.log("Hello JavaScript");</code></td>
+            <td><code>console.log()</code> browser console mein output print karta hai. Double quotes ke andar text string hota hai. Semicolon statement end karne ke liye use hota hai. Output: <code>Hello JavaScript</code>.</td>
+          </tr>
+          <tr>
+            <td><code>console.log(10 + 5);</code></td>
+            <td>Yahan JavaScript pehle calculation karega: <code>10 + 5</code> equals <code>15</code>. Phir console mein <code>15</code> print karega. Isse learners samajhte hain ki JS sirf text nahi, calculation bhi kar sakta hai.</td>
+          </tr>
+        </table>
+
+        <h3>How To Run</h3>
+        <p>VS Code mein <code>script.js</code> file banao, code likho, phir <code>index.html</code> mein script file connect karo. Browser open karke right click Inspect karo, Console tab mein output dikhega.</p>
+        <pre><code>&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+      </section>
+
+      <section id="variables">
+        <h2>2. Variables & Data Types</h2>
+        <p>Variable ek container hota hai jisme value store karte hain. Real-world example: form mein user ka name, age, email, password, total price, login status, sab variables mein store ho sakte hain. JavaScript mein mostly <code>let</code> and <code>const</code> use karte hain.</p>
+        <p><code>let</code> tab use karo jab value future mein change ho sakti hai. <code>const</code> tab use karo jab value fixed rahegi. Old JavaScript mein <code>var</code> use hota tha, but beginners ko modern practice ke liye <code>let</code> and <code>const</code> samjhana better hai.</p>
+
+        <h3>Common Data Types</h3>
+        <table>
+          <tr>
+            <th>Data Type</th>
+            <th>Example</th>
+            <th>Meaning</th>
+          </tr>
+          <tr>
+            <td>String</td>
+            <td><code>"Rahul"</code></td>
+            <td>Text data.</td>
+          </tr>
+          <tr>
+            <td>Number</td>
+            <td><code>25</code>, <code>99.5</code></td>
+            <td>Integer ya decimal number.</td>
+          </tr>
+          <tr>
+            <td>Boolean</td>
+            <td><code>true</code>, <code>false</code></td>
+            <td>Yes/No type value.</td>
+          </tr>
+          <tr>
+            <td>Array</td>
+            <td><code>["HTML", "CSS", "JS"]</code></td>
+            <td>Multiple values ki list.</td>
+          </tr>
+          <tr>
+            <td>Object</td>
+            <td><code>{ name: "Rahul", age: 20 }</code></td>
+            <td>Key-value structured data.</td>
+          </tr>
+        </table>
+
+        <h3>Practical Example: Student Data</h3>
+        <pre><code>let studentName = "Aman";
+let age = 21;
+const course = "JavaScript";
+let isEnrolled = true;
+
+console.log(studentName);
+console.log(age);
+console.log(course);
+console.log(isEnrolled);</code></pre>
+        <table>
+          <tr>
+            <th>Line / Code</th>
+            <th>Detailed Simple Hinglish Explanation</th>
+          </tr>
+          <tr>
+            <td><code>let studentName = "Aman";</code></td>
+            <td><code>studentName</code> variable mein <code>"Aman"</code> text store hua. Quotes ke andar value string hoti hai. <code>let</code> use kiya kyunki name theoretically update ho sakta hai.</td>
+          </tr>
+          <tr>
+            <td><code>let age = 21;</code></td>
+            <td><code>age</code> variable mein number value store hui. Number ke around quotes nahi lagaye, kyunki is value par calculation possible hai.</td>
+          </tr>
+          <tr>
+            <td><code>const course = "JavaScript";</code></td>
+            <td><code>course</code> fixed value hai, isliye <code>const</code> use kiya. Agar baad mein <code>course</code> ko change karne ki koshish karenge toh error aayega.</td>
+          </tr>
+          <tr>
+            <td><code>let isEnrolled = true;</code></td>
+            <td>Boolean value store hui. <code>true</code> ka matlab student enrolled hai. Login, active status, completed status jaise checks mein boolean commonly use hota hai.</td>
+          </tr>
+          <tr>
+            <td><code>console.log(...)</code></td>
+            <td>Har variable ki current value console mein print karega. Isse developer verify karta hai ki data properly store hua ya nahi.</td>
+          </tr>
+        </table>
+      </section>
+
+      <section id="conditions">
+        <h2>3. Conditions</h2>
+        <p>Condition ka use decision making ke liye hota hai. Agar condition true hai toh ek code run hoga, warna doosra code run hoga. Real-world example: agar user age 18 se zyada hai toh account create allow karo, warna message show karo.</p>
+
+        <h3>Practical Example: Age Check</h3>
+        <pre><code>let userAge = 19;
+
+if (userAge >= 18) {
+  console.log("You can create an account.");
+} else {
+  console.log("You are too young to create an account.");
+}</code></pre>
+        <table>
+          <tr>
+            <th>Line / Code</th>
+            <th>Detailed Simple Hinglish Explanation</th>
+          </tr>
+          <tr>
+            <td><code>let userAge = 19;</code></td>
+            <td>User ki age variable mein store hui. Real form mein yeh value input field se aa sakti hai.</td>
+          </tr>
+          <tr>
+            <td><code>if (userAge &gt;= 18)</code></td>
+            <td><code>if</code> condition check karta hai. <code>&gt;=</code> ka matlab greater than or equal to. Agar age 18 ya zyada hai toh condition true hogi.</td>
+          </tr>
+          <tr>
+            <td><code>{ ... }</code></td>
+            <td>Curly braces condition ka code block banate hain. Condition true hogi toh braces ke andar ka code run hoga.</td>
+          </tr>
+          <tr>
+            <td><code>else</code></td>
+            <td>Agar <code>if</code> condition false ho jaaye, tab <code>else</code> block run hota hai. Yeh fallback path hai.</td>
+          </tr>
+        </table>
+
+        <div class="note">Teaching story: condition ko security guard ki tarah samjhao. Guard pehle check karega: ticket hai ya nahi? Agar ticket hai toh entry, warna stop.</div>
+      </section>
+
+      <section id="loops">
+        <h2>4. Loops</h2>
+        <p>Loop ka use repeated work ke liye hota hai. Agar same kaam baar-baar karna ho, toh manually code repeat karne ke bajay loop use karte hain. Real-world example: products ki list show karna, students ke marks print karna, cart items ka total calculate karna.</p>
+
+        <h3>Practical Example: Print Subjects</h3>
+        <pre><code>let subjects = ["HTML", "CSS", "JavaScript"];
+
+for (let i = 0; i &lt; subjects.length; i++) {
+  console.log(subjects[i]);
+}</code></pre>
+        <table>
+          <tr>
+            <th>Line / Code</th>
+            <th>Detailed Simple Hinglish Explanation</th>
+          </tr>
+          <tr>
+            <td><code>let subjects = [...]</code></td>
+            <td>Array mein three subjects store hue. Array multiple values ko ek variable mein store karta hai.</td>
+          </tr>
+          <tr>
+            <td><code>for (...)</code></td>
+            <td><code>for</code> loop repeated execution ke liye use hota hai. Isme start, condition, and update teen parts hote hain.</td>
+          </tr>
+          <tr>
+            <td><code>let i = 0</code></td>
+            <td>Loop counter 0 se start hota hai. Array index bhi 0 se start hota hai, isliye <code>i = 0</code> common pattern hai.</td>
+          </tr>
+          <tr>
+            <td><code>i &lt; subjects.length</code></td>
+            <td>Loop tab tak chalega jab tak <code>i</code> array length se chhota hai. <code>subjects.length</code> array mein total items count deta hai.</td>
+          </tr>
+          <tr>
+            <td><code>i++</code></td>
+            <td>Har loop round ke baad <code>i</code> ki value 1 se badh jaati hai. Isse loop next item par jaata hai.</td>
+          </tr>
+          <tr>
+            <td><code>subjects[i]</code></td>
+            <td>Current index ka subject access karta hai. Pehle round mein <code>subjects[0]</code> = HTML, second mein CSS, third mein JavaScript.</td>
+          </tr>
+        </table>
+      </section>
+
+      <section id="functions">
+        <h2>5. Functions & Scope</h2>
+        <p>Function reusable code block hota hai. Agar same logic multiple places par chahiye, function bana do. Real-world example: total price calculate karna, password validate karna, form clear karna, user greeting show karna.</p>
+        <p>Scope ka matlab variable ki visibility. Agar variable function ke andar bana hai, toh normally woh function ke bahar direct access nahi hota. Isse code organized and safe rehta hai.</p>
+
+        <h3>Practical Example: Calculate Total</h3>
+        <pre><code>function calculateTotal(price, quantity) {
+  let total = price * quantity;
+  return total;
+}
+
+let billAmount = calculateTotal(500, 3);
+console.log(billAmount);</code></pre>
+        <table>
+          <tr>
+            <th>Line / Code</th>
+            <th>Detailed Simple Hinglish Explanation</th>
+          </tr>
+          <tr>
+            <td><code>function calculateTotal(...)</code></td>
+            <td><code>function</code> keyword reusable block create karta hai. <code>calculateTotal</code> function ka name hai. Function name meaningful hona chahiye.</td>
+          </tr>
+          <tr>
+            <td><code>price, quantity</code></td>
+            <td>Yeh parameters hain. Parameters function ke input boxes jaise hote hain. Jab function call karenge, actual values yahan receive hongi.</td>
+          </tr>
+          <tr>
+            <td><code>let total = price * quantity;</code></td>
+            <td>Price and quantity multiply karke total amount calculate hota hai. <code>total</code> variable function ke andar bana hai, isliye local scope mein hai.</td>
+          </tr>
+          <tr>
+            <td><code>return total;</code></td>
+            <td><code>return</code> function ka result bahar bhejta hai. Agar return nahi karenge, function calculation karega but result caller ko nahi milega.</td>
+          </tr>
+          <tr>
+            <td><code>calculateTotal(500, 3)</code></td>
+            <td>Function call hai. <code>500</code> price banega and <code>3</code> quantity banegi. Output <code>1500</code> hoga.</td>
+          </tr>
+        </table>
+      </section>
+
+      <section id="arrays">
+        <h2>6. Arrays</h2>
+        <p>Array ek list hoti hai jisme multiple values store karte hain. Example: destinations, products, student names, cart items. Array index 0 se start hota hai. Matlab first item ka index 0, second ka 1, third ka 2.</p>
+
+        <h3>Practical Example: Destination List</h3>
+        <pre><code>let destinations = ["Manali", "Goa", "Jaipur"];
+
+destinations.push("Kerala");
+console.log(destinations[0]);
+console.log(destinations.length);</code></pre>
+        <table>
+          <tr>
+            <th>Line / Code</th>
+            <th>Detailed Simple Hinglish Explanation</th>
+          </tr>
+          <tr>
+            <td><code>let destinations = [...]</code></td>
+            <td>Array create hua jisme travel destinations store hain. Square brackets array banate hain.</td>
+          </tr>
+          <tr>
+            <td><code>destinations.push("Kerala");</code></td>
+            <td><code>push()</code> array ke end mein new item add karta hai. Ab list mein Kerala bhi add ho jayega.</td>
+          </tr>
+          <tr>
+            <td><code>destinations[0]</code></td>
+            <td>Array ka first item access karta hai. Yahan output <code>Manali</code> hoga, kyunki index 0 first item hota hai.</td>
+          </tr>
+          <tr>
+            <td><code>destinations.length</code></td>
+            <td>Array mein total items count karta hai. Kerala add hone ke baad length 4 hogi.</td>
+          </tr>
+        </table>
+      </section>
+
+      <section id="objects">
+        <h2>7. Objects</h2>
+        <p>Object key-value data store karta hai. Jab data related ho, object use karna best hota hai. Example: ek student ka name, age, course; ek product ka name, price, stock; ek user ka email, password, role.</p>
+
+        <h3>Practical Example: User Object</h3>
+        <pre><code>let user = {
+  name: "Sara",
+  email: "sara@example.com",
+  isPremium: true
+};
+
+console.log(user.name);
+console.log(user.email);</code></pre>
+        <table>
+          <tr>
+            <th>Line / Code</th>
+            <th>Detailed Simple Hinglish Explanation</th>
+          </tr>
+          <tr>
+            <td><code>let user = { ... };</code></td>
+            <td><code>user</code> object create hua. Curly braces object banate hain. Object related data ko ek group mein store karta hai.</td>
+          </tr>
+          <tr>
+            <td><code>name: "Sara"</code></td>
+            <td><code>name</code> key hai and <code>"Sara"</code> value hai. Key-value pair object ka basic structure hota hai.</td>
+          </tr>
+          <tr>
+            <td><code>isPremium: true</code></td>
+            <td>Boolean value batati hai ki user premium hai ya nahi. Real apps mein premium user ko extra features mil sakte hain.</td>
+          </tr>
+          <tr>
+            <td><code>user.name</code></td>
+            <td>Dot notation se object property access hoti hai. Output <code>Sara</code> hoga.</td>
+          </tr>
+        </table>
+      </section>
+
+      <section id="dom">
+        <h2>8. DOM Manipulation</h2>
+        <p>DOM ka full form Document Object Model hai. Browser HTML page ko ek object tree ki tarah represent karta hai. JavaScript DOM ke through HTML elements ko read, change, add, remove, and style kar sakti hai.</p>
+        <p>Simple story: HTML page ek classroom board hai. JavaScript marker pakad kar board par text change kar sakta hai, new line add kar sakta hai, color change kar sakta hai. Yeh DOM manipulation hai.</p>
+
+        <h3>Practical Example: Change Text</h3>
+        <pre><code>&lt;h2 id="message"&gt;Welcome Student&lt;/h2&gt;
+&lt;button id="changeBtn"&gt;Change Message&lt;/button&gt;</code></pre>
+        <pre><code>let message = document.getElementById("message");
+let changeBtn = document.getElementById("changeBtn");
+
+changeBtn.addEventListener("click", function () {
+  message.textContent = "JavaScript changed this text.";
+});</code></pre>
+        <table>
+          <tr>
+            <th>Line / Code</th>
+            <th>Detailed Simple Hinglish Explanation</th>
+          </tr>
+          <tr>
+            <td><code>id="message"</code></td>
+            <td>HTML element ko unique id deta hai. JavaScript isi id se heading ko find karegi.</td>
+          </tr>
+          <tr>
+            <td><code>document.getElementById("message")</code></td>
+            <td>Browser document mein <code>message</code> id wala element search karta hai and uska reference variable mein store karta hai.</td>
+          </tr>
+          <tr>
+            <td><code>addEventListener("click", ...)</code></td>
+            <td>Button par click event listen karta hai. Jab user button click karega, function run hoga.</td>
+          </tr>
+          <tr>
+            <td><code>message.textContent = ...</code></td>
+            <td>Heading ka text change karta hai. DOM manipulation ka simple example hai: JavaScript HTML content update kar rahi hai.</td>
+          </tr>
+        </table>
+
+        <div class="demo-box">
+          <h3 id="message">Welcome Student</h3>
+          <button id="changeBtn">Change Message</button>
+          <div class="output">Button click karne par heading text change hoga.</div>
+        </div>
+      </section>
+
+      <section id="events">
+        <h2>9. Events & Event Handling</h2>
+        <p>Event ka matlab user action ya browser action. Example: click, input typing, form submit, mouse hover, page load. Event handling ka matlab hai: jab action ho, tab JavaScript ka specific code run karna.</p>
+
+        <h3>Common Events</h3>
+        <table>
+          <tr>
+            <th>Event</th>
+            <th>Kab Run Hota Hai?</th>
+            <th>Use Case</th>
+          </tr>
+          <tr>
+            <td><code>click</code></td>
+            <td>User button/link click kare.</td>
+            <td>Modal open, text change, item delete.</td>
+          </tr>
+          <tr>
+            <td><code>input</code></td>
+            <td>User input field mein type kare.</td>
+            <td>Live validation, character counter.</td>
+          </tr>
+          <tr>
+            <td><code>submit</code></td>
+            <td>Form submit ho.</td>
+            <td>Form validation and data handling.</td>
+          </tr>
+        </table>
+
+        <h3>Practical Example: Live Name Preview</h3>
+        <pre><code>&lt;input id="nameInput" placeholder="Enter your name"&gt;
+&lt;p id="preview"&gt;Your name will appear here&lt;/p&gt;</code></pre>
+        <pre><code>let nameInput = document.getElementById("nameInput");
+let preview = document.getElementById("preview");
+
+nameInput.addEventListener("input", function () {
+  preview.textContent = "Hello, " + nameInput.value;
+});</code></pre>
+        <table>
+          <tr>
+            <th>Line / Code</th>
+            <th>Detailed Simple Hinglish Explanation</th>
+          </tr>
+          <tr>
+            <td><code>nameInput.addEventListener("input", ...)</code></td>
+            <td>Input event tab run hota hai jab user field mein type karta hai. Isse live preview possible hota hai.</td>
+          </tr>
+          <tr>
+            <td><code>nameInput.value</code></td>
+            <td>Input box mein user ne jo current text type kiya hai, woh value read karta hai.</td>
+          </tr>
+          <tr>
+            <td><code>"Hello, " + nameInput.value</code></td>
+            <td>String concatenation hai. Fixed text <code>Hello,</code> ke saath user ka typed name join hota hai.</td>
+          </tr>
+        </table>
+
+        <div class="demo-box">
+          <div class="demo-row">
+            <input id="nameInput" placeholder="Enter your name">
+          </div>
+          <div id="preview" class="output">Your name will appear here</div>
+        </div>
+      </section>
+
+      <section id="logic">
+        <h2>10. Client-Side Logic Design</h2>
+        <p>Client-side logic ka matlab browser ke andar run hone wali logic. Server ko request bhejne se pehle browser itself kuch checks kar sakta hai. Example: form blank hai ya nahi, password length enough hai ya nahi, email format valid hai ya nahi.</p>
+        <p>Client-side validation user experience improve karti hai, kyunki user ko turant feedback milta hai. Lekin security ke liye server-side validation bhi zaroori hoti hai. Class mein clear bolna: client-side validation convenience ke liye hai, final trust ke liye backend validation bhi chahiye.</p>
+
+        <h3>Logic Design Steps</h3>
+        <table>
+          <tr>
+            <th>Step</th>
+            <th>Question</th>
+            <th>Example</th>
+          </tr>
+          <tr>
+            <td>Input Identify</td>
+            <td>User se kya data lena hai?</td>
+            <td>Name, email, password.</td>
+          </tr>
+          <tr>
+            <td>Rules Decide</td>
+            <td>Valid data ka rule kya hai?</td>
+            <td>Name blank nahi, email includes @, password 6+ chars.</td>
+          </tr>
+          <tr>
+            <td>Condition Apply</td>
+            <td>Agar invalid ho toh kya?</td>
+            <td>Error message show karo.</td>
+          </tr>
+          <tr>
+            <td>DOM Update</td>
+            <td>User ko result kaise dikhana hai?</td>
+            <td>Message box mein success/error show karo.</td>
+          </tr>
+        </table>
+      </section>
+
+      <section id="project">
+        <h2>Project 4: Interactive Web Application</h2>
+        <p>Ab hum ek interactive registration form banayenge. Is project mein dynamic form validation, DOM-based updates, and event-driven interactions teenon cover honge. Learners ko yeh samajh aayega ki JavaScript real page ko active kaise banata hai.</p>
+        <p>Project story: ek learning platform ko registration form chahiye. User name, email, and password enter karega. JavaScript check karega ki fields valid hain ya nahi. Agar valid hai toh success message show hoga. Agar invalid hai toh clear error message show hoga.</p>
+
+        <h3>Project Features</h3>
+        <table>
+          <tr>
+            <th>Feature</th>
+            <th>Simple Meaning</th>
+            <th>Project Mein Kaise Use Hoga?</th>
+          </tr>
+          <tr>
+            <td>Dynamic form validation</td>
+            <td>Form submit hone se pehle browser mein data check karna.</td>
+            <td>Name blank nahi hona chahiye, email mein <code>@</code> hona chahiye, password minimum 6 characters ka hona chahiye.</td>
+          </tr>
+          <tr>
+            <td>DOM-based updates</td>
+            <td>JavaScript se HTML page ka text/style update karna.</td>
+            <td>Error ya success message <code>formMessage</code> paragraph mein dynamically show hoga.</td>
+          </tr>
+          <tr>
+            <td>Event-driven interactions</td>
+            <td>User ke action par JavaScript code run karna.</td>
+            <td>User button click/form submit karega, tab <code>submit</code> event listener validation function run karega.</td>
+          </tr>
+        </table>
+
+        <h3>Project File Structure</h3>
+        <pre><code>interactive-form-app/
+  index.html
+  styles.css
+  script.js</code></pre>
+
+        <h3>Project HTML Code</h3>
+        <pre><code>&lt;form id="signupForm"&gt;
+  &lt;label for="fullName"&gt;Full Name&lt;/label&gt;
+  &lt;input id="fullName" type="text" placeholder="Enter your full name"&gt;
+
+  &lt;label for="email"&gt;Email&lt;/label&gt;
+  &lt;input id="email" type="email" placeholder="Enter your email"&gt;
+
+  &lt;label for="password"&gt;Password&lt;/label&gt;
+  &lt;input id="password" type="password" placeholder="Minimum 6 characters"&gt;
+
+  &lt;button type="submit"&gt;Create Account&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;p id="formMessage"&gt;&lt;/p&gt;</code></pre>
+        <table>
+          <tr>
+            <th>Line / Code</th>
+            <th>Detailed Simple Hinglish Explanation</th>
+          </tr>
+          <tr>
+            <td><code>&lt;form id="signupForm"&gt;</code></td>
+            <td>Form start hota hai. <code>id="signupForm"</code> JavaScript ko form select karne mein help karega. Form user input collect karta hai.</td>
+          </tr>
+          <tr>
+            <td><code>&lt;label for="fullName"&gt;</code></td>
+            <td>Label input ka name batata hai. <code>for="fullName"</code> connected input ke <code>id</code> se match karta hai. Accessibility ke liye important hai.</td>
+          </tr>
+          <tr>
+            <td><code>&lt;input id="fullName" type="text"&gt;</code></td>
+            <td>Name ke liye text input field create hoti hai. JavaScript later <code>fullName</code> id se value read karega.</td>
+          </tr>
+          <tr>
+            <td><code>type="email"</code></td>
+            <td>Email input ke liye browser basic email format help de sakta hai. JavaScript bhi extra check karega.</td>
+          </tr>
+          <tr>
+            <td><code>type="password"</code></td>
+            <td>Password field typed characters ko hide karta hai. Login/signup forms mein password type use hota hai.</td>
+          </tr>
+          <tr>
+            <td><code>&lt;button type="submit"&gt;</code></td>
+            <td>Form submit button hai. Click karne par form submit event trigger hota hai.</td>
+          </tr>
+          <tr>
+            <td><code>&lt;p id="formMessage"&gt;&lt;/p&gt;</code></td>
+            <td>Message area hai. JavaScript validation result yahan show karega: success ya error.</td>
+          </tr>
+        </table>
+
+        <h3>Project JavaScript Code</h3>
+        <pre><code>let signupForm = document.getElementById("signupForm");
+let fullName = document.getElementById("fullName");
+let email = document.getElementById("email");
+let password = document.getElementById("password");
+let formMessage = document.getElementById("formMessage");
+
+signupForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  if (fullName.value.trim() === "") {
+    formMessage.textContent = "Please enter your full name.";
+    formMessage.style.color = "red";
+    return;
+  }
+
+  if (!email.value.includes("@")) {
+    formMessage.textContent = "Please enter a valid email address.";
+    formMessage.style.color = "red";
+    return;
+  }
+
+  if (password.value.length &lt; 6) {
+    formMessage.textContent = "Password must be at least 6 characters.";
+    formMessage.style.color = "red";
+    return;
+  }
+
+  formMessage.textContent = "Account created successfully.";
+  formMessage.style.color = "green";
+});</code></pre>
+        <table>
+          <tr>
+            <th>Line / Code</th>
+            <th>Detailed Simple Hinglish Explanation</th>
+          </tr>
+          <tr>
+            <td><code>let signupForm = document.getElementById("signupForm");</code></td>
+            <td>HTML form ko JavaScript variable mein store karta hai. Ab JS form ke submit event ko listen kar sakta hai.</td>
+          </tr>
+          <tr>
+            <td><code>let fullName = ...</code></td>
+            <td>Name input field ko select karta hai. Later <code>fullName.value</code> se user ka typed name read hoga.</td>
+          </tr>
+          <tr>
+            <td><code>signupForm.addEventListener("submit", ...)</code></td>
+            <td>Form submit event listen karta hai. Jab user Create Account button click karega, function run hoga.</td>
+          </tr>
+          <tr>
+            <td><code>event.preventDefault();</code></td>
+            <td>Browser ka default form submit behavior stop karta hai. Agar yeh line nahi likhenge toh page reload ho sakta hai aur message clear ho jayega.</td>
+          </tr>
+          <tr>
+            <td><code>fullName.value.trim() === ""</code></td>
+            <td>Name field blank hai ya nahi check karta hai. <code>trim()</code> extra spaces remove karta hai. Agar user sirf spaces type kare, woh bhi blank maana jayega.</td>
+          </tr>
+          <tr>
+            <td><code>formMessage.textContent = ...</code></td>
+            <td>Message paragraph ka text update karta hai. Yeh DOM update hai.</td>
+          </tr>
+          <tr>
+            <td><code>formMessage.style.color = "red";</code></td>
+            <td>Error message ko red color deta hai. User ko visually samajh aata hai ki problem hai.</td>
+          </tr>
+          <tr>
+            <td><code>return;</code></td>
+            <td>Function ko yahin stop kar deta hai. Agar name invalid hai, toh email/password check karne ki zaroorat nahi.</td>
+          </tr>
+          <tr>
+            <td><code>!email.value.includes("@")</code></td>
+            <td>Email mein <code>@</code> hai ya nahi check karta hai. <code>!</code> ka matlab not. Agar @ nahi hai toh invalid.</td>
+          </tr>
+          <tr>
+            <td><code>password.value.length &lt; 6</code></td>
+            <td>Password ki length check karta hai. Agar 6 characters se kam hai toh error message show hota hai.</td>
+          </tr>
+          <tr>
+            <td><code>formMessage.style.color = "green";</code></td>
+            <td>Success message green color mein show karta hai. Green normally success/valid state represent karta hai.</td>
+          </tr>
+        </table>
+
+        <h3>Live Mini Demo</h3>
+        <div class="demo-box">
+          <form id="signupForm">
+            <div class="demo-row">
+              <input id="fullName" type="text" placeholder="Enter your full name">
+              <input id="email" type="email" placeholder="Enter your email">
+              <input id="password" type="password" placeholder="Minimum 6 characters">
+              <button type="submit">Create Account</button>
+            </div>
+          </form>
+          <div id="formMessage" class="output">Form result yahan show hoga.</div>
+        </div>
+      </section>
+
+      <section id="reference">
+        <h2>Quick Reference</h2>
+        <table>
+          <tr>
+            <th>Concept</th>
+            <th>Syntax</th>
+            <th>Use</th>
+          </tr>
+          <tr>
+            <td>Variable</td>
+            <td><code>let name = "Aman";</code></td>
+            <td>Changeable value store karna.</td>
+          </tr>
+          <tr>
+            <td>Constant</td>
+            <td><code>const pi = 3.14;</code></td>
+            <td>Fixed value store karna.</td>
+          </tr>
+          <tr>
+            <td>Condition</td>
+            <td><code>if (age &gt;= 18) { }</code></td>
+            <td>Decision making.</td>
+          </tr>
+          <tr>
+            <td>Loop</td>
+            <td><code>for (let i = 0; i &lt; 5; i++) { }</code></td>
+            <td>Repeated work.</td>
+          </tr>
+          <tr>
+            <td>Function</td>
+            <td><code>function add(a, b) { return a + b; }</code></td>
+            <td>Reusable logic.</td>
+          </tr>
+          <tr>
+            <td>Array</td>
+            <td><code>let items = ["A", "B"];</code></td>
+            <td>List data.</td>
+          </tr>
+          <tr>
+            <td>Object</td>
+            <td><code>let user = { name: "Aman" };</code></td>
+            <td>Structured key-value data.</td>
+          </tr>
+          <tr>
+            <td>DOM Select</td>
+            <td><code>document.getElementById("box")</code></td>
+            <td>HTML element access karna.</td>
+          </tr>
+          <tr>
+            <td>Event</td>
+            <td><code>button.addEventListener("click", fn)</code></td>
+            <td>User action handle karna.</td>
+          </tr>
+        </table>
+
+        <h2>Final Summary</h2>
+        <p>JavaScript website ko interactive banata hai. Variables data store karte hain, conditions decision leti hain, loops repeated work karte hain, functions reusable logic banate hain, arrays and objects structured data manage karte hain, DOM HTML elements ko control karta hai, and events user action par code run karte hain.</p>
+        <p>Is module ke baad learner ek simple interactive form bana sakta hai jisme validation, dynamic message, and event handling use hota hai. Yeh real web development ka important foundation hai.</p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <p>Module 4 JavaScript Fundamentals - Simple Hinglish Teaching Notes</p>
+  </footer>
+
+  <script>
+    const changeBtn = document.getElementById("changeBtn");
+    const message = document.getElementById("message");
+    const nameInput = document.getElementById("nameInput");
+    const preview = document.getElementById("preview");
+    const signupForm = document.getElementById("signupForm");
+    const fullName = document.getElementById("fullName");
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    const formMessage = document.getElementById("formMessage");
+
+    changeBtn.addEventListener("click", function () {
+      message.textContent = "JavaScript changed this text.";
+    });
+
+    nameInput.addEventListener("input", function () {
+      if (nameInput.value.trim() === "") {
+        preview.textContent = "Your name will appear here";
+      } else {
+        preview.textContent = "Hello, " + nameInput.value;
+      }
+    });
+
+    signupForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      if (fullName.value.trim() === "") {
+        formMessage.textContent = "Please enter your full name.";
+        formMessage.style.color = "red";
+        return;
+      }
+
+      if (!email.value.includes("@")) {
+        formMessage.textContent = "Please enter a valid email address.";
+        formMessage.style.color = "red";
+        return;
+      }
+
+      if (password.value.length < 6) {
+        formMessage.textContent = "Password must be at least 6 characters.";
+        formMessage.style.color = "red";
+        return;
+      }
+
+      formMessage.textContent = "Account created successfully.";
+      formMessage.style.color = "green";
+    });
+  </script>
+</body>
+</html>
