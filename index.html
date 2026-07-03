@@ -234,6 +234,177 @@
           </tr>
         </table>
 
+        <h3>Actual Runnable Project Folder</h3>
+        <p>Is notes ke saath ek ready project folder bhi banaya gaya hai: <code>javascript-fundamentals-project</code>. Aap is folder ko VS Code mein open karke direct learners ko output dikha sakte ho. Is project mein HTML, CSS, and JavaScript teenon use hue hain, aur JavaScript ke saare important topics ek simple dashboard mein cover ho rahe hain.</p>
+        <pre><code>Module-4-JavaScript-Fundamentals-notes/
+  javascript-fundamentals-project/
+    index.html
+    styles.css
+    script.js</code></pre>
+        <table>
+          <tr>
+            <th>File</th>
+            <th>Purpose</th>
+            <th>Teaching Point</th>
+          </tr>
+          <tr>
+            <td><code>index.html</code></td>
+            <td>Dashboard structure, buttons, output area, and validation form.</td>
+            <td>HTML visible elements banata hai: buttons, form, input, output paragraph.</td>
+          </tr>
+          <tr>
+            <td><code>styles.css</code></td>
+            <td>Dashboard design, cards, buttons, spacing, and mobile layout.</td>
+            <td>CSS page ko clean, readable, and professional look deta hai.</td>
+          </tr>
+          <tr>
+            <td><code>script.js</code></td>
+            <td>All JavaScript topic logic: events, variables, conditions, loops, functions, arrays, objects, DOM, validation.</td>
+            <td>JavaScript page ko interactive banata hai.</td>
+          </tr>
+        </table>
+
+        <h4>Project Ko Execute Kaise Karna Hai</h4>
+        <table>
+          <tr>
+            <th>Step</th>
+            <th>Action</th>
+            <th>Simple Hinglish Explanation</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>VS Code open karo.</td>
+            <td>VS Code mein project files edit and run karna easy hota hai.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><code>javascript-fundamentals-project</code> folder open karo.</td>
+            <td>Ye actual runnable project folder hai. Isi folder ke andar HTML, CSS, JS files hain.</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><code>index.html</code> par right click karo.</td>
+            <td>HTML file project ka entry point hai. Browser isi file ko open karega.</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>Open with Live Server</strong> select karo.</td>
+            <td>Live Server browser mein project run karega. Agar change karoge toh save ke baad refresh/live update dikhega.</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Dashboard ke buttons click karo.</td>
+            <td>Har button ek JavaScript topic ka output show karega. Isi output ko students ko explain karna hai.</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Form fill karke submit karo.</td>
+            <td>Client-side validation test hoga: blank name, invalid email, short password, and success message.</td>
+          </tr>
+        </table>
+
+        <h4>Project Mein Kaunsa Button Kaunsa Topic Cover Karta Hai?</h4>
+        <table>
+          <tr>
+            <th>Button / Area</th>
+            <th>Topic Covered</th>
+            <th>Output Explanation</th>
+          </tr>
+          <tr>
+            <td>Syntax</td>
+            <td>JavaScript syntax and calculation</td>
+            <td>Text and number calculation output area mein show hota hai.</td>
+          </tr>
+          <tr>
+            <td>Variables</td>
+            <td>Variables and data types</td>
+            <td>Name and age variables combine hoke sentence banate hain.</td>
+          </tr>
+          <tr>
+            <td>Conditions</td>
+            <td>if/else condition</td>
+            <td>Marks ke basis par pass/fail decision hota hai.</td>
+          </tr>
+          <tr>
+            <td>Loops</td>
+            <td>Array loop</td>
+            <td>Subjects array ke har item ko loop se output mein add kiya jata hai.</td>
+          </tr>
+          <tr>
+            <td>Functions</td>
+            <td>Reusable function</td>
+            <td>Price and quantity ka total function calculate karta hai.</td>
+          </tr>
+          <tr>
+            <td>Arrays</td>
+            <td>Array and <code>push()</code></td>
+            <td>Destinations list mein Kerala add hota hai.</td>
+          </tr>
+          <tr>
+            <td>Objects</td>
+            <td>Object key-value data</td>
+            <td>User object se name and course access hota hai.</td>
+          </tr>
+          <tr>
+            <td>DOM</td>
+            <td>DOM manipulation</td>
+            <td>JavaScript output text and color change karta hai.</td>
+          </tr>
+          <tr>
+            <td>Form</td>
+            <td>Client-side logic and validation</td>
+            <td>Name/email/password rules check hote hain and message show hota hai.</td>
+          </tr>
+        </table>
+
+        <h4>Actual Project Code Ko Kaise Explain Karna Hai</h4>
+        <table>
+          <tr>
+            <th>Code / Concept</th>
+            <th>Simple Hinglish Explanation</th>
+          </tr>
+          <tr>
+            <td><code>&lt;button id="syntaxBtn"&gt;</code></td>
+            <td>HTML button banata hai. <code>id</code> JavaScript ko batata hai ki kaunsa button select karna hai.</td>
+          </tr>
+          <tr>
+            <td><code>&lt;p id="outputText"&gt;</code></td>
+            <td>Output show karne ka area hai. Har topic ka result isi paragraph mein dikhega.</td>
+          </tr>
+          <tr>
+            <td><code>.controls</code></td>
+            <td>CSS grid container hai. Buttons ko neat columns mein arrange karta hai.</td>
+          </tr>
+          <tr>
+            <td><code>document.getElementById("outputText")</code></td>
+            <td>JavaScript HTML page se output paragraph ko select karta hai.</td>
+          </tr>
+          <tr>
+            <td><code>addEventListener("click", ...)</code></td>
+            <td>Button click hone ka wait karta hai. Click hote hi function run hota hai.</td>
+          </tr>
+          <tr>
+            <td><code>outputText.textContent = ...</code></td>
+            <td>Output paragraph ka text change karta hai. Isse result page par dikhta hai.</td>
+          </tr>
+          <tr>
+            <td><code>if (marks &gt;= 40)</code></td>
+            <td>Condition check karti hai. Agar marks 40 ya zyada hain toh pass message aata hai.</td>
+          </tr>
+          <tr>
+            <td><code>for (let subject of subjects)</code></td>
+            <td>Array ke har subject ko one by one read karta hai.</td>
+          </tr>
+          <tr>
+            <td><code>function calculateTotal(...)</code></td>
+            <td>Reusable calculation block hai. Same logic ko baar-baar use kar sakte hain.</td>
+          </tr>
+          <tr>
+            <td><code>event.preventDefault()</code></td>
+            <td>Form submit par page reload hone se rokta hai, taaki validation message page par visible rahe.</td>
+          </tr>
+        </table>
+
         <h3>Complete Dashboard Practical: Saare Topics Ka Output Page Par Dikhao</h3>
         <p>Yeh practical aapke classroom ke liye best hai, kyunki isme har JavaScript topic ka output dashboard par visible hoga. Learners ko console open karne ki zaroorat nahi padegi. Aap button click karoge, aur output area mein result dikhega. Is dashboard mein syntax, variables, conditions, loops, functions, arrays, objects, DOM, and events sab cover honge.</p>
         <p>Story type explanation: "Hum ek learning dashboard bana rahe hain. Har button ek topic represent karta hai. Jab button click hota hai, JavaScript us topic ka logic run karta hai aur output box mein result show karta hai. Isse samajh aata hai ki JavaScript real webpage ko live update kar sakta hai."</p>

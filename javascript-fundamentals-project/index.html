@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Fundamentals Project</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <p class="badge">JavaScript Practical Project</p>
+      <h1>JavaScript Fundamentals Dashboard</h1>
+      <p class="subtitle">Click each button and see how JavaScript changes the page output.</p>
+    </section>
+
+    <section class="controls">
+      <button id="syntaxBtn">Syntax</button>
+      <button id="variableBtn">Variables</button>
+      <button id="conditionBtn">Conditions</button>
+      <button id="loopBtn">Loops</button>
+      <button id="functionBtn">Functions</button>
+      <button id="arrayBtn">Arrays</button>
+      <button id="objectBtn">Objects</button>
+      <button id="domBtn">DOM</button>
+    </section>
+
+    <section class="output-card">
+      <h2>Output Area</h2>
+      <p id="outputText">Click any topic button to see output here.</p>
+    </section>
+
+    <section class="form-card">
+      <h2>Client-Side Form Validation</h2>
+      <form id="signupForm">
+        <label for="studentName">Student Name</label>
+        <input id="studentName" type="text" placeholder="Enter student name">
+
+        <label for="studentEmail">Email</label>
+        <input id="studentEmail" type="email" placeholder="Enter email">
+
+        <label for="studentPassword">Password</label>
+        <input id="studentPassword" type="password" placeholder="Minimum 6 characters">
+
+        <button type="submit">Submit Form</button>
+      </form>
+      <p id="formMessage">Form message will appear here.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
