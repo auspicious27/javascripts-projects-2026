@@ -260,6 +260,86 @@
             <td>Script tag close karna zaroori hai. External script tag ke andar code nahi likhte.</td>
           </tr>
         </table>
+
+        <h3>Har JavaScript Example Ko Execute Karne Ka Common Flow</h3>
+        <p>Is module mein kuch examples console output wale hain, kuch popup wale hain, aur kuch page par directly change dikhane wale hain. Isliye learners ko pehle yeh clear karna zaroori hai ki JavaScript ka output hamesha same jagah nahi dikhta. Agar code mein <code>console.log()</code> hai toh output browser Console tab mein dikhega. Agar code mein <code>alert()</code> hai toh popup dikhega. Agar code DOM use kar raha hai, jaise <code>textContent</code>, <code>style</code>, ya <code>innerHTML</code>, toh output page par visible change ke form mein dikhega.</p>
+        <table>
+          <tr>
+            <th>Code Type</th>
+            <th>Execute Kaise Karna Hai?</th>
+            <th>Output Kahan Dikhega?</th>
+            <th>Students Ko Kaise Explain Karna Hai?</th>
+          </tr>
+          <tr>
+            <td><code>console.log()</code> examples</td>
+            <td><code>script.js</code> mein code likho, HTML mein script connect karo, browser open karo, Inspect &gt; Console dekho.</td>
+            <td>Console tab mein output dikhega.</td>
+            <td>Console ko developer ka practice notebook bolo. Yahan hum code ka result test karte hain.</td>
+          </tr>
+          <tr>
+            <td><code>alert()</code> examples</td>
+            <td>Code ko <code>script.js</code> mein likho, browser refresh karo.</td>
+            <td>Browser popup box dikhega.</td>
+            <td>Alert ko emergency message jaisa samjhao. User ko OK click karna padta hai.</td>
+          </tr>
+          <tr>
+            <td>DOM examples</td>
+            <td>Pehle HTML element banao, usko <code>id</code> do, phir JavaScript se <code>document.getElementById()</code> se select karo.</td>
+            <td>Page par text/style/content change dikhega.</td>
+            <td>DOM ko page ka remote control bolo. JS remote se HTML element change karta hai.</td>
+          </tr>
+          <tr>
+            <td>Event examples</td>
+            <td>HTML button/input banao, JavaScript se event listener attach karo, phir click/type/submit karke test karo.</td>
+            <td>User action ke baad output dikhega.</td>
+            <td>Event ko doorbell jaisa samjhao. User click karega toh JavaScript function run hoga.</td>
+          </tr>
+        </table>
+
+        <h3>VS Code Mein Example Execute Karne Ka Step-by-Step Pattern</h3>
+        <p>Har JavaScript practical ke liye learners ko yeh same pattern follow karwao. Isse unko confusion nahi hogi ki code kahan likhna hai aur output kahan dekhna hai.</p>
+        <table>
+          <tr>
+            <th>Step</th>
+            <th>Action</th>
+            <th>Detail Explanation</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Project folder open karo.</td>
+            <td>VS Code mein <code>javascript-fundamentals</code> folder open hona chahiye. Agar folder open nahi hoga toh files ka path confuse ho sakta hai.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><code>index.html</code>, <code>styles.css</code>, <code>script.js</code> files banao.</td>
+            <td>HTML structure ke liye, CSS design ke liye, and JavaScript logic ke liye separate files rakho.</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>HTML ke bottom mein script connect karo.</td>
+            <td><code>&lt;script src="script.js"&gt;&lt;/script&gt;</code> ko closing <code>&lt;/body&gt;</code> se just pehle likho. Isse HTML elements pehle load ho jaate hain.</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>JavaScript code <code>script.js</code> mein likho.</td>
+            <td>Console examples directly JS file mein likh sakte ho. DOM examples ke liye matching HTML element bhi banana hoga.</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Browser mein page open karo.</td>
+            <td>Live Server use kar sakte ho. Agar Live Server nahi hai toh <code>index.html</code> file double click karke bhi browser mein open kar sakte ho.</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Console output ke liye Inspect open karo.</td>
+            <td>Right click &gt; Inspect &gt; Console. <code>console.log()</code> ka output yahin dikhega.</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Code change ke baad save and refresh karo.</td>
+            <td>File save nahi karoge toh browser old code run karega. Save karne ke baad browser refresh karo.</td>
+          </tr>
+        </table>
       </section>
 
       <section id="goal">
@@ -1514,6 +1594,109 @@ signupForm.addEventListener("submit", function (event) {
             <td>Event</td>
             <td><code>button.addEventListener("click", fn)</code></td>
             <td>User action handle karna.</td>
+          </tr>
+        </table>
+
+        <h2>Topic-Wise Practical Execution Guide</h2>
+        <p>Is table ko class ke time quick teaching guide ki tarah use karo. Har row batati hai ki practical code kahan likhna hai, kaise run karna hai, output kya aayega, aur learners ko kis story/simple line se samjhana hai.</p>
+        <table>
+          <tr>
+            <th>Topic / Practical</th>
+            <th>Code Kahan Likhenge?</th>
+            <th>Execute Kaise Karenge?</th>
+            <th>Expected Output</th>
+            <th>Teaching Explanation</th>
+          </tr>
+          <tr>
+            <td>First <code>console.log()</code></td>
+            <td><code>script.js</code></td>
+            <td>HTML mein script connect karo, browser refresh karo, Console tab open karo.</td>
+            <td><code>Hello JavaScript</code> and <code>15</code></td>
+            <td>Console developer ka testing area hai. Page par nahi, console mein output dikhega.</td>
+          </tr>
+          <tr>
+            <td><code>alert()</code> message</td>
+            <td><code>script.js</code></td>
+            <td>Browser refresh karte hi popup show hoga.</td>
+            <td>Popup: Welcome to JavaScript class</td>
+            <td>Alert user ko immediate message show karta hai. Isko emergency notice jaisa samjhao.</td>
+          </tr>
+          <tr>
+            <td><code>document.write()</code></td>
+            <td><code>script.js</code></td>
+            <td>Browser refresh karo.</td>
+            <td>Page par text write hoga.</td>
+            <td>Yeh direct page par output likhta hai, but real projects mein DOM methods better hote hain.</td>
+          </tr>
+          <tr>
+            <td>Variables and data types</td>
+            <td><code>script.js</code></td>
+            <td>Console tab mein output check karo.</td>
+            <td>Name, age, course, boolean values print hongi.</td>
+            <td>Variable ko data ka box bolo. Har box mein ek value store hoti hai.</td>
+          </tr>
+          <tr>
+            <td><code>typeof</code> practical</td>
+            <td><code>script.js</code></td>
+            <td>Console tab open karke type outputs dekho.</td>
+            <td><code>number</code>, <code>string</code>, <code>boolean</code></td>
+            <td><code>typeof</code> value ka type check karta hai. Debugging ke liye useful hai.</td>
+          </tr>
+          <tr>
+            <td>Conditions</td>
+            <td><code>script.js</code></td>
+            <td>Variable value change karo and browser refresh karo.</td>
+            <td>Age/signal/login status ke according different message.</td>
+            <td>Condition ko gatekeeper bolo. True hua toh ek path, false hua toh doosra path.</td>
+          </tr>
+          <tr>
+            <td>Loops</td>
+            <td><code>script.js</code></td>
+            <td>Console tab mein repeated output dekho.</td>
+            <td>Subjects list, countdown, cart total.</td>
+            <td>Loop repeated work ka helper hai. Same code baar-baar manually nahi likhna padta.</td>
+          </tr>
+          <tr>
+            <td>Functions</td>
+            <td><code>script.js</code></td>
+            <td>Function call karo and output console mein dekho.</td>
+            <td>Total amount, greeting message, app message.</td>
+            <td>Function reusable machine jaisa hai. Input do, processing hoti hai, output milta hai.</td>
+          </tr>
+          <tr>
+            <td>Arrays</td>
+            <td><code>script.js</code></td>
+            <td>Array methods run karo and console output dekho.</td>
+            <td>Updated list, removed item, looped items.</td>
+            <td>Array ko list/queue samjhao. Multiple values ek hi variable mein manage hoti hain.</td>
+          </tr>
+          <tr>
+            <td>Objects</td>
+            <td><code>script.js</code></td>
+            <td>Object property access/update karo.</td>
+            <td>User/product/student details print hongi.</td>
+            <td>Object ko ID card samjhao jisme name, email, marks jaise fields hote hain.</td>
+          </tr>
+          <tr>
+            <td>DOM text change</td>
+            <td>HTML + <code>script.js</code></td>
+            <td>HTML mein element id banao, button click karo.</td>
+            <td>Page heading/text change hoga.</td>
+            <td>DOM JavaScript ka page remote control hai.</td>
+          </tr>
+          <tr>
+            <td>Events</td>
+            <td>HTML + <code>script.js</code></td>
+            <td>Click/type/mouseover karke test karo.</td>
+            <td>User action ke baad message update hoga.</td>
+            <td>Event ko doorbell bolo. Action hota hai toh function run hota hai.</td>
+          </tr>
+          <tr>
+            <td>Form validation project</td>
+            <td><code>index.html</code> + <code>script.js</code></td>
+            <td>Form fill karo and submit button click karo.</td>
+            <td>Red error or green success message.</td>
+            <td>Client-side validation user ko instant feedback deta hai before server submission.</td>
           </tr>
         </table>
 
