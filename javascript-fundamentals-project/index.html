@@ -3,48 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JavaScript Fundamentals Project</title>
+  <title>Student Skill Dashboard</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <main class="app">
     <section class="hero">
-      <p class="badge">JavaScript Practical Project</p>
-      <h1>JavaScript Fundamentals Dashboard</h1>
-      <p class="subtitle">Click each button and see how JavaScript changes the page output.</p>
+      <p class="badge">Module 4 JavaScript Project</p>
+      <h1>Student Skill Dashboard</h1>
+      <p class="subtitle">HTML structure, CSS design, and JavaScript logic ka complete practical project.</p>
     </section>
 
-    <section class="controls">
-      <button id="syntaxBtn">Syntax</button>
-      <button id="variableBtn">Variables</button>
-      <button id="conditionBtn">Conditions</button>
-      <button id="loopBtn">Loops</button>
-      <button id="functionBtn">Functions</button>
-      <button id="arrayBtn">Arrays</button>
-      <button id="objectBtn">Objects</button>
-      <button id="domBtn">DOM</button>
-    </section>
+    <section class="panel">
+      <h2>Student Registration</h2>
+      <form id="studentForm">
+        <div class="form-group">
+          <label for="studentName">Student Name</label>
+          <input id="studentName" type="text" placeholder="Example: Aman Sharma">
+        </div>
 
-    <section class="output-card">
-      <h2>Output Area</h2>
-      <p id="outputText">Click any topic button to see output here.</p>
-    </section>
+        <div class="form-group">
+          <label for="studentEmail">Email Address</label>
+          <input id="studentEmail" type="email" placeholder="Example: aman@gmail.com">
+        </div>
 
-    <section class="form-card">
-      <h2>Client-Side Form Validation</h2>
-      <form id="signupForm">
-        <label for="studentName">Student Name</label>
-        <input id="studentName" type="text" placeholder="Enter student name">
+        <div class="form-group">
+          <label for="studentSkill">Select Skill</label>
+          <select id="studentSkill">
+            <option value="">Choose a skill</option>
+            <option value="HTML">HTML</option>
+            <option value="CSS">CSS</option>
+            <option value="JavaScript">JavaScript</option>
+          </select>
+        </div>
 
-        <label for="studentEmail">Email</label>
-        <input id="studentEmail" type="email" placeholder="Enter email">
+        <div class="form-group">
+          <label for="studentLevel">Practice Level</label>
+          <input id="studentLevel" type="number" placeholder="Enter level from 1 to 10">
+        </div>
 
-        <label for="studentPassword">Password</label>
-        <input id="studentPassword" type="password" placeholder="Minimum 6 characters">
-
-        <button type="submit">Submit Form</button>
+        <button type="submit">Add Student</button>
       </form>
-      <p id="formMessage">Form message will appear here.</p>
+      <p id="message" class="message">Fill the form and add a student.</p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title-row">
+        <h2>Live Dashboard</h2>
+        <button id="resetBtn" type="button" class="secondary-btn">Reset List</button>
+      </div>
+      <div id="stats" class="stats">Total Students: 0</div>
+      <div id="studentList" class="student-list">
+        <p class="empty">No students added yet.</p>
+      </div>
     </section>
   </main>
 

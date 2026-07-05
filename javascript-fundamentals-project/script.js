@@ -1,92 +1,102 @@
-let outputText = document.getElementById("outputText");
+const studentForm = document.getElementById("studentForm");
+const studentName = document.getElementById("studentName");
+const studentEmail = document.getElementById("studentEmail");
+const studentSkill = document.getElementById("studentSkill");
+const studentLevel = document.getElementById("studentLevel");
+const message = document.getElementById("message");
+const stats = document.getElementById("stats");
+const studentList = document.getElementById("studentList");
+const resetBtn = document.getElementById("resetBtn");
 
-document.getElementById("syntaxBtn").addEventListener("click", function () {
-  outputText.textContent = "Syntax demo: Hello JavaScript. 10 + 5 = " + (10 + 5);
-});
+let students = [];
 
-document.getElementById("variableBtn").addEventListener("click", function () {
-  let studentName = "Aman";
-  let age = 21;
-  outputText.textContent = "Variables demo: " + studentName + " is " + age + " years old.";
-});
+function showMessage(text, type) {
+  message.textContent = text;
+  message.className = "message " + type;
+}
 
-document.getElementById("conditionBtn").addEventListener("click", function () {
-  let marks = 75;
-
-  if (marks >= 40) {
-    outputText.textContent = "Conditions demo: Student passed with " + marks + " marks.";
-  } else {
-    outputText.textContent = "Conditions demo: Student failed.";
-  }
-});
-
-document.getElementById("loopBtn").addEventListener("click", function () {
-  let subjects = ["HTML", "CSS", "JavaScript"];
-  let result = "";
-
-  for (let subject of subjects) {
-    result = result + subject + " ";
+function getLevelStatus(level) {
+  if (level >= 8) {
+    return "Advanced";
   }
 
-  outputText.textContent = "Loops demo: " + result;
-});
-
-document.getElementById("functionBtn").addEventListener("click", function () {
-  function calculateTotal(price, quantity) {
-    return price * quantity;
+  if (level >= 5) {
+    return "Intermediate";
   }
 
-  outputText.textContent = "Functions demo: Total bill is Rs. " + calculateTotal(500, 3);
-});
+  return "Beginner";
+}
 
-document.getElementById("arrayBtn").addEventListener("click", function () {
-  let destinations = ["Manali", "Goa", "Jaipur"];
-  destinations.push("Kerala");
-  outputText.textContent = "Arrays demo: " + destinations.join(", ");
-});
+function renderStudents() {
+  studentList.innerHTML = "";
+  stats.textContent = "Total Students: " + students.length;
 
-document.getElementById("objectBtn").addEventListener("click", function () {
-  let user = {
-    name: "Sara",
-    course: "JavaScript",
-    active: true
-  };
+  if (students.length === 0) {
+    studentList.innerHTML = '<p class="empty">No students added yet.</p>';
+    return;
+  }
 
-  outputText.textContent = "Objects demo: " + user.name + " is learning " + user.course + ". Active: " + user.active;
-});
+  for (let student of students) {
+    const card = document.createElement("article");
+    card.className = "student-card";
 
-document.getElementById("domBtn").addEventListener("click", function () {
-  outputText.textContent = "DOM demo: JavaScript changed this text and color.";
-  outputText.style.color = "green";
-});
+    card.innerHTML = `
+      <h3>${student.name}</h3>
+      <p>Email: ${student.email}</p>
+      <p>Skill: ${student.skill}</p>
+      <span class="level-badge">${student.status} - Level ${student.level}</span>
+    `;
 
-let signupForm = document.getElementById("signupForm");
-let studentName = document.getElementById("studentName");
-let studentEmail = document.getElementById("studentEmail");
-let studentPassword = document.getElementById("studentPassword");
-let formMessage = document.getElementById("formMessage");
+    studentList.appendChild(card);
+  }
+}
 
-signupForm.addEventListener("submit", function (event) {
+studentForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  if (studentName.value.trim() === "") {
-    formMessage.textContent = "Please enter student name.";
-    formMessage.style.color = "red";
+  const nameValue = studentName.value.trim();
+  const emailValue = studentEmail.value.trim();
+  const skillValue = studentSkill.value;
+  const levelValue = Number(studentLevel.value);
+
+  if (nameValue === "") {
+    showMessage("Please enter student name.", "error");
     return;
   }
 
-  if (!studentEmail.value.includes("@")) {
-    formMessage.textContent = "Please enter a valid email.";
-    formMessage.style.color = "red";
+  if (!emailValue.includes("@")) {
+    showMessage("Please enter a valid email address.", "error");
     return;
   }
 
-  if (studentPassword.value.length < 6) {
-    formMessage.textContent = "Password must be at least 6 characters.";
-    formMessage.style.color = "red";
+  if (skillValue === "") {
+    showMessage("Please select a skill.", "error");
     return;
   }
 
-  formMessage.textContent = "Form submitted successfully.";
-  formMessage.style.color = "green";
+  if (levelValue < 1 || levelValue > 10) {
+    showMessage("Practice level must be between 1 and 10.", "error");
+    return;
+  }
+
+  const student = {
+    name: nameValue,
+    email: emailValue,
+    skill: skillValue,
+    level: levelValue,
+    status: getLevelStatus(levelValue)
+  };
+
+  students.push(student);
+  renderStudents();
+  showMessage("Student added successfully.", "success");
+  studentForm.reset();
 });
+
+resetBtn.addEventListener("click", function () {
+  students = [];
+  renderStudents();
+  showMessage("Student list reset successfully.", "success");
+});
+
+renderStudents();
