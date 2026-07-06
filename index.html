@@ -1,70 +1,804 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Module 4 JavaScript Fundamentals project-based notes in simple Hinglish with HTML, CSS, JavaScript and detailed line-by-line explanation.">
-  <title>Module 4 JavaScript Fundamentals Project Notes</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Module 4 JavaScript Fundamentals Notes</title>
+<style>
+  :root{
+    --navy:#0f2942;
+    --blue:#1a5f9e;
+    --accent:#2b8a3e;
+    --warn-bg:#fff4e5;
+    --warn-border:#e8a33d;
+    --info-bg:#e8f2fb;
+    --info-border:#1a5f9e;
+    --err-bg:#fdeaea;
+    --err-border:#c0392b;
+    --code-bg:#0f2942;
+    --code-text:#e8f2fb;
+    --gray:#555;
+    --line:#d7e2ec;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family:"Segoe UI",Arial,Helvetica,sans-serif;
+    margin:0;
+    padding:0;
+    color:#20303f;
+    line-height:1.65;
+    background:#fbfcfe;
+    font-size:15.5px;
+  }
+  .page{
+    max-width:980px;
+    margin:0 auto;
+    padding:30px 40px 60px 40px;
+  }
+  .titlepage{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:linear-gradient(160deg,var(--navy) 0%,var(--blue) 100%);
+    color:#fff;
+    padding:60px 20px;
+  }
+  .titlepage h1{
+    font-size:42px;
+    margin-bottom:10px;
+    letter-spacing:1px;
+  }
+  .titlepage h2{
+    font-size:20px;
+    font-weight:400;
+    color:#cfe4f7;
+    margin-top:0;
+  }
+  .titlepage .badge{
+    margin-top:40px;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.35);
+    padding:14px 26px;
+    border-radius:8px;
+    font-size:14px;
+    line-height:1.8;
+    text-align:left;
+  }
+  .titlepage .footer-note{
+    margin-top:50px;
+    font-size:13px;
+    color:#cfe4f7;
+  }
+  .toc{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:30px 35px;
+    margin:30px 0 50px 0;
+  }
+  .toc h2{margin-top:0;color:var(--navy);}
+  .toc li{margin-bottom:6px;}
+  .toc a{color:var(--blue);text-decoration:none;}
+  .toc a:hover{text-decoration:underline;}
+  .module-header{
+    background:var(--navy);
+    color:#fff;
+    padding:22px 30px;
+    border-radius:10px;
+    margin:60px 0 25px 0;
+  }
+  .module-header h1{margin:0;font-size:26px;}
+  .module-header p{margin:6px 0 0 0;color:#cfe4f7;font-size:14px;}
+  h2.topic{
+    color:var(--navy);
+    border-bottom:3px solid var(--blue);
+    padding-bottom:6px;
+    margin-top:45px;
+    font-size:21px;
+  }
+  h3.subtopic{
+    color:var(--blue);
+    margin-top:28px;
+    font-size:17px;
+  }
+  h3.practical-title{
+    color:#fff;
+    background:var(--accent);
+    display:inline-block;
+    padding:6px 16px;
+    border-radius:6px;
+    margin-top:20px;
+    font-size:15px;
+  }
+  .box{
+    border-radius:8px;
+    padding:14px 18px;
+    margin:14px 0;
+    font-size:14.5px;
+  }
+  .info{background:var(--info-bg);border-left:5px solid var(--info-border);}
+  .warn{background:var(--warn-bg);border-left:5px solid var(--warn-border);}
+  .error-box{background:var(--err-bg);border-left:5px solid var(--err-border);}
+  .box strong.tag{
+    display:block;
+    text-transform:uppercase;
+    font-size:11.5px;
+    letter-spacing:0.5px;
+    margin-bottom:4px;
+    color:var(--gray);
+  }
+  .info strong.tag{color:var(--info-border);}
+  .warn strong.tag{color:var(--warn-border);}
+  .error-box strong.tag{color:var(--err-border);}
+  .run-loc{
+    display:inline-block;
+    background:var(--navy);
+    color:#fff;
+    font-size:12px;
+    padding:3px 10px;
+    border-radius:5px 5px 0 0;
+    font-family:monospace;
+    margin-bottom:-2px;
+  }
+  pre{
+    background:var(--code-bg);
+    color:var(--code-text);
+    padding:16px 18px;
+    border-radius:0 8px 8px 8px;
+    overflow-x:auto;
+    font-size:13.5px;
+    margin:0 0 16px 0;
+    line-height:1.5;
+  }
+  code{font-family:"Consolas","Monaco",monospace;}
+  .inline-code{
+    background:#eef3f8;
+    color:#0f2942;
+    padding:2px 6px;
+    border-radius:4px;
+    font-family:"Consolas",monospace;
+    font-size:13.5px;
+  }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0;
+    font-size:14px;
+  }
+  th,td{
+    border:1px solid var(--line);
+    padding:9px 12px;
+    text-align:left;
+    vertical-align:top;
+  }
+  th{
+    background:var(--navy);
+    color:#fff;
+  }
+  tr:nth-child(even){background:#f4f8fc;}
+  .summary-box{
+    background:#eef8f0;
+    border:1px solid #bfe3c8;
+    border-left:5px solid var(--accent);
+    padding:16px 20px;
+    border-radius:8px;
+    margin:30px 0 10px 0;
+  }
+  .summary-box strong.tag{color:var(--accent);}
+  hr.sep{
+    border:none;
+    border-top:1px dashed var(--line);
+    margin:35px 0;
+  }
+  @media print{
+    .titlepage{page-break-after:always;}
+    .module-header{page-break-before:always;}
+    pre{white-space:pre-wrap;}
+  }
+</style>
 </head>
 <body>
-  <header class="top">
-    <div class="wrap">
-      <p class="tag">Module 4</p>
-      <h1>JavaScript Fundamentals - Project Based Notes</h1>
-      <p class="subtitle">Simple Hinglish mein step-by-step project: HTML structure, CSS design, JavaScript logic, DOM updates, events, and form validation.</p>
-    </div>
-  </header>
 
-  <main class="wrap layout">
-    <article class="paper">
-      <section>
-        <h2>Project Goal - Hum Kya Build Karenge?</h2>
-        <p>Is module mein hum ek <strong>Student Skill Dashboard</strong> build karenge. Yeh ek simple but complete interactive web application hai. User form mein student name, email, skill, and practice level enter karega. JavaScript form ko validate karega, invalid input par error show karega, valid input par student ko dashboard list mein add karega, total students count update karega, and reset button se list clear karega.</p>
-        <p>Is project ko build karte time learners ko JavaScript ke saare important fundamentals practically samajh aayenge. Syntax, variables, data types, conditions, loops, functions, scope, arrays, objects, DOM manipulation, events, and client-side logic ek hi project ke flow mein cover honge.</p>
+<div class="titlepage">
+  <h1>Module 4: JavaScript Fundamentals</h1>
+  <h2>Project 4: Interactive Web Application</h2>
+  <div class="badge">
+    Practice Mode: Browser + VS Code<br>
+    Project: Student Skill Dashboard<br>
+    Level: Beginner to Practical Web Developer<br>
+    Style: Simple Hinglish<br>
+    Focus: Theory + Hands-on Code + Detailed Explanation<br>
+    Output: Dynamic form validation, DOM updates, event-driven interaction
+  </div>
+  <div class="footer-note">Classroom Training Edition | HTML + CSS + JavaScript</div>
+</div>
 
-        <div class="note">
-          Class mein aise explain karo: HTML page ka skeleton hai, CSS uska design hai, aur JavaScript us page ka brain hai. Jab user form submit karta hai, JavaScript decide karti hai ki data sahi hai ya nahi, phir page ko dynamically update karti hai.
-        </div>
-      </section>
+<div class="page">
 
-      <section>
-        <h2>Topics Covered In This Project</h2>
-        <table>
-          <tr><th>Topic</th><th>Project mein kahan use hoga?</th></tr>
-          <tr><td>JavaScript Syntax & Basics</td><td>Statements, semicolon, braces, comments, function calls, and script execution.</td></tr>
-          <tr><td>Variables & Data Types</td><td><code>const</code>, <code>let</code>, string, number, array, object, and boolean-style conditions.</td></tr>
-          <tr><td>Conditions & Loops</td><td>Form validation ke liye <code>if</code>; student list render karne ke liye <code>for...of</code>.</td></tr>
-          <tr><td>Functions & Scope</td><td><code>showMessage()</code>, <code>getLevelStatus()</code>, <code>renderStudents()</code>.</td></tr>
-          <tr><td>Arrays & Objects</td><td><code>students</code> array and each student object.</td></tr>
-          <tr><td>DOM Manipulation</td><td><code>textContent</code>, <code>innerHTML</code>, <code>createElement</code>, <code>appendChild</code>.</td></tr>
-          <tr><td>Events & Event Handling</td><td>Form submit event and reset button click event.</td></tr>
-          <tr><td>Client-Side Logic Design</td><td>Validate input, create object, update array, render UI, show message.</td></tr>
-        </table>
-      </section>
+<div class="toc">
+<h2>Table of Contents</h2>
+<ol>
+  <li><a href="#intro">How to Use These Notes</a></li>
+  <li><a href="#incremental">HTML + CSS + JavaScript Step-by-Step Practical Flow</a></li>
+  <li><a href="#module4">Module 4 - JavaScript Fundamentals</a></li>
+  <li><a href="#project">Project 4 - Interactive Student Skill Dashboard</a></li>
+  <li><a href="#revision">Quick Revision and Common Mistakes</a></li>
+</ol>
+</div>
 
-      <section>
-        <h2>Step 1 - Project Folder Setup</h2>
-        <p>VS Code mein ek folder create karo: <code>student-skill-dashboard</code>. Iske andar 3 files banao: <code>index.html</code>, <code>styles.css</code>, and <code>script.js</code>. Yeh clean professional structure hai, kyunki HTML, CSS, and JavaScript alag-alag files mein rahenge.</p>
+<div class="module-header" id="intro">
+  <h1>How to Use These Notes</h1>
+  <p>Goal: JavaScript ko project ke through samajhna, sirf theory nahi.</p>
+</div>
 
-        <pre><code>student-skill-dashboard/
+<h2 class="topic">Class Teaching Flow</h2>
+<p>Is document ka format Linux training notes jaisa rakha gaya hai. Pehle concept ka simple meaning explain hoga, phir real-world use case, phir practical code, phir output, phir code ka detailed line-by-line explanation. Isse learner ko topic ratna nahi padega; woh samjhega ki code real website mein kyu use hota hai.</p>
+<p>Module 4 mein hum JavaScript ko HTML and CSS ke saath connect karke seekhenge. HTML structure banata hai, CSS design banata hai, aur JavaScript behavior add karta hai. Jab user button click karta hai, form submit karta hai, input fill karta hai, ya page par dynamic output dekhta hai, uske peeche JavaScript ka logic hota hai.</p>
+
+<div class="box info">
+<strong class="tag">Teacher Pattern</strong>
+Har topic ko 3 parts mein samjhao: input, processing, output. Input matlab user se kya value mil rahi hai. Processing matlab JavaScript us value par kya logic apply kar raha hai. Output matlab page par kya change dikh raha hai.
+</div>
+
+<h2 class="topic">VS Code Lab Setup</h2>
+<p>Project ko run karne ke liye ek folder banao: <span class="inline-code">student-skill-dashboard</span>. Iske andar 3 files banao: <span class="inline-code">index.html</span>, <span class="inline-code">styles.css</span>, and <span class="inline-code">script.js</span>. Browser mein <span class="inline-code">index.html</span> open karo. Agar Live Server extension available hai toh right-click karke <span class="inline-code">Open with Live Server</span> use karo.</p>
+
+<span class="run-loc">Folder Structure</span>
+<pre><code>student-skill-dashboard/
   index.html
   styles.css
   script.js</code></pre>
 
-        <table>
-          <tr><th>File</th><th>Purpose</th><th>Simple Explanation</th></tr>
-          <tr><td><code>index.html</code></td><td>Page structure</td><td>Form, headings, dashboard area, and buttons yahan banenge.</td></tr>
-          <tr><td><code>styles.css</code></td><td>Page design</td><td>Colors, spacing, card layout, buttons, responsive design yahan likhenge.</td></tr>
-          <tr><td><code>script.js</code></td><td>Page logic</td><td>Form validation, DOM update, events, array/object logic yahan likhenge.</td></tr>
-        </table>
-      </section>
+<table>
+<tr><th>File</th><th>Use</th><th>Simple Explanation</th></tr>
+<tr><td><span class="inline-code">index.html</span></td><td>Structure</td><td>Page ke elements: form, button, message, dashboard list.</td></tr>
+<tr><td><span class="inline-code">styles.css</span></td><td>Design</td><td>Colors, spacing, cards, responsive layout, success/error style.</td></tr>
+<tr><td><span class="inline-code">script.js</span></td><td>Logic</td><td>Validation, events, arrays, objects, DOM updates.</td></tr>
+</table>
 
-      <section>
-        <h2>Step 2 - HTML Code</h2>
-        <p>HTML ka kaam page ka structure banana hai. Is file mein hum form fields, message area, stats area, student list area, and reset button create karenge. JavaScript in elements ko id ke through select karega.</p>
+<div class="module-header" id="incremental">
+  <h1>HTML + CSS + JavaScript Step-by-Step Practical Flow</h1>
+  <p>Goal: Learners ko ekdum small steps mein HTML/CSS ke upar JavaScript add karte hue samjhana.</p>
+</div>
 
-        <pre><code>&lt;!DOCTYPE html&gt;
+<h2 class="topic">Practical Flow Ka Idea</h2>
+<p>JavaScript ko directly bada project dekar start karne se beginner confuse ho sakta hai. Isliye pehle ek small HTML element banao, CSS se usko design karo, phir JavaScript se us element ko change karwao. Phir input field add karo, phir button event add karo, phir validation add karo, phir array/object se list render karwao. Aise learner ko har step par output dikhta rahega.</p>
+
+<div class="box info">
+<strong class="tag">Classroom Flow</strong>
+Step 1 mein sirf page dikhao. Step 2 mein style dikhao. Step 3 mein button click se text change dikhao. Step 4 mein input value read karwao. Step 5 mein condition se validation dikhao. Step 6 mein array/object se dashboard card render karwao.
+</div>
+
+<h2 class="topic">Complete Teaching Roadmap - Starting Se Project Build Hoga</h2>
+<p>Is roadmap ko follow karoge toh learner ko alag-alag theory boring way mein nahi padhni padegi. Har topic directly project ke ek step mein use hoga. Pehle page ka base banega, phir design add hoga, phir JavaScript behavior add hoga, phir validation, phir dashboard list. End tak learner ke paas working project bhi hoga aur Module 4 ke saare topics bhi cover ho jayenge.</p>
+
+<table>
+<tr><th>Class Step</th><th>Kya Build Karenge?</th><th>JavaScript Topic Cover</th><th>Output Kya Dikhega?</th></tr>
+<tr><td>Step A</td><td>HTML basic card, input, button, output paragraph</td><td>HTML elements, ids for JS</td><td>Plain page structure</td></tr>
+<tr><td>Step B</td><td>CSS card design</td><td>HTML + CSS connection</td><td>Clean card UI</td></tr>
+<tr><td>Step C</td><td>Button click par text change</td><td>DOM selection, event handling</td><td>Button click se output text change</td></tr>
+<tr><td>Step D</td><td>Input value read karna</td><td>Variables, strings, input value</td><td>User name ke saath welcome message</td></tr>
+<tr><td>Step E</td><td>Blank input validation</td><td>Conditions, trim, style update</td><td>Error/success message</td></tr>
+<tr><td>Step F</td><td>Array/object se student list show</td><td>Arrays, objects, loops, innerHTML</td><td>Multiple students list</td></tr>
+<tr><td>Step G</td><td>Final form fields add karna</td><td>Form input handling</td><td>Name, email, skill, level form</td></tr>
+<tr><td>Step H</td><td>Final validation and dashboard</td><td>Functions, scope, client-side logic</td><td>Student card add, count update, reset</td></tr>
+</table>
+
+<div class="box warn">
+<strong class="tag">Important Teaching Rule</strong>
+Har step ke baad browser refresh karke output dikhao. Learner ko bolna: "Abhi humne sirf itna add kiya, isliye output mein sirf itna change dikh raha hai." Isse learner ko code aur output ka connection clear hota hai.
+</div>
+
+<h2 class="topic">Step A: HTML Structure Banana</h2>
+<p>Sabse pehle HTML se visible elements banenge. Yahan ek heading, ek input, ek button, and ek output paragraph banayenge. Abhi JavaScript logic nahi hai, bas page ka skeleton hai.</p>
+
+<h3 class="practical-title">Practical A: Basic HTML Page</h3>
+<span class="run-loc">index.html</span>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;JavaScript Mini Lab&lt;/title&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main class="lab-card"&gt;
+    &lt;h1&gt;JavaScript Mini Lab&lt;/h1&gt;
+    &lt;input id="nameInput" type="text" placeholder="Enter your name"&gt;
+    &lt;button id="showBtn"&gt;Show Message&lt;/button&gt;
+    &lt;p id="output"&gt;Output will appear here.&lt;/p&gt;
+  &lt;/main&gt;
+
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<div class="box info">
+<strong class="tag">Expected Output</strong>
+Browser mein ek plain page dikhega jisme heading, input box, button, and output paragraph hoga. Button abhi kaam nahi karega kyunki JavaScript logic abhi add nahi hua.
+</div>
+
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">&lt;main class="lab-card"&gt;</span></td><td>Page ka main card wrapper hai. Baad mein CSS isko center card design dega.</td></tr>
+<tr><td><span class="inline-code">&lt;input id="nameInput"...&gt;</span></td><td>User se name input lene ke liye field hai. <span class="inline-code">id</span> JavaScript ko is input ko select karne mein help karega.</td></tr>
+<tr><td><span class="inline-code">&lt;button id="showBtn"&gt;</span></td><td>User click karega toh JavaScript event run hoga. Abhi sirf button structure bana hai.</td></tr>
+<tr><td><span class="inline-code">&lt;p id="output"&gt;</span></td><td>JavaScript ka result yahan show hoga. Is paragraph ka text JS se change hoga.</td></tr>
+<tr><td><span class="inline-code">&lt;script src="script.js"&gt;</span></td><td>HTML page ko external JavaScript file se connect karta hai.</td></tr>
+</table>
+
+<h2 class="topic">Step B: CSS Se Page Ko Clean Banana</h2>
+<p>Ab same HTML ko CSS se readable and attractive banayenge. CSS ka kaam behavior nahi, design hota hai. Is step ke baad learner ko clearly dikh jaayega ki HTML structure same hai, lekin CSS se page professional lagne lagta hai.</p>
+
+<h3 class="practical-title">Practical B: Basic CSS Styling</h3>
+<span class="run-loc">styles.css</span>
+<pre><code>* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #e8f2fb;
+  color: #20303f;
+}
+
+.lab-card {
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 28px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 16px 35px rgba(15, 41, 66, 0.15);
+}
+
+input,
+button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  font-size: 16px;
+}
+
+button {
+  background: #1a5f9e;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#output {
+  background: #f4f8fc;
+  border-left: 5px solid #1a5f9e;
+  padding: 12px;
+}</code></pre>
+
+<div class="box info">
+<strong class="tag">Expected Output</strong>
+Page center mein white card ki tarah dikhega. Input and button full width honge. Output paragraph blue left border ke saath show hoga.
+</div>
+
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">box-sizing: border-box;</span></td><td>Padding and border ko width ke andar count karta hai. Layout control easy hota hai.</td></tr>
+<tr><td><span class="inline-code">body</span></td><td>Complete page ka base style set karta hai.</td></tr>
+<tr><td><span class="inline-code">background: #e8f2fb;</span></td><td>Page ko light blue background deta hai taaki card clearly dikhe.</td></tr>
+<tr><td><span class="inline-code">.lab-card</span></td><td>HTML ke main wrapper ko target karta hai. Isko card design diya gaya.</td></tr>
+<tr><td><span class="inline-code">margin: 60px auto;</span></td><td>Card ko top se gap and horizontally center karta hai.</td></tr>
+<tr><td><span class="inline-code">box-shadow</span></td><td>Card ko soft shadow deta hai, page modern lagta hai.</td></tr>
+<tr><td><span class="inline-code">input, button</span></td><td>Input and button dono par same width, padding and font size apply karta hai.</td></tr>
+<tr><td><span class="inline-code">#output</span></td><td>Output paragraph ko id ke through style karta hai.</td></tr>
+</table>
+
+<h2 class="topic">Step C: JavaScript Se Button Click Par Text Change Karna</h2>
+<p>Ab JavaScript add karenge. Button click hone par output paragraph ka text change hoga. Is step mein DOM selection and event handling dono ka basic use hoga.</p>
+
+<h3 class="practical-title">Practical C: Button Click Event</h3>
+<span class="run-loc">script.js</span>
+<pre><code>const showBtn = document.getElementById("showBtn");
+const output = document.getElementById("output");
+
+showBtn.addEventListener("click", function () {
+  output.textContent = "Button clicked. JavaScript is working.";
+});</code></pre>
+
+<div class="box info">
+<strong class="tag">Expected Output</strong>
+Jab user button click karega, output paragraph ka text change hokar <span class="inline-code">Button clicked. JavaScript is working.</span> ho jayega.
+</div>
+
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">document.getElementById("showBtn")</span></td><td>HTML button ko uski id se select karta hai.</td></tr>
+<tr><td><span class="inline-code">document.getElementById("output")</span></td><td>Output paragraph ko select karta hai jiska text change karna hai.</td></tr>
+<tr><td><span class="inline-code">addEventListener("click", ...)</span></td><td>Button click event listen karta hai. User click karega tab function chalega.</td></tr>
+<tr><td><span class="inline-code">function () { ... }</span></td><td>Event hone par run hone wala code block.</td></tr>
+<tr><td><span class="inline-code">output.textContent = ...</span></td><td>Paragraph ke visible text ko JavaScript se update karta hai.</td></tr>
+</table>
+
+<h2 class="topic">Step D: Input Value Read Karna Using Variable</h2>
+<p>Ab user input ko read karenge. Input field mein jo name user type karega, JavaScript us value ko variable mein store karega and output mein greeting message show karega. Yahan variables and data types practically cover honge.</p>
+
+<h3 class="practical-title">Practical D: Input Read + Variable</h3>
+<span class="run-loc">script.js</span>
+<pre><code>const nameInput = document.getElementById("nameInput");
+const showBtn = document.getElementById("showBtn");
+const output = document.getElementById("output");
+
+showBtn.addEventListener("click", function () {
+  const nameValue = nameInput.value;
+  output.textContent = "Welcome, " + nameValue;
+});</code></pre>
+
+<div class="box info">
+<strong class="tag">Expected Output</strong>
+Agar user input mein <span class="inline-code">Aman</span> type karke button click kare, toh output hoga: <span class="inline-code">Welcome, Aman</span>.
+</div>
+
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">const nameInput = ...</span></td><td>Input field ko JavaScript mein select karta hai.</td></tr>
+<tr><td><span class="inline-code">const nameValue = nameInput.value;</span></td><td>Input ke andar typed text ko variable mein store karta hai.</td></tr>
+<tr><td><span class="inline-code">"Welcome, " + nameValue</span></td><td>String concatenation hai. Fixed text and user input ko join karta hai.</td></tr>
+<tr><td><span class="inline-code">output.textContent = ...</span></td><td>Final greeting message page par show karta hai.</td></tr>
+</table>
+
+<h2 class="topic">Step E: Condition Se Validation Add Karna</h2>
+<p>Ab validation add karenge. Agar user blank input chhod de, toh error message show hoga. Agar name enter kare, toh welcome message show hoga. Yahan <span class="inline-code">if</span>, <span class="inline-code">else</span>, and <span class="inline-code">trim()</span> practically cover honge.</p>
+
+<h3 class="practical-title">Practical E: Blank Input Validation</h3>
+<span class="run-loc">script.js</span>
+<pre><code>const nameInput = document.getElementById("nameInput");
+const showBtn = document.getElementById("showBtn");
+const output = document.getElementById("output");
+
+showBtn.addEventListener("click", function () {
+  const nameValue = nameInput.value.trim();
+
+  if (nameValue === "") {
+    output.textContent = "Please enter your name.";
+    output.style.color = "red";
+  } else {
+    output.textContent = "Welcome, " + nameValue;
+    output.style.color = "green";
+  }
+});</code></pre>
+
+<div class="box info">
+<strong class="tag">Expected Output</strong>
+Blank input par red error message aayega. Valid name par green welcome message aayega.
+</div>
+
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">nameInput.value.trim()</span></td><td>Input value read karta hai and extra spaces remove karta hai.</td></tr>
+<tr><td><span class="inline-code">if (nameValue === "")</span></td><td>Check karta hai input blank hai ya nahi.</td></tr>
+<tr><td><span class="inline-code">output.style.color = "red";</span></td><td>Error message ko red color deta hai.</td></tr>
+<tr><td><span class="inline-code">else</span></td><td>Agar input blank nahi hai, toh else block chalega.</td></tr>
+<tr><td><span class="inline-code">output.style.color = "green";</span></td><td>Success message ko green color deta hai.</td></tr>
+</table>
+
+<h2 class="topic">Step F: Array and Object Se Small Dashboard Banana</h2>
+<p>Ab final project ki taraf move karenge. Ek array banayenge jisme multiple student objects store honge. Loop se array ke har student ko page par card ki tarah show karenge. Yahan arrays, objects, loops, and DOM manipulation ek saath cover honge.</p>
+
+<h3 class="practical-title">Practical F: Array Object Render</h3>
+<span class="run-loc">index.html mein extra div add karo</span>
+<pre><code>&lt;div id="studentList"&gt;&lt;/div&gt;</code></pre>
+
+<span class="run-loc">script.js</span>
+<pre><code>const studentList = document.getElementById("studentList");
+
+const students = [
+  { name: "Aman", skill: "HTML" },
+  { name: "Riya", skill: "CSS" },
+  { name: "Kabir", skill: "JavaScript" }
+];
+
+studentList.innerHTML = "";
+
+for (let student of students) {
+  studentList.innerHTML += "&lt;p&gt;" + student.name + " is learning " + student.skill + "&lt;/p&gt;";
+}</code></pre>
+
+<div class="box info">
+<strong class="tag">Expected Output</strong>
+Page par 3 lines show hongi: Aman is learning HTML, Riya is learning CSS, Kabir is learning JavaScript.
+</div>
+
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">const students = [ ... ]</span></td><td>Array create karta hai jisme multiple student objects hain.</td></tr>
+<tr><td><span class="inline-code">{ name: "Aman", skill: "HTML" }</span></td><td>Ek student object hai. Name and skill key-value pair mein store hain.</td></tr>
+<tr><td><span class="inline-code">studentList.innerHTML = "";</span></td><td>List area ko empty karta hai before rendering.</td></tr>
+<tr><td><span class="inline-code">for (let student of students)</span></td><td>Array ke har student par loop chalata hai.</td></tr>
+<tr><td><span class="inline-code">student.name</span></td><td>Current student object ka name read karta hai.</td></tr>
+<tr><td><span class="inline-code">student.skill</span></td><td>Current student object ka skill read karta hai.</td></tr>
+<tr><td><span class="inline-code">innerHTML += ...</span></td><td>Existing HTML ke andar new paragraph add karta hai.</td></tr>
+</table>
+
+<div class="box warn">
+<strong class="tag">Teaching Note</strong>
+In small steps ke baad final project start karna easy hoga. Learners already samajh chuke honge: HTML element kaise banta hai, CSS style kaise lagta hai, JS element select kaise karta hai, event kaise handle hota hai, input kaise read hota hai, condition kaise validate karti hai, and array/object se list kaise render hoti hai.
+</div>
+
+<h2 class="topic">Step G: Mini Lab Se Final Project Form Tak Upgrade</h2>
+<p>Ab learner ko batao ki mini lab mein hum sirf name input use kar rahe the. Real project mein hume multiple fields chahiye: student name, email, skill dropdown, and practice level. Is step mein same concept expand hoga. Pehle ek input read kar rahe the, ab multiple inputs read karenge.</p>
+
+<h3 class="practical-title">Practical G: Final Form Fields Add Karna</h3>
+<span class="run-loc">index.html - form ke andar fields</span>
+<pre><code>&lt;form id="studentForm"&gt;
+  &lt;label for="studentName"&gt;Student Name&lt;/label&gt;
+  &lt;input id="studentName" type="text" placeholder="Example: Aman Sharma"&gt;
+
+  &lt;label for="studentEmail"&gt;Email Address&lt;/label&gt;
+  &lt;input id="studentEmail" type="email" placeholder="Example: aman@gmail.com"&gt;
+
+  &lt;label for="studentSkill"&gt;Select Skill&lt;/label&gt;
+  &lt;select id="studentSkill"&gt;
+    &lt;option value=""&gt;Choose a skill&lt;/option&gt;
+    &lt;option value="HTML"&gt;HTML&lt;/option&gt;
+    &lt;option value="CSS"&gt;CSS&lt;/option&gt;
+    &lt;option value="JavaScript"&gt;JavaScript&lt;/option&gt;
+  &lt;/select&gt;
+
+  &lt;label for="studentLevel"&gt;Practice Level&lt;/label&gt;
+  &lt;input id="studentLevel" type="number" placeholder="Enter level from 1 to 10"&gt;
+
+  &lt;button type="submit"&gt;Add Student&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">&lt;form id="studentForm"&gt;</span></td><td>Complete input area form ke andar hai. JavaScript submit event isi form par listen karega.</td></tr>
+<tr><td><span class="inline-code">for="studentName"</span></td><td>Label ko name input ke id se connect karta hai. Label click karne par input focus hota hai.</td></tr>
+<tr><td><span class="inline-code">id="studentName"</span></td><td>JavaScript ke liye unique id. JS is id se name input ki value read karega.</td></tr>
+<tr><td><span class="inline-code">type="email"</span></td><td>Browser ko hint deta hai ki yeh email field hai. Hum JS se additional email check bhi karenge.</td></tr>
+<tr><td><span class="inline-code">&lt;select id="studentSkill"&gt;</span></td><td>Dropdown field. User fixed options mein se skill choose karega.</td></tr>
+<tr><td><span class="inline-code">value=""</span></td><td>Default empty value. Agar user skill choose nahi karta toh JS validation error show karega.</td></tr>
+<tr><td><span class="inline-code">type="number"</span></td><td>Practice level numeric field hai. JS isko number mein convert karke range check karega.</td></tr>
+<tr><td><span class="inline-code">type="submit"</span></td><td>Button form submit karta hai. Submit event JavaScript handle karega.</td></tr>
+</table>
+
+<h2 class="topic">Step H: Final JavaScript Logic Ka Flow</h2>
+<p>Ab final JavaScript logic add hoga. Is step mein learner ko samjhao ki project ka brain kaise kaam karta hai: pehle elements select karo, phir empty array banao, phir helper functions banao, phir form submit event handle karo, phir validation karo, phir object banao, array mein push karo, phir UI render karo.</p>
+
+<table>
+<tr><th>Logic Order</th><th>Code Part</th><th>Simple Explanation</th></tr>
+<tr><td>1</td><td><span class="inline-code">getElementById</span></td><td>HTML elements ko JavaScript mein pakdo.</td></tr>
+<tr><td>2</td><td><span class="inline-code">let students = []</span></td><td>Student data store karne ke liye array banao.</td></tr>
+<tr><td>3</td><td><span class="inline-code">showMessage()</span></td><td>Error/success message reusable function banao.</td></tr>
+<tr><td>4</td><td><span class="inline-code">getLevelStatus()</span></td><td>Level ke basis par status return karo.</td></tr>
+<tr><td>5</td><td><span class="inline-code">renderStudents()</span></td><td>Array ke data ko dashboard cards mein show karo.</td></tr>
+<tr><td>6</td><td><span class="inline-code">submit event</span></td><td>User form submit kare toh validation and add logic run karo.</td></tr>
+<tr><td>7</td><td><span class="inline-code">reset event</span></td><td>Reset button click par list clear karo.</td></tr>
+</table>
+
+<div class="box info">
+<strong class="tag">Class Explanation</strong>
+Yeh final project mini lab ka expanded version hai. Mini lab mein ek input read ho raha tha. Final project mein multiple inputs read ho rahe hain. Mini lab mein ek message change ho raha tha. Final project mein message, count, and student cards teenon update ho rahe hain.
+</div>
+
+<hr class="sep">
+
+<div class="module-header" id="module4">
+  <h1>Module 4: JavaScript Fundamentals</h1>
+  <p>Goal: JavaScript syntax, variables, conditions, loops, functions, arrays, objects, DOM, events and client-side logic ko practical way mein samajhna.</p>
+</div>
+
+<h2 class="topic">4.1 JavaScript Syntax and Basics</h2>
+<p>Syntax ka matlab language likhne ka rule. Jaise English mein grammar hoti hai, waise JavaScript mein statements, keywords, brackets, braces, quotes and semicolons hote hain. Browser JavaScript ko top se bottom line-by-line read karta hai. Agar syntax wrong hua, toh browser console mein error show karega.</p>
+<p>Beginners ke liye <span class="inline-code">console.log()</span> sabse easy testing tool hai. Isse output browser console mein dikh sakta hai. Lekin project mein hum output page par bhi dikhayenge using DOM.</p>
+
+<h3 class="practical-title">Practical 1: First JavaScript Output</h3>
+<span class="run-loc">script.js</span>
+<pre><code>// First JavaScript output
+console.log("Hello JavaScript");
+console.log(10 + 5);</code></pre>
+
+<div class="box info">
+<strong class="tag">Expected Output</strong>
+Browser console mein <span class="inline-code">Hello JavaScript</span> and <span class="inline-code">15</span> output dikhai dega.
+</div>
+
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">// First JavaScript output</span></td><td>Yeh comment hai. Browser is line ko execute nahi karta. Comment sirf code samjhane ke liye hota hai.</td></tr>
+<tr><td><span class="inline-code">console.log("Hello JavaScript");</span></td><td><span class="inline-code">console.log()</span> browser console mein output print karta hai. Quotes ke andar text string hota hai.</td></tr>
+<tr><td><span class="inline-code">console.log(10 + 5);</span></td><td>JavaScript pehle calculation karega: 10 + 5 = 15, phir console mein 15 print karega.</td></tr>
+</table>
+
+<h2 class="topic">4.2 Variables and Data Types</h2>
+<p>Variable ek container ki tarah hota hai jisme value store hoti hai. JavaScript mein mostly <span class="inline-code">let</span> and <span class="inline-code">const</span> use karte hain. <span class="inline-code">const</span> tab use karo jab variable ko reassign nahi karna. <span class="inline-code">let</span> tab use karo jab value baad mein change ho sakti hai.</p>
+
+<h3 class="practical-title">Practical 2: Variables and Types</h3>
+<span class="run-loc">script.js</span>
+<pre><code>const studentName = "Aman";
+let practiceLevel = 7;
+const isActive = true;
+
+console.log(studentName);
+console.log(practiceLevel);
+console.log(isActive);</code></pre>
+
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">const studentName = "Aman";</span></td><td>String data store karta hai. Name text hai, isliye quotes mein likha gaya.</td></tr>
+<tr><td><span class="inline-code">let practiceLevel = 7;</span></td><td>Number data store karta hai. <span class="inline-code">let</span> use kiya kyunki level baad mein change ho sakta hai.</td></tr>
+<tr><td><span class="inline-code">const isActive = true;</span></td><td>Boolean value store karta hai. Boolean sirf true ya false hota hai.</td></tr>
+<tr><td><span class="inline-code">console.log(studentName);</span></td><td>Variable ki stored value console mein show karta hai.</td></tr>
+</table>
+
+<table>
+<tr><th>Data Type</th><th>Example</th><th>Project Use</th></tr>
+<tr><td>String</td><td><span class="inline-code">"Aman"</span></td><td>Name, email, skill.</td></tr>
+<tr><td>Number</td><td><span class="inline-code">7</span></td><td>Practice level.</td></tr>
+<tr><td>Boolean</td><td><span class="inline-code">true</span></td><td>Valid/invalid condition style thinking.</td></tr>
+<tr><td>Array</td><td><span class="inline-code">[]</span></td><td>Students list store karna.</td></tr>
+<tr><td>Object</td><td><span class="inline-code">{ name: "Aman" }</span></td><td>Single student ka structured data.</td></tr>
+</table>
+
+<h2 class="topic">4.3 Conditions and Loops</h2>
+<p>Condition ka use decision making ke liye hota hai. Agar input blank hai toh error show karo, agar email mein @ nahi hai toh invalid email bolo, agar level 1 se 10 ke beech nahi hai toh warning do. Loops repeated work ke liye hote hain. Project mein hum student array ke har student ke liye ek card create karenge.</p>
+
+<h3 class="practical-title">Practical 3: Conditions</h3>
+<span class="run-loc">script.js</span>
+<pre><code>const marks = 75;
+
+if (marks >= 40) {
+  console.log("Student passed");
+} else {
+  console.log("Student failed");
+}</code></pre>
+
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">const marks = 75;</span></td><td>Marks value store ki gayi.</td></tr>
+<tr><td><span class="inline-code">if (marks >= 40)</span></td><td>Condition check karta hai: marks 40 ya usse zyada hain kya?</td></tr>
+<tr><td><span class="inline-code">console.log("Student passed");</span></td><td>Condition true hone par yeh output show hota hai.</td></tr>
+<tr><td><span class="inline-code">else</span></td><td>Agar condition false ho, toh else block run hota hai.</td></tr>
+</table>
+
+<h3 class="practical-title">Practical 4: Loop</h3>
+<span class="run-loc">script.js</span>
+<pre><code>const skills = ["HTML", "CSS", "JavaScript"];
+
+for (let skill of skills) {
+  console.log(skill);
+}</code></pre>
+
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">const skills = ["HTML", "CSS", "JavaScript"];</span></td><td>Array create hua. Array multiple values ko ek variable mein store karta hai.</td></tr>
+<tr><td><span class="inline-code">for (let skill of skills)</span></td><td>Array ke har item par loop chalata hai. Har round mein current item <span class="inline-code">skill</span> variable mein aata hai.</td></tr>
+<tr><td><span class="inline-code">console.log(skill);</span></td><td>Current skill ko console mein print karta hai.</td></tr>
+</table>
+
+<h2 class="topic">4.4 Functions and Scope</h2>
+<p>Function reusable code block hota hai. Agar same logic baar-baar use karna ho, toh function bana dete hain. Scope ka matlab variable kahan tak accessible hai. Function ke andar banaya gaya variable usually function ke bahar directly available nahi hota.</p>
+
+<h3 class="practical-title">Practical 5: Function</h3>
+<span class="run-loc">script.js</span>
+<pre><code>function getLevelStatus(level) {
+  if (level >= 8) {
+    return "Advanced";
+  }
+
+  if (level >= 5) {
+    return "Intermediate";
+  }
+
+  return "Beginner";
+}
+
+console.log(getLevelStatus(7));</code></pre>
+
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">function getLevelStatus(level)</span></td><td>Function define hota hai. <span class="inline-code">level</span> parameter hai jo input value receive karega.</td></tr>
+<tr><td><span class="inline-code">if (level >= 8)</span></td><td>Level 8 ya zyada hai toh Advanced return karega.</td></tr>
+<tr><td><span class="inline-code">return "Advanced";</span></td><td>Function result return karta hai and wahi stop ho jaata hai.</td></tr>
+<tr><td><span class="inline-code">return "Beginner";</span></td><td>Agar upper conditions false hain toh Beginner final result hoga.</td></tr>
+<tr><td><span class="inline-code">getLevelStatus(7)</span></td><td>Function call hota hai with input 7. Output Intermediate aayega.</td></tr>
+</table>
+
+<h2 class="topic">4.5 Arrays and Objects</h2>
+<p>Array multiple values store karta hai. Object related data ko key-value pair mein store karta hai. Project mein <span class="inline-code">students</span> array hoga, and har student ek object hoga jisme name, email, skill, level and status store hoga.</p>
+
+<h3 class="practical-title">Practical 6: Array + Object</h3>
+<span class="run-loc">script.js</span>
+<pre><code>let students = [];
+
+const student = {
+  name: "Aman",
+  email: "aman@gmail.com",
+  skill: "JavaScript",
+  level: 7
+};
+
+students.push(student);
+console.log(students);</code></pre>
+
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">let students = [];</span></td><td>Empty array create hota hai. Isme multiple student objects store honge.</td></tr>
+<tr><td><span class="inline-code">const student = { ... };</span></td><td>Object create hota hai. Ek student ki complete details ek jagah store hoti hain.</td></tr>
+<tr><td><span class="inline-code">name: "Aman"</span></td><td>Object property hai. Key name hai and value Aman hai.</td></tr>
+<tr><td><span class="inline-code">students.push(student);</span></td><td>Student object ko array ke end mein add karta hai.</td></tr>
+<tr><td><span class="inline-code">console.log(students);</span></td><td>Complete array console mein show hota hai.</td></tr>
+</table>
+
+<h2 class="topic">4.6 DOM Manipulation</h2>
+<p>DOM ka full form Document Object Model hai. Browser HTML page ko objects ke tree ki tarah read karta hai. JavaScript DOM ke through HTML elements ko select, change, add, or remove kar sakta hai. Isi wajah se page refresh ke bina content change ho sakta hai.</p>
+
+<h3 class="practical-title">Practical 7: Change Page Text</h3>
+<span class="run-loc">index.html</span>
+<pre><code>&lt;p id="message"&gt;Old message&lt;/p&gt;</code></pre>
+
+<span class="run-loc">script.js</span>
+<pre><code>const message = document.getElementById("message");
+message.textContent = "New message from JavaScript";</code></pre>
+
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">id="message"</span></td><td>HTML element ko unique identity deta hai.</td></tr>
+<tr><td><span class="inline-code">document.getElementById("message")</span></td><td>JavaScript HTML element ko id ke through select karta hai.</td></tr>
+<tr><td><span class="inline-code">message.textContent = ...</span></td><td>Selected paragraph ka visible text change karta hai.</td></tr>
+</table>
+
+<h2 class="topic">4.7 Events and Event Handling</h2>
+<p>Event ka matlab user action. Button click, form submit, input typing, mouse hover, key press - yeh sab events hain. Event handling ka matlab JavaScript ko batana ki jab event ho, toh kaunsa function run karna hai.</p>
+
+<h3 class="practical-title">Practical 8: Button Click Event</h3>
+<span class="run-loc">index.html</span>
+<pre><code>&lt;button id="demoBtn"&gt;Click Me&lt;/button&gt;
+&lt;p id="output"&gt;Output will show here&lt;/p&gt;</code></pre>
+
+<span class="run-loc">script.js</span>
+<pre><code>const demoBtn = document.getElementById("demoBtn");
+const output = document.getElementById("output");
+
+demoBtn.addEventListener("click", function () {
+  output.textContent = "Button clicked successfully";
+});</code></pre>
+
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">const demoBtn = ...</span></td><td>Button element select karta hai.</td></tr>
+<tr><td><span class="inline-code">addEventListener("click", ...)</span></td><td>Button click event listen karta hai.</td></tr>
+<tr><td><span class="inline-code">function () { ... }</span></td><td>Click hone par yeh function run hota hai.</td></tr>
+<tr><td><span class="inline-code">output.textContent = ...</span></td><td>Page par output text change karta hai.</td></tr>
+</table>
+
+<h2 class="topic">4.8 Client-Side Logic Design</h2>
+<p>Client-side logic browser ke andar run hota hai. Iska main use user ko fast feedback dena hai. Example: form blank hai toh immediately error show karo, email invalid hai toh submit se pehle warn karo, level wrong hai toh message dikhao. Isse server par unnecessary request nahi jaati and user experience better hota hai.</p>
+
+<table>
+<tr><th>Logic Step</th><th>Project Example</th><th>Why useful?</th></tr>
+<tr><td>Read Input</td><td>Name, email, skill, level read karna.</td><td>User ne kya enter kiya, yeh JS ko pata chalta hai.</td></tr>
+<tr><td>Validate Input</td><td>Blank name, invalid email, wrong level check.</td><td>Wrong data dashboard mein add nahi hota.</td></tr>
+<tr><td>Create Object</td><td>Student object banana.</td><td>Data organized form mein store hota hai.</td></tr>
+<tr><td>Update Array</td><td>Student ko students array mein push karna.</td><td>Multiple students list maintain hoti hai.</td></tr>
+<tr><td>Render UI</td><td>Cards create karna and count update karna.</td><td>User ko live updated output dikhta hai.</td></tr>
+</table>
+
+<hr class="sep">
+
+<div class="module-header" id="project">
+  <h1>Project 4: Interactive Student Skill Dashboard</h1>
+  <p>Goal: Dynamic form validation, DOM-based updates, and event-driven interaction build karna.</p>
+</div>
+
+<h2 class="topic">Project Overview</h2>
+<p>Is project mein learner ek student registration dashboard banayega. User student ka name, email, skill and level enter karega. JavaScript validate karega ki fields correct hain ya nahi. Agar error hai toh red message show hoga. Agar data correct hai toh student card dashboard mein add hoga and total count update hoga.</p>
+
+<h3 class="practical-title">Complete HTML Code</h3>
+<span class="run-loc">index.html</span>
+<pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
   &lt;meta charset="UTF-8"&gt;
@@ -129,45 +863,24 @@
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 
-        <h3>HTML Line-by-Line Explanation</h3>
-        <table>
-          <tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
-          <tr><td><code>&lt;!DOCTYPE html&gt;</code></td><td>Browser ko batata hai ki yeh HTML5 document hai. Isse browser modern HTML rules ke according page read karta hai.</td></tr>
-          <tr><td><code>&lt;html lang="en"&gt;</code></td><td>Complete HTML document start hota hai. <code>lang="en"</code> page language English set karta hai, jo accessibility and SEO ke liye useful hai.</td></tr>
-          <tr><td><code>&lt;head&gt;</code></td><td>Head section page ki settings rakhta hai. Yeh content directly page par visible nahi hota.</td></tr>
-          <tr><td><code>&lt;meta charset="UTF-8"&gt;</code></td><td>Text encoding set karta hai. Isse letters, numbers, and symbols properly show hote hain.</td></tr>
-          <tr><td><code>&lt;meta name="viewport"...&gt;</code></td><td>Mobile responsive behavior ke liye important hai. Browser ko bolta hai page device width ke according scale karo.</td></tr>
-          <tr><td><code>&lt;title&gt;</code></td><td>Browser tab ka title set karta hai. User tab mein Student Skill Dashboard dekhega.</td></tr>
-          <tr><td><code>&lt;link rel="stylesheet"...&gt;</code></td><td>HTML file ko CSS file se connect karta hai. Agar yeh line missing hogi toh design apply nahi hoga.</td></tr>
-          <tr><td><code>&lt;body&gt;</code></td><td>Visible page content yahan start hota hai. User jo dekhta hai woh mostly body ke andar hota hai.</td></tr>
-          <tr><td><code>&lt;main class="app"&gt;</code></td><td>Main content wrapper hai. CSS mein <code>.app</code> se width and spacing control hoga.</td></tr>
-          <tr><td><code>&lt;section class="hero"&gt;</code></td><td>Top introduction section hai. Project ka title and short intro yahan show hota hai.</td></tr>
-          <tr><td><code>&lt;p class="badge"&gt;</code></td><td>Small label text hai. CSS se badge style milega.</td></tr>
-          <tr><td><code>&lt;h1&gt;</code></td><td>Page ka main heading hai. Yeh project ki identity batata hai.</td></tr>
-          <tr><td><code>&lt;p class="subtitle"&gt;</code></td><td>Heading ke niche supporting text show karta hai.</td></tr>
-          <tr><td><code>&lt;section class="panel"&gt;</code></td><td>White card style section banega. Form and dashboard dono panels mein rakhe gaye hain.</td></tr>
-          <tr><td><code>&lt;form id="studentForm"&gt;</code></td><td>Student registration form start hota hai. JavaScript is id se form ko select karke submit event handle karega.</td></tr>
-          <tr><td><code>&lt;div class="form-group"&gt;</code></td><td>Label and input ko group karta hai. CSS se gap and layout clean hota hai.</td></tr>
-          <tr><td><code>&lt;label for="studentName"&gt;</code></td><td>Input ka visible name hai. <code>for</code> value input ke <code>id</code> se match karti hai, so label click karne par input focus hota hai.</td></tr>
-          <tr><td><code>&lt;input id="studentName"...&gt;</code></td><td>Name input field hai. JavaScript <code>studentName</code> id se value read karega.</td></tr>
-          <tr><td><code>type="email"</code></td><td>Email input browser ko batata hai ki user email enter karega. JS bhi <code>@</code> check karega.</td></tr>
-          <tr><td><code>&lt;select id="studentSkill"&gt;</code></td><td>Dropdown field hai. User HTML, CSS, ya JavaScript skill choose karega.</td></tr>
-          <tr><td><code>&lt;option value=""&gt;</code></td><td>Default empty option hai. Agar user skill select nahi karega toh JS validation error show karega.</td></tr>
-          <tr><td><code>type="number"</code></td><td>Practice level numeric input hai. User 1 se 10 ke beech number enter karega.</td></tr>
-          <tr><td><code>&lt;button type="submit"&gt;</code></td><td>Form submit button hai. Is par click hote hi form submit event fire hota hai.</td></tr>
-          <tr><td><code>&lt;p id="message"...&gt;</code></td><td>Error or success message show karne ka area hai. JavaScript iska text and class change karega.</td></tr>
-          <tr><td><code>&lt;button id="resetBtn"...&gt;</code></td><td>Reset button hai. JavaScript click event se student array empty karega.</td></tr>
-          <tr><td><code>&lt;div id="stats"&gt;</code></td><td>Total students count show karne ka area hai. JS count update karega.</td></tr>
-          <tr><td><code>&lt;div id="studentList"&gt;</code></td><td>Student cards yahan dynamically add honge. JS DOM manipulation se cards insert karega.</td></tr>
-          <tr><td><code>&lt;script src="script.js"&gt;</code></td><td>JavaScript file connect karta hai. Isko body ke end mein rakha gaya hai taaki HTML elements load hone ke baad JS run ho.</td></tr>
-        </table>
-      </section>
+<h3 class="subtopic">HTML Code Explanation</h3>
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">&lt;main class="app"&gt;</span></td><td>Complete app ka main wrapper. CSS is wrapper ko center and max-width dega.</td></tr>
+<tr><td><span class="inline-code">&lt;section class="hero"&gt;</span></td><td>Top intro card. Isme project name and description show hota hai.</td></tr>
+<tr><td><span class="inline-code">&lt;form id="studentForm"&gt;</span></td><td>Form element. JavaScript is id ko select karke submit event handle karega.</td></tr>
+<tr><td><span class="inline-code">&lt;label for="studentName"&gt;</span></td><td>Label input se connected hai. Accessibility ke liye important hai.</td></tr>
+<tr><td><span class="inline-code">&lt;input id="studentName"...&gt;</span></td><td>Name input. JS yahan se user ka entered name read karega.</td></tr>
+<tr><td><span class="inline-code">&lt;select id="studentSkill"&gt;</span></td><td>Skill dropdown. User predefined options mein se skill choose karega.</td></tr>
+<tr><td><span class="inline-code">&lt;p id="message"...&gt;</span></td><td>Error/success message area. JS text and class update karega.</td></tr>
+<tr><td><span class="inline-code">&lt;div id="stats"&gt;</span></td><td>Total student count show karne ke liye DOM target.</td></tr>
+<tr><td><span class="inline-code">&lt;div id="studentList"&gt;</span></td><td>Student cards dynamically yahin add honge.</td></tr>
+<tr><td><span class="inline-code">&lt;script src="script.js"&gt;</span></td><td>External JavaScript file connect karta hai. Body ke end mein rakha gaya hai taaki HTML pehle load ho jaaye.</td></tr>
+</table>
 
-      <section>
-        <h2>Step 3 - CSS Code</h2>
-        <p>CSS ka kaam page ko beautiful and readable banana hai. Is project mein CSS card layout, clean form design, button hover, success/error message, and mobile responsive layout create karega.</p>
-
-        <pre><code>* {
+<h3 class="practical-title">Complete CSS Code</h3>
+<span class="run-loc">styles.css</span>
+<pre><code>* {
   box-sizing: border-box;
 }
 
@@ -204,6 +917,59 @@ body {
   color: #15803d;
 }
 
+.panel-title-row {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+  justify-content: space-between;
+}
+
+.stats {
+  background: #eff6ff;
+  border-radius: 10px;
+  color: #1e40af;
+  font-weight: 800;
+  margin-bottom: 14px;
+  padding: 12px;
+}
+
+.student-list {
+  display: grid;
+  gap: 12px;
+}
+
+.student-card {
+  background: #f8fafc;
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.student-card h3 {
+  color: #0f172a;
+  margin: 0 0 8px;
+}
+
+.student-card p {
+  margin: 5px 0;
+}
+
+.level-badge {
+  background: #dbeafe;
+  border-radius: 999px;
+  color: #1e40af;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 800;
+  margin-top: 8px;
+  padding: 5px 10px;
+}
+
+.empty {
+  color: #64748b;
+  font-weight: 700;
+}
+
 @media (max-width: 700px) {
   h1 {
     font-size: 32px;
@@ -215,34 +981,38 @@ body {
   }
 }</code></pre>
 
-        <h3>CSS Important Lines Explanation</h3>
-        <table>
-          <tr><th>Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
-          <tr><td><code>*</code></td><td>Universal selector hai. Page ke sab elements par apply hota hai.</td></tr>
-          <tr><td><code>box-sizing: border-box;</code></td><td>Width calculation easy karta hai. Padding and border element width ke andar count hote hain.</td></tr>
-          <tr><td><code>body</code></td><td>Complete page ka base design set karta hai.</td></tr>
-          <tr><td><code>margin: 0;</code></td><td>Browser ka default outer gap remove karta hai.</td></tr>
-          <tr><td><code>font-family</code></td><td>Page ka font set karta hai. Arial simple and readable font hai.</td></tr>
-          <tr><td><code>linear-gradient(...)</code></td><td>Background mein soft gradient create karta hai, page modern dikhta hai.</td></tr>
-          <tr><td><code>.app</code></td><td>Main wrapper class hai. Isse page content center and controlled width mein dikhta hai.</td></tr>
-          <tr><td><code>max-width: 1050px;</code></td><td>Large screen par content bahut wide nahi hoga, readability better rahegi.</td></tr>
-          <tr><td><code>margin: 0 auto;</code></td><td>Wrapper ko horizontally center karta hai.</td></tr>
-          <tr><td><code>.hero, .panel</code></td><td>Hero and panels ko same card design deta hai.</td></tr>
-          <tr><td><code>border-radius: 18px;</code></td><td>Cards ke corners rounded banata hai.</td></tr>
-          <tr><td><code>box-shadow</code></td><td>Card ko depth effect deta hai, jaise card background se thoda upar hai.</td></tr>
-          <tr><td><code>.message.error</code></td><td>Jab validation fail ho, JS message ko error class dega. CSS red color apply karega.</td></tr>
-          <tr><td><code>.message.success</code></td><td>Jab form valid ho, JS success class dega. CSS green color apply karega.</td></tr>
-          <tr><td><code>@media</code></td><td>Responsive design rule hai. Mobile screen par layout adjust hota hai.</td></tr>
-        </table>
+<h3 class="subtopic">CSS Code Explanation</h3>
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">*</span></td><td>Universal selector. Page ke sab elements par apply hota hai.</td></tr>
+<tr><td><span class="inline-code">box-sizing: border-box;</span></td><td>Width calculation easy karta hai. Padding and border width ke andar count hote hain.</td></tr>
+<tr><td><span class="inline-code">body</span></td><td>Complete page ka base style set karta hai.</td></tr>
+<tr><td><span class="inline-code">margin: 0;</span></td><td>Browser ka default page gap remove karta hai.</td></tr>
+<tr><td><span class="inline-code">linear-gradient(...)</span></td><td>Page background ko soft modern gradient deta hai.</td></tr>
+<tr><td><span class="inline-code">.app</span></td><td>Main wrapper. Content ko center and readable width deta hai.</td></tr>
+<tr><td><span class="inline-code">max-width: 1050px;</span></td><td>Large screen par content bahut wide nahi hota.</td></tr>
+<tr><td><span class="inline-code">.hero, .panel</span></td><td>Hero and panels ko same card design milta hai.</td></tr>
+<tr><td><span class="inline-code">box-shadow</span></td><td>Card ko depth effect deta hai.</td></tr>
+<tr><td><span class="inline-code">.message.error</span></td><td>Validation error ke time red style apply hota hai.</td></tr>
+<tr><td><span class="inline-code">.message.success</span></td><td>Valid submission ke time green style apply hota hai.</td></tr>
+<tr><td><span class="inline-code">.panel-title-row</span></td><td>Dashboard heading and reset button ko ek row mein arrange karta hai. Flexbox use hua hai.</td></tr>
+<tr><td><span class="inline-code">align-items: center;</span></td><td>Heading and button ko vertically center align karta hai.</td></tr>
+<tr><td><span class="inline-code">justify-content: space-between;</span></td><td>Heading ko left and reset button ko right side push karta hai.</td></tr>
+<tr><td><span class="inline-code">.stats</span></td><td>Total students count box ko style karta hai.</td></tr>
+<tr><td><span class="inline-code">.student-list</span></td><td>Student cards ka wrapper hai. Grid layout se cards ke beech gap maintain hota hai.</td></tr>
+<tr><td><span class="inline-code">.student-card</span></td><td>Har student ko card design deta hai. JavaScript se create hone wale cards isi class se style honge.</td></tr>
+<tr><td><span class="inline-code">.student-card h3</span></td><td>Student card ke andar name heading ko style karta hai.</td></tr>
+<tr><td><span class="inline-code">.student-card p</span></td><td>Card ke paragraph text ka margin control karta hai.</td></tr>
+<tr><td><span class="inline-code">.level-badge</span></td><td>Student level/status ko pill badge design deta hai.</td></tr>
+<tr><td><span class="inline-code">display: inline-block;</span></td><td>Badge ko text ke size ke according width deta hai, full row nahi leta.</td></tr>
+<tr><td><span class="inline-code">.empty</span></td><td>Jab students list empty ho toh placeholder text ko muted style deta hai.</td></tr>
+<tr><td><span class="inline-code">@media (max-width: 700px)</span></td><td>Responsive rule hai. Mobile screen par heading size and dashboard row layout adjust hota hai.</td></tr>
+<tr><td><span class="inline-code">flex-direction: column;</span></td><td>Mobile par heading and reset button ko ek ke niche ek show karta hai.</td></tr>
+</table>
 
-        <div class="note">Note: Actual project file mein complete CSS diya gaya hai. Yahan important rules ko explain kiya gaya hai. Learners ko project folder ka <code>styles.css</code> file run karke full design output dikhana hai.</div>
-      </section>
-
-      <section>
-        <h2>Step 4 - JavaScript Code</h2>
-        <p>JavaScript ka kaam project ko interactive banana hai. Is file mein hum HTML elements select karenge, array maintain karenge, validation functions banayenge, form submit event handle karenge, and dashboard dynamically update karenge.</p>
-
-        <pre><code>const studentForm = document.getElementById("studentForm");
+<h3 class="practical-title">Complete JavaScript Code</h3>
+<span class="run-loc">script.js</span>
+<pre><code>const studentForm = document.getElementById("studentForm");
 const studentName = document.getElementById("studentName");
 const studentEmail = document.getElementById("studentEmail");
 const studentSkill = document.getElementById("studentSkill");
@@ -345,86 +1115,91 @@ resetBtn.addEventListener("click", function () {
 
 renderStudents();</code></pre>
 
-        <h3>JavaScript Line-by-Line Explanation</h3>
-        <table>
-          <tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
-          <tr><td><code>const studentForm = ...</code></td><td>HTML form ko JavaScript mein select karta hai. Ab JS form submit ko control kar sakta hai.</td></tr>
-          <tr><td><code>document.getElementById(...)</code></td><td>DOM method hai. HTML element ko uski id ke through find karta hai.</td></tr>
-          <tr><td><code>const studentName</code></td><td>Name input field ko store karta hai. Later JS is field ki value read karega.</td></tr>
-          <tr><td><code>const studentEmail</code></td><td>Email input field ko select karta hai. Validation ke time email value check hogi.</td></tr>
-          <tr><td><code>const studentSkill</code></td><td>Dropdown ko select karta hai. User ka selected skill yahan se milega.</td></tr>
-          <tr><td><code>const studentLevel</code></td><td>Practice level numeric input ko select karta hai.</td></tr>
-          <tr><td><code>const message</code></td><td>Message paragraph select karta hai. Error/success text isi area mein show hoga.</td></tr>
-          <tr><td><code>const stats</code></td><td>Total students count update karne wala element select karta hai.</td></tr>
-          <tr><td><code>const studentList</code></td><td>Dashboard list area select karta hai jahan student cards add honge.</td></tr>
-          <tr><td><code>const resetBtn</code></td><td>Reset button select karta hai taaki click event attach kar sakein.</td></tr>
-          <tr><td><code>let students = [];</code></td><td>Empty array banata hai. Har valid student object isi array mein store hoga. <code>let</code> use kiya kyunki reset ke time array ko empty dobara assign karenge.</td></tr>
-          <tr><td><code>function showMessage(text, type)</code></td><td>Reusable function hai. Message text and message style update karta hai.</td></tr>
-          <tr><td><code>message.textContent = text;</code></td><td>Message paragraph ka visible text change karta hai.</td></tr>
-          <tr><td><code>message.className = "message " + type;</code></td><td>Message ki CSS class set karta hai. Agar type error hai toh red style, success hai toh green style.</td></tr>
-          <tr><td><code>function getLevelStatus(level)</code></td><td>Practice level ke basis par Beginner, Intermediate, ya Advanced return karta hai.</td></tr>
-          <tr><td><code>if (level &gt;= 8)</code></td><td>Condition check karta hai. Agar level 8 ya usse zyada hai toh Advanced.</td></tr>
-          <tr><td><code>return "Advanced";</code></td><td>Function ka result Advanced bhejta hai and function stop ho jaata hai.</td></tr>
-          <tr><td><code>if (level &gt;= 5)</code></td><td>Agar first condition false hai but level 5 ya zyada hai, toh Intermediate.</td></tr>
-          <tr><td><code>return "Beginner";</code></td><td>Agar level 5 se kam hai, toh learner Beginner category mein aayega.</td></tr>
-          <tr><td><code>function renderStudents()</code></td><td>Dashboard ko update karne wala function hai. Jab bhi array change hota hai, yeh function UI refresh karta hai.</td></tr>
-          <tr><td><code>studentList.innerHTML = "";</code></td><td>Old list clear karta hai taaki fresh cards render ho sakein.</td></tr>
-          <tr><td><code>stats.textContent = ...</code></td><td>Total student count update karta hai. <code>students.length</code> array mein total items count karta hai.</td></tr>
-          <tr><td><code>if (students.length === 0)</code></td><td>Check karta hai list empty hai ya nahi.</td></tr>
-          <tr><td><code>return;</code></td><td>Function ko yahin stop karta hai. Empty list mein cards render karne ki zaroorat nahi.</td></tr>
-          <tr><td><code>for (let student of students)</code></td><td>Array ke har student object par loop chalata hai.</td></tr>
-          <tr><td><code>document.createElement("article")</code></td><td>JavaScript se new HTML element create karta hai. Yeh DOM manipulation ka practical example hai.</td></tr>
-          <tr><td><code>card.className = "student-card";</code></td><td>New card ko CSS class deta hai taaki design apply ho.</td></tr>
-          <tr><td><code>card.innerHTML = `...`</code></td><td>Template literal se card ke andar dynamic HTML set karta hai. Student object ki values insert hoti hain.</td></tr>
-          <tr><td><code>${student.name}</code></td><td>Object property ko HTML ke andar dynamic way mein show karta hai.</td></tr>
-          <tr><td><code>studentList.appendChild(card)</code></td><td>Created card ko dashboard list ke andar add karta hai.</td></tr>
-          <tr><td><code>addEventListener("submit"...)</code></td><td>Form submit event listen karta hai. User Add Student button press karega toh function run hoga.</td></tr>
-          <tr><td><code>event.preventDefault();</code></td><td>Browser ka default form refresh behavior stop karta hai. Isse page reload nahi hota.</td></tr>
-          <tr><td><code>.value.trim()</code></td><td>Input value read karta hai and extra start/end spaces remove karta hai.</td></tr>
-          <tr><td><code>Number(studentLevel.value)</code></td><td>Input string ko number mein convert karta hai taaki numeric comparison ho sake.</td></tr>
-          <tr><td><code>if (nameValue === "")</code></td><td>Name blank hai ya nahi check karta hai.</td></tr>
-          <tr><td><code>emailValue.includes("@")</code></td><td>Email mein @ symbol hai ya nahi check karta hai. Yeh simple email validation hai.</td></tr>
-          <tr><td><code>levelValue &lt; 1 || levelValue &gt; 10</code></td><td>OR condition hai. Level 1 se kam ya 10 se zyada hua toh invalid.</td></tr>
-          <tr><td><code>const student = { ... }</code></td><td>Student ka object create karta hai. Object key-value format mein structured data store karta hai.</td></tr>
-          <tr><td><code>status: getLevelStatus(levelValue)</code></td><td>Function call karke level ka status calculate karta hai.</td></tr>
-          <tr><td><code>students.push(student)</code></td><td>New student object ko array ke end mein add karta hai.</td></tr>
-          <tr><td><code>renderStudents()</code></td><td>Array update ke baad dashboard UI refresh karta hai.</td></tr>
-          <tr><td><code>studentForm.reset()</code></td><td>Form fields clear karta hai taaki next student easily add ho sake.</td></tr>
-          <tr><td><code>resetBtn.addEventListener("click"...)</code></td><td>Reset button click hone par list clear karne ka event set karta hai.</td></tr>
-          <tr><td><code>students = [];</code></td><td>Array ko empty kar deta hai. Isse all students remove ho jaate hain.</td></tr>
-          <tr><td><code>renderStudents();</code></td><td>Page load hote hi initial dashboard state show karta hai.</td></tr>
-        </table>
-      </section>
+<h3 class="subtopic">JavaScript Code Explanation</h3>
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">const studentForm = document.getElementById("studentForm");</span></td><td>HTML form ko select karta hai. Ab JS form submit event control kar sakta hai.</td></tr>
+<tr><td><span class="inline-code">const studentName = ...</span></td><td>Name input select hota hai. Form submit par iski value read hogi.</td></tr>
+<tr><td><span class="inline-code">const message = ...</span></td><td>Message paragraph select hota hai. Error/success yahin show hoga.</td></tr>
+<tr><td><span class="inline-code">let students = [];</span></td><td>Students list store karne ke liye empty array. Reset ke time isko empty dobara assign karenge, isliye let.</td></tr>
+<tr><td><span class="inline-code">function showMessage(text, type)</span></td><td>Reusable function. Har jagah manually message set karne ke bajay isi function ko call karenge.</td></tr>
+<tr><td><span class="inline-code">message.textContent = text;</span></td><td>Message area ka visible text change karta hai.</td></tr>
+<tr><td><span class="inline-code">message.className = "message " + type;</span></td><td>Message class update karta hai. Type error hoga toh red, success hoga toh green.</td></tr>
+<tr><td><span class="inline-code">function getLevelStatus(level)</span></td><td>Level ke basis par Beginner/Intermediate/Advanced decide karta hai.</td></tr>
+<tr><td><span class="inline-code">if (level &gt;= 8)</span></td><td>Condition check: level 8 ya zyada hai kya?</td></tr>
+<tr><td><span class="inline-code">return "Advanced";</span></td><td>Function ka result Advanced return karta hai.</td></tr>
+<tr><td><span class="inline-code">function renderStudents()</span></td><td>Dashboard ko refresh karne ka function. Array ke data ko page par cards mein convert karta hai.</td></tr>
+<tr><td><span class="inline-code">studentList.innerHTML = "";</span></td><td>Old cards clear karta hai, taaki duplicate cards na banein.</td></tr>
+<tr><td><span class="inline-code">stats.textContent = ...</span></td><td>Total count update karta hai using <span class="inline-code">students.length</span>.</td></tr>
+<tr><td><span class="inline-code">if (students.length === 0)</span></td><td>Check karta hai list empty hai ya nahi.</td></tr>
+<tr><td><span class="inline-code">for (let student of students)</span></td><td>Array ke har student object par loop chalata hai.</td></tr>
+<tr><td><span class="inline-code">document.createElement("article")</span></td><td>JavaScript se new HTML card create karta hai.</td></tr>
+<tr><td><span class="inline-code">card.innerHTML = `...`</span></td><td>Template literal se dynamic student details card ke andar set hoti hain.</td></tr>
+<tr><td><span class="inline-code">appendChild(card)</span></td><td>Created card ko page ke student list area mein add karta hai.</td></tr>
+<tr><td><span class="inline-code">addEventListener("submit", ...)</span></td><td>Form submit event listen karta hai.</td></tr>
+<tr><td><span class="inline-code">event.preventDefault();</span></td><td>Form submit par page reload hone se rokta hai.</td></tr>
+<tr><td><span class="inline-code">.value.trim()</span></td><td>Input ki value read karta hai and extra spaces remove karta hai.</td></tr>
+<tr><td><span class="inline-code">Number(studentLevel.value)</span></td><td>Input string ko number mein convert karta hai.</td></tr>
+<tr><td><span class="inline-code">emailValue.includes("@")</span></td><td>Email mein @ hai ya nahi check karta hai.</td></tr>
+<tr><td><span class="inline-code">students.push(student)</span></td><td>New student object ko students array mein add karta hai.</td></tr>
+<tr><td><span class="inline-code">studentForm.reset()</span></td><td>Successful submit ke baad form fields clear karta hai.</td></tr>
+<tr><td><span class="inline-code">resetBtn.addEventListener("click", ...)</span></td><td>Reset button click hone par list clear karne ka logic run hota hai.</td></tr>
+</table>
 
-      <section>
-        <h2>Step 5 - Kaise Run Karna Hai?</h2>
-        <ol>
-          <li>VS Code mein <code>student-skill-dashboard</code> folder open karo.</li>
-          <li><code>index.html</code>, <code>styles.css</code>, and <code>script.js</code> files create karo.</li>
-          <li>Upar diya gaya code respective files mein paste karo.</li>
-          <li><code>index.html</code> par right click karo and browser mein open karo. Live Server extension hai toh <code>Open with Live Server</code> use karo.</li>
-          <li>Blank form submit karo: red error message aayega.</li>
-          <li>Wrong email enter karo: email validation error aayega.</li>
-          <li>Valid data fill karo: student dashboard mein card add hoga and total count update hoga.</li>
-          <li>Reset List click karo: array empty hogi and dashboard reset ho jayega.</li>
-        </ol>
+<h2 class="topic">How to Run and Test</h2>
+<ol class="steps">
+<li>VS Code mein project folder open karo.</li>
+<li>Teen files create karo: <span class="inline-code">index.html</span>, <span class="inline-code">styles.css</span>, <span class="inline-code">script.js</span>.</li>
+<li>Code ko correct files mein paste karo.</li>
+<li><span class="inline-code">index.html</span> browser mein open karo ya Live Server use karo.</li>
+<li>Blank form submit karo: red error message aayega.</li>
+<li>Wrong email enter karo: email validation error aayega.</li>
+<li>Valid data enter karo: student card dashboard mein add hoga.</li>
+<li>Reset List click karo: dashboard clear ho jayega.</li>
+</ol>
 
-        <h3>Expected Output</h3>
-        <p>Browser mein ek clean dashboard dikhega. Top par project title hoga, left/first panel mein registration form hoga, and next panel mein live dashboard hoga. Valid student add karne par card create hoga jisme name, email, skill, and level status show hoga.</p>
-      </section>
+<div class="box info">
+<strong class="tag">Expected Output</strong>
+Browser mein clean card-style dashboard show hoga. Valid student add karne par card create hoga, total count update hoga, and success message green color mein show hoga.
+</div>
 
-      <section>
-        <h2>Final Revision</h2>
-        <p>Is project mein JavaScript ko theory ke saath practical form mein samjhaaya gaya hai. Learner ko sirf syntax nahi, balki real website behavior samajh aayega. Form validation client-side logic ka best beginner example hai, kyunki user input, condition, function, DOM update, event handling, array, and object sab ek hi flow mein use hote hain.</p>
-        <div class="note">
-          Teaching line: "Jab user form submit karta hai, JavaScript pehle input read karti hai, phir conditions se validate karti hai, phir object banati hai, array mein store karti hai, loop se UI render karti hai, and DOM update karke output page par dikhati hai."
-        </div>
-      </section>
-    </article>
-  </main>
+<hr class="sep">
 
-  <footer class="footer">
-    <p>Module 4 JavaScript Fundamentals - Project Based Simple Hinglish Notes</p>
-  </footer>
+<div class="module-header" id="revision">
+  <h1>Quick Revision and Common Mistakes</h1>
+  <p>Goal: Module 4 ke important points quickly revise karna.</p>
+</div>
+
+<h2 class="topic">Quick Revision</h2>
+<table>
+<tr><th>Concept</th><th>Simple Meaning</th><th>Project Example</th></tr>
+<tr><td>Syntax</td><td>JavaScript likhne ke rules.</td><td>Statements, braces, semicolon.</td></tr>
+<tr><td>Variable</td><td>Value store karna.</td><td><span class="inline-code">let students = []</span></td></tr>
+<tr><td>Condition</td><td>Decision making.</td><td>Blank name check.</td></tr>
+<tr><td>Loop</td><td>Repeated work.</td><td>Students cards render karna.</td></tr>
+<tr><td>Function</td><td>Reusable logic.</td><td><span class="inline-code">showMessage()</span></td></tr>
+<tr><td>Array</td><td>Multiple values list.</td><td><span class="inline-code">students</span></td></tr>
+<tr><td>Object</td><td>Key-value data.</td><td>Single student details.</td></tr>
+<tr><td>DOM</td><td>HTML ko JS se access/change karna.</td><td><span class="inline-code">getElementById</span></td></tr>
+<tr><td>Event</td><td>User action.</td><td>Submit and click.</td></tr>
+</table>
+
+<h2 class="topic">Common Beginner Mistakes</h2>
+<table>
+<tr><th>Mistake</th><th>Reason</th><th>Correct Way</th></tr>
+<tr><td>JS file connect nahi hoti</td><td>Script path wrong.</td><td><span class="inline-code">&lt;script src="script.js"&gt;&lt;/script&gt;</span></td></tr>
+<tr><td>Element null milta hai</td><td>Id mismatch ya JS before HTML run.</td><td>Id same rakho and script body ke end mein rakho.</td></tr>
+<tr><td>Form submit par page reload</td><td><span class="inline-code">preventDefault()</span> missing.</td><td>Submit event ke andar <span class="inline-code">event.preventDefault()</span> use karo.</td></tr>
+<tr><td>Email validation wrong</td><td>Input check nahi kiya.</td><td><span class="inline-code">emailValue.includes("@")</span> use karo.</td></tr>
+<tr><td>Duplicate cards</td><td>Old list clear nahi ki.</td><td>Render start mein <span class="inline-code">studentList.innerHTML = ""</span>.</td></tr>
+<tr><td>Number compare issue</td><td>Input value string hoti hai.</td><td><span class="inline-code">Number(studentLevel.value)</span> use karo.</td></tr>
+</table>
+
+<div class="summary-box">
+<strong class="tag">Final Summary</strong>
+Module 4 mein JavaScript fundamentals ko ek practical project ke through cover kiya gaya. Learner ne syntax, variables, data types, conditions, loops, functions, scope, arrays, objects, DOM manipulation, events, and client-side logic design ko Student Skill Dashboard project mein implement kiya. Yeh project beginner ko real interactive web application ka clear foundation deta hai.
+</div>
+
+</div>
 </body>
 </html>
