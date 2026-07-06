@@ -259,6 +259,23 @@ Har topic ko 3 parts mein samjhao: input, processing, output. Input matlab user 
 <tr><td><span class="inline-code">script.js</span></td><td>Logic</td><td>Validation, events, arrays, objects, DOM updates.</td></tr>
 </table>
 
+<h2 class="topic">Before Class Checklist</h2>
+<p>Class start karne se pehle learner ke system par basic setup ready hona chahiye. Agar setup clear nahi hoga toh learner JavaScript logic se zyada file path and browser refresh mein confuse hoga. Isliye pehle 5 minute setup verify karwao.</p>
+
+<table>
+<tr><th>Check</th><th>Kaise verify karna hai?</th><th>Expected Result</th></tr>
+<tr><td>VS Code installed</td><td>VS Code open karo.</td><td>Editor open ho jaana chahiye.</td></tr>
+<tr><td>Browser ready</td><td>Chrome/Edge open karo.</td><td>HTML file browser mein open ho sake.</td></tr>
+<tr><td>Folder created</td><td>Desktop/Documents mein <span class="inline-code">student-skill-dashboard</span> folder banao.</td><td>Project ke 3 files ek hi folder mein rahenge.</td></tr>
+<tr><td>File names correct</td><td><span class="inline-code">index.html</span>, <span class="inline-code">styles.css</span>, <span class="inline-code">script.js</span>.</td><td>Spelling exactly same honi chahiye.</td></tr>
+<tr><td>Live Server optional</td><td>VS Code extension available ho toh use karo.</td><td>Auto refresh easy hoga; nahi hai toh browser refresh manually karo.</td></tr>
+</table>
+
+<div class="box warn">
+<strong class="tag">Common Setup Mistake</strong>
+Beginners aksar file ka naam <span class="inline-code">style.css</span> likh dete hain but HTML mein <span class="inline-code">styles.css</span> linked hota hai. Ya <span class="inline-code">Script.js</span> capital S se bana dete hain but HTML mein <span class="inline-code">script.js</span> hota hai. File names same rakho, warna CSS/JS load nahi hoga.
+</div>
+
 <div class="module-header" id="incremental">
   <h1>HTML + CSS + JavaScript Step-by-Step Practical Flow</h1>
   <p>Goal: Learners ko ekdum small steps mein HTML/CSS ke upar JavaScript add karte hue samjhana.</p>
@@ -1276,16 +1293,109 @@ Final JavaScript ko 4 phases mein samjhao. Phase 1: HTML elements select karna. 
 </div>
 
 <h2 class="topic">How to Run and Test</h2>
+<p>Is section ko class ke end mein final project execute karne ke liye use karo. Yahan learner ko exact order batana hai: pehle folder, phir files, phir HTML paste, phir CSS paste, phir JS paste, phir browser run, phir testing. Agar order follow hoga toh debugging easy hogi.</p>
+
+<h3 class="subtopic">Execution Step 1: Project Folder Create Karo</h3>
 <ol class="steps">
-<li>VS Code mein project folder open karo.</li>
-<li>Teen files create karo: <span class="inline-code">index.html</span>, <span class="inline-code">styles.css</span>, <span class="inline-code">script.js</span>.</li>
-<li>Code ko correct files mein paste karo.</li>
-<li><span class="inline-code">index.html</span> browser mein open karo ya Live Server use karo.</li>
-<li>Blank form submit karo: red error message aayega.</li>
-<li>Wrong email enter karo: email validation error aayega.</li>
-<li>Valid data enter karo: student card dashboard mein add hoga.</li>
-<li>Reset List click karo: dashboard clear ho jayega.</li>
+<li>Desktop ya Documents mein ek folder banao: <span class="inline-code">student-skill-dashboard</span>.</li>
+<li>VS Code open karo.</li>
+<li>VS Code mein <span class="inline-code">File -> Open Folder</span> par click karo.</li>
+<li><span class="inline-code">student-skill-dashboard</span> folder select karo.</li>
 </ol>
+
+<div class="box info">
+<strong class="tag">Expected Result</strong>
+VS Code ke left sidebar mein empty project folder show hoga. Ab yahi folder project ka main workspace hai.
+</div>
+
+<h3 class="subtopic">Execution Step 2: Three Files Create Karo</h3>
+<ol class="steps">
+<li>Left sidebar mein New File icon par click karo.</li>
+<li>Pehli file banao: <span class="inline-code">index.html</span>.</li>
+<li>Second file banao: <span class="inline-code">styles.css</span>.</li>
+<li>Third file banao: <span class="inline-code">script.js</span>.</li>
+</ol>
+
+<table>
+<tr><th>File</th><th>Is file mein kya paste karna hai?</th><th>Run ke time role</th></tr>
+<tr><td><span class="inline-code">index.html</span></td><td>Complete HTML code.</td><td>Browser isi file ko open karega.</td></tr>
+<tr><td><span class="inline-code">styles.css</span></td><td>Complete CSS code.</td><td>HTML ko design dega.</td></tr>
+<tr><td><span class="inline-code">script.js</span></td><td>Complete JavaScript code.</td><td>Form validation and dashboard logic run karega.</td></tr>
+</table>
+
+<h3 class="subtopic">Execution Step 3: HTML Paste Karke First Output Dekho</h3>
+<ol class="steps">
+<li><span class="inline-code">index.html</span> open karo.</li>
+<li>Complete HTML code paste karo.</li>
+<li>File save karo: <span class="inline-code">Ctrl + S</span> ya Mac par <span class="inline-code">Cmd + S</span>.</li>
+<li>Browser mein open karo: file par right click -> Open with Live Server, ya directly file double-click.</li>
+</ol>
+
+<div class="box info">
+<strong class="tag">Expected Result</strong>
+Page structure dikhega: title, form fields, Add Student button, Live Dashboard section, Total Students: 0, and No students added yet message. CSS agar paste nahi kiya hai toh page plain dikhega. Yeh normal hai.
+</div>
+
+<h3 class="subtopic">Execution Step 4: CSS Paste Karke Design Check Karo</h3>
+<ol class="steps">
+<li><span class="inline-code">styles.css</span> open karo.</li>
+<li>Complete CSS code paste karo.</li>
+<li>File save karo.</li>
+<li>Browser refresh karo.</li>
+</ol>
+
+<div class="box info">
+<strong class="tag">Expected Result</strong>
+Page ab professional card design mein dikhega. Background gradient hoga, white panels honge, input boxes rounded honge, buttons blue honge, and dashboard clean layout mein dikhega.
+</div>
+
+<div class="box warn">
+<strong class="tag">If CSS Not Working</strong>
+Agar design apply nahi hua toh <span class="inline-code">index.html</span> mein check karo: <span class="inline-code">&lt;link rel="stylesheet" href="styles.css"&gt;</span>. File ka naam exactly <span class="inline-code">styles.css</span> hona chahiye.
+</div>
+
+<h3 class="subtopic">Execution Step 5: JavaScript Paste Karke Logic Test Karo</h3>
+<ol class="steps">
+<li><span class="inline-code">script.js</span> open karo.</li>
+<li>Complete JavaScript code paste karo.</li>
+<li>File save karo.</li>
+<li>Browser refresh karo.</li>
+</ol>
+
+<div class="box info">
+<strong class="tag">Expected Result</strong>
+Ab form interactive ho jayega. Add Student button click karne par JavaScript validation chalegi. Reset List button click karne par dashboard clear hoga.
+</div>
+
+<h3 class="subtopic">Execution Step 6: Browser Console Open Karke Error Check Karo</h3>
+<p>JavaScript mein agar kuch kaam nahi kar raha ho toh browser console sabse important debugging place hai. Console error batata hai ki issue kis line ya kis file mein hai.</p>
+<ol class="steps">
+<li>Browser page par right click karo.</li>
+<li><span class="inline-code">Inspect</span> par click karo.</li>
+<li><span class="inline-code">Console</span> tab open karo.</li>
+<li>Page refresh karo and red errors check karo.</li>
+</ol>
+
+<table>
+<tr><th>Console Error</th><th>Possible Reason</th><th>Fix</th></tr>
+<tr><td><span class="inline-code">Cannot read properties of null</span></td><td>JavaScript ko HTML id nahi mila.</td><td>HTML id and JS getElementById spelling same karo.</td></tr>
+<tr><td><span class="inline-code">Unexpected token</span></td><td>Bracket, quote, comma, ya semicolon issue.</td><td>Recent pasted code line carefully check karo.</td></tr>
+<tr><td>JS file load nahi ho rahi</td><td>Script path wrong.</td><td><span class="inline-code">&lt;script src="script.js"&gt;&lt;/script&gt;</span> check karo.</td></tr>
+</table>
+
+<h3 class="subtopic">Execution Step 7: Final Testing Cases</h3>
+<table>
+<tr><th>Test Case</th><th>What to Enter?</th><th>Expected Output</th></tr>
+<tr><td>Blank Name</td><td>Name blank, baaki kuch bhi.</td><td>Red message: Please enter student name.</td></tr>
+<tr><td>Invalid Email</td><td>Email mein @ mat likho.</td><td>Red message: Please enter a valid email address.</td></tr>
+<tr><td>No Skill</td><td>Skill dropdown choose mat karo.</td><td>Red message: Please select a skill.</td></tr>
+<tr><td>Wrong Level</td><td>Level 0 ya 11 enter karo.</td><td>Red message: Practice level must be between 1 and 10.</td></tr>
+<tr><td>Valid Student</td><td>Aman, aman@gmail.com, JavaScript, 7.</td><td>Student card add hoga, count 1 hoga, success message green hoga.</td></tr>
+<tr><td>Reset</td><td>Reset List click karo.</td><td>List empty hogi, count 0 hoga.</td></tr>
+</table>
+
+<h3 class="subtopic">Execution Step 8: Class Mein Kaise Demonstrate Karna Hai</h3>
+<p>Class mein pehle intentionally blank form submit karwao. Learners ko dikhao ki JavaScript user ko error de raha hai. Phir wrong email test karwao. Phir valid data enter karke card create karwao. Phir 2-3 students add karwao taaki <span class="inline-code">students</span> array and <span class="inline-code">renderStudents()</span> ka use visible ho. Last mein reset button click karke event handling ka second example dikhao.</p>
 
 <div class="box info">
 <strong class="tag">Expected Output</strong>
