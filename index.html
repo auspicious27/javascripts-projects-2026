@@ -225,6 +225,7 @@
   <li><a href="#incremental">HTML + CSS + JavaScript Step-by-Step Practical Flow</a></li>
   <li><a href="#module4">Module 4 - JavaScript Fundamentals</a></li>
   <li><a href="#project">Project 4 - Interactive Student Skill Dashboard</a></li>
+  <li><a href="#run-guide">How to Run Every Practical</a></li>
   <li><a href="#deep-explanation">Deep Code Explanation Appendix</a></li>
   <li><a href="#revision">Quick Revision and Common Mistakes</a></li>
 </ol>
@@ -245,6 +246,20 @@
 <strong class="tag">Teacher Pattern</strong>
 Har topic ko 3 parts mein samjhao: input, processing, output. Input matlab user se kya value mil rahi hai. Processing matlab JavaScript us value par kya logic apply kar raha hai. Output matlab page par kya change dikh raha hai.
 </div>
+
+<h2 class="topic">What Learners Will Build</h2>
+<p>Is module ke end tak learner ek complete interactive web application build karega. Project ka naam hai <span class="inline-code">Student Skill Dashboard</span>. Isme learner HTML se form structure banayega, CSS se professional card-style UI banayega, aur JavaScript se form validation, dashboard update, student cards, count update, and reset button logic implement karega.</p>
+<p>Isko real-world example se samjhao: institute mein students ke skills register karne ke liye ek small dashboard chahiye. Admin student ka name, email, skill, and practice level enter karta hai. Agar input galat hai toh page error message dikhata hai. Agar input sahi hai toh dashboard mein student card add hota hai. Yehi client-side logic design ka practical use hai.</p>
+
+<table>
+<tr><th>Stage</th><th>Learner Kya Build Karega?</th><th>Topic Covered</th></tr>
+<tr><td>Structure</td><td>Input fields, button, message area, dashboard area.</td><td>HTML elements, ids, classes.</td></tr>
+<tr><td>Design</td><td>Card layout, form spacing, buttons, success/error colors.</td><td>CSS selectors and styling.</td></tr>
+<tr><td>Interaction</td><td>Button click and form submit logic.</td><td>Events and event handling.</td></tr>
+<tr><td>Validation</td><td>Blank name, invalid email, empty skill, wrong level check.</td><td>Conditions and client-side logic.</td></tr>
+<tr><td>Data Storage</td><td>Students ko array of objects mein store karna.</td><td>Arrays and objects.</td></tr>
+<tr><td>DOM Update</td><td>Student cards and total count page par update karna.</td><td>DOM manipulation and loops.</td></tr>
+</table>
 
 <h2 class="topic">VS Code Lab Setup</h2>
 <p>Project ko run karne ke liye ek folder banao: <span class="inline-code">student-skill-dashboard</span>. Iske andar 3 files banao: <span class="inline-code">index.html</span>, <span class="inline-code">styles.css</span>, and <span class="inline-code">script.js</span>. Browser mein <span class="inline-code">index.html</span> open karo. Agar Live Server extension available hai toh right-click karke <span class="inline-code">Open with Live Server</span> use karo.</p>
@@ -1407,6 +1422,59 @@ Browser mein clean card-style dashboard show hoga. Valid student add karne par c
 
 <hr class="sep">
 
+<div class="module-header" id="run-guide">
+  <h1>How to Run Every Practical</h1>
+  <p>Goal: Har HTML, CSS, and JavaScript practical ko step-by-step execute karna.</p>
+</div>
+
+<h2 class="topic">Standard Run Flow</h2>
+<p>JavaScript practical run karne ka standard flow simple hai: pehle HTML file banao, phir CSS file connect karo, phir JavaScript file connect karo, phir browser mein output check karo. Jab tak HTML element page par exist nahi karega, JavaScript usko select nahi kar paayegi. Isliye hamesha order maintain karo: HTML first, CSS second, JavaScript third.</p>
+
+<table>
+<tr><th>Step</th><th>Kya Karna Hai?</th><th>Why Important?</th></tr>
+<tr><td>Step 1</td><td>Project folder create karo.</td><td>HTML, CSS, JS files same place par rahenge.</td></tr>
+<tr><td>Step 2</td><td><span class="inline-code">index.html</span> create karo.</td><td>Browser page isi file se open hota hai.</td></tr>
+<tr><td>Step 3</td><td><span class="inline-code">styles.css</span> create and link karo.</td><td>Page ko design milega.</td></tr>
+<tr><td>Step 4</td><td><span class="inline-code">script.js</span> create and link karo.</td><td>Page interactive hoga.</td></tr>
+<tr><td>Step 5</td><td>Browser refresh karo.</td><td>Latest saved code ka output dikhega.</td></tr>
+<tr><td>Step 6</td><td>Console check karo.</td><td>JavaScript error quickly identify hoga.</td></tr>
+</table>
+
+<h2 class="topic">Practical-wise Execution Guide</h2>
+<table>
+<tr><th>Practical / Step</th><th>File Setup</th><th>Run Action</th><th>Expected Output</th></tr>
+<tr><td>Step A: HTML Structure</td><td><span class="inline-code">index.html</span> mein HTML paste karo.</td><td>Browser mein file open karo.</td><td>Heading, input, button, and output paragraph plain form mein dikhenge.</td></tr>
+<tr><td>Step B: CSS Styling</td><td><span class="inline-code">styles.css</span> paste karo and HTML mein link check karo.</td><td>Browser refresh karo.</td><td>White card, blue button, styled output area dikhega.</td></tr>
+<tr><td>Step C: Button Click</td><td><span class="inline-code">script.js</span> mein button click code paste karo.</td><td>Button click karo.</td><td>Output paragraph ka text change hoga.</td></tr>
+<tr><td>Step D: Input Value</td><td>Name input read karne wala JS code paste karo.</td><td>Name type karke button click karo.</td><td>User name ke saath message show hoga.</td></tr>
+<tr><td>Step E: Validation</td><td>Blank input validation code paste karo.</td><td>Blank input ke saath click karo, phir name ke saath click karo.</td><td>Blank par red error, valid name par green success.</td></tr>
+<tr><td>Step F: Array/Object Render</td><td>Student array/object and loop code paste karo.</td><td>Browser refresh karo.</td><td>Student list/cards page par dynamically show honge.</td></tr>
+<tr><td>Step G: Final Form HTML</td><td>Complete final HTML paste karo.</td><td>Browser open karo.</td><td>Student registration form and dashboard structure dikhega.</td></tr>
+<tr><td>Step H: Final JS Logic</td><td>Complete final JS paste karo.</td><td>Valid/invalid form test karo.</td><td>Validation, card add, count update, reset button work karega.</td></tr>
+</table>
+
+<h2 class="topic">Browser Console Kaise Use Karna Hai?</h2>
+<p>JavaScript debugging ke liye browser console sabse important tool hai. Agar button click par kuch nahi ho raha, page update nahi ho raha, ya error aa raha hai, toh console open karke red error message read karo. Error usually batata hai ki problem kis file and kis line ke aas-paas hai.</p>
+
+<ol class="steps">
+<li>Browser page par right click karo.</li>
+<li><span class="inline-code">Inspect</span> option select karo.</li>
+<li><span class="inline-code">Console</span> tab open karo.</li>
+<li>Page refresh karo and red error check karo.</li>
+<li>Error mein file name, line number, and message read karo.</li>
+</ol>
+
+<table>
+<tr><th>Error / Problem</th><th>Reason</th><th>Fix</th></tr>
+<tr><td><span class="inline-code">Cannot read properties of null</span></td><td>JS jis id ko select kar raha hai, HTML mein woh id missing/wrong hai.</td><td>HTML id and JS <span class="inline-code">getElementById</span> spelling same karo.</td></tr>
+<tr><td><span class="inline-code">Unexpected token</span></td><td>Bracket, quote, comma, or syntax mistake hai.</td><td>Recent edited line carefully check karo.</td></tr>
+<tr><td>Button click par kuch nahi hota</td><td>JS file load nahi hui ya event listener attach nahi hua.</td><td><span class="inline-code">&lt;script src="script.js"&gt;</span> and button id check karo.</td></tr>
+<tr><td>CSS apply nahi hota</td><td>CSS file ka name/path wrong hai.</td><td><span class="inline-code">&lt;link rel="stylesheet" href="styles.css"&gt;</span> check karo.</td></tr>
+<tr><td>Page reload ho jaata hai</td><td>Form submit ka default behavior stop nahi hua.</td><td><span class="inline-code">event.preventDefault()</span> use karo.</td></tr>
+</table>
+
+<hr class="sep">
+
 <div class="module-header" id="deep-explanation">
   <h1>Deep Code Explanation Appendix</h1>
   <p>Goal: Jahan bhi code hai, usko small-small parts mein samajhna aur class mein confidently explain karna.</p>
@@ -1426,6 +1494,29 @@ Browser mein clean card-style dashboard show hoga. Valid student add karne par c
 <tr><td>JavaScript function</td><td>Function reusable kaam ka box hai.</td><td><span class="inline-code">showMessage()</span> baar-baar message show karne ke liye.</td></tr>
 <tr><td>Event</td><td>Event user action hota hai, jaise click ya submit.</td><td><span class="inline-code">addEventListener("click", ...)</span></td></tr>
 <tr><td>DOM update</td><td>JavaScript page ke visible content ko change karti hai.</td><td><span class="inline-code">output.textContent = ...</span></td></tr>
+</table>
+
+<h2 class="topic">Small Syntax Symbols - Har Chhoti Cheez Ka Meaning</h2>
+<p>JavaScript beginners ko mostly symbols confuse karte hain. Is table ko pehle samjhao, phir practical code run karwao. Jab learner ko pata chalega ki <span class="inline-code">.</span>, <span class="inline-code">()</span>, <span class="inline-code">{}</span>, <span class="inline-code">[]</span>, and <span class="inline-code">===</span> kya karte hain, toh code reading easy ho jaayegi.</p>
+
+<table>
+<tr><th>Symbol / Syntax</th><th>Simple Meaning</th><th>Project Example</th></tr>
+<tr><td><span class="inline-code">const</span></td><td>Constant variable declare karta hai. Value/reference ko reassign nahi karna ho toh use hota hai.</td><td><span class="inline-code">const studentForm = ...</span></td></tr>
+<tr><td><span class="inline-code">let</span></td><td>Change hone wali variable declare karta hai.</td><td><span class="inline-code">let students = [];</span></td></tr>
+<tr><td><span class="inline-code">=</span></td><td>Assignment operator hai. Right side value ko left side variable mein store karta hai.</td><td><span class="inline-code">message.textContent = text;</span></td></tr>
+<tr><td><span class="inline-code">===</span></td><td>Strict comparison karta hai. Value and type dono compare hote hain.</td><td><span class="inline-code">nameValue === ""</span></td></tr>
+<tr><td><span class="inline-code">||</span></td><td>OR operator hai. Dono conditions mein se koi bhi true ho toh result true.</td><td><span class="inline-code">levelValue &lt; 1 || levelValue &gt; 10</span></td></tr>
+<tr><td><span class="inline-code">&amp;&amp;</span></td><td>AND operator hai. Dono conditions true honi chahiye.</td><td>Advanced validation mein use hota hai.</td></tr>
+<tr><td><span class="inline-code">!</span></td><td>NOT operator hai. True ko false, false ko true banata hai.</td><td><span class="inline-code">!emailValue.includes("@")</span></td></tr>
+<tr><td><span class="inline-code">.</span></td><td>Object ki property ya method access karta hai.</td><td><span class="inline-code">document.getElementById</span>, <span class="inline-code">studentForm.reset()</span></td></tr>
+<tr><td><span class="inline-code">()</span></td><td>Function/method call karne ke liye use hota hai.</td><td><span class="inline-code">renderStudents()</span></td></tr>
+<tr><td><span class="inline-code">{}</span></td><td>Code block ya object create karne ke liye use hota hai.</td><td><span class="inline-code">const student = { name: nameValue }</span></td></tr>
+<tr><td><span class="inline-code">[]</span></td><td>Array create ya item access karne ke liye use hota hai.</td><td><span class="inline-code">let students = []</span></td></tr>
+<tr><td><span class="inline-code">""</span></td><td>String text value represent karta hai.</td><td><span class="inline-code">"Please enter student name."</span></td></tr>
+<tr><td><span class="inline-code">`...`</span></td><td>Template literal hai. Multiline string and variable insert karne ke liye useful.</td><td><span class="inline-code">card.innerHTML = `...`</span></td></tr>
+<tr><td><span class="inline-code">${student.name}</span></td><td>Template literal ke andar variable/property value insert karta hai.</td><td>Student card mein dynamic name show hota hai.</td></tr>
+<tr><td><span class="inline-code">;</span></td><td>Statement end marker hai. JavaScript mein optional ho sakta hai, but clean code ke liye use karte hain.</td><td><span class="inline-code">renderStudents();</span></td></tr>
+<tr><td><span class="inline-code">//</span></td><td>Single-line comment start karta hai. Browser comment ko execute nahi karta.</td><td>Code explain karne ke liye comments add kar sakte hain.</td></tr>
 </table>
 
 <h2 class="topic">Mini Lab HTML - Deep Line-by-Line Explanation</h2>
