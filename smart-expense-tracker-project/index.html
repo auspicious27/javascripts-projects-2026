@@ -77,7 +77,7 @@
 
 <div class="module-header" id="learn">
   <h1>What New Things Will Learners Learn?</h1>
-  <p>Goal: Old landing page se aage badhkar dashboard logic samajhna.</p>
+  <p>Goal: Expense dashboard ke through real data handling logic samajhna.</p>
 </div>
 
 <p>Is project mein learners sirf button click nahi seekhenge. Yahan woh complete data flow seekhenge: form se data lena, object banana, array mein store karna, localStorage mein save karna, filter apply karna, cards render karna, and delete action handle karna.</p>
@@ -232,6 +232,27 @@
 <tr><td><span class="inline-code">&lt;strong id="highestExpense"&gt;</span></td><td>Highest expense amount yahan show hoga.</td></tr>
 <tr><td><span class="inline-code">&lt;div id="expenseList"&gt;</span></td><td>Expense cards dynamically yahin add honge.</td></tr>
 <tr><td><span class="inline-code">&lt;script src="script.js"&gt;</span></td><td>JavaScript file connect karta hai. Body ke end mein rakha hai taaki HTML pehle load ho.</td></tr>
+</table>
+
+<h2 class="topic">HTML Extra Detail - Small Lines and Attributes</h2>
+<table>
+<tr><th>Line / Attribute</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">class="app"</span></td><td>Yeh class complete app wrapper ko CSS se target karne ke liye hai. Is class se page ka max-width, center alignment, and padding control hota hai.</td></tr>
+<tr><td><span class="inline-code">class="hero"</span></td><td>Hero top section hai. Story mein yeh dashboard ka welcome area hai jahan project title and total spent card show hota hai.</td></tr>
+<tr><td><span class="inline-code">class="hero-text"</span></td><td>Hero ke description paragraph ko separate style dene ke liye class use hui. Isse text halka grey and readable size mein dikhta hai.</td></tr>
+<tr><td><span class="inline-code">class="total-card"</span></td><td>Total spent ko card design dene ke liye. Yeh dashboard ka most important summary box hai.</td></tr>
+<tr><td><span class="inline-code">id="totalAmount"</span></td><td>JavaScript total amount calculate karke isi element ka text change karega. Id unique hoti hai, isliye JS selection easy hota hai.</td></tr>
+<tr><td><span class="inline-code">class="dashboard"</span></td><td>Form and expense list panel ko side-by-side layout mein arrange karne ke liye dashboard wrapper.</td></tr>
+<tr><td><span class="inline-code">class="expense-form"</span></td><td>Form ko card style and grid spacing dene ke liye class. Iske andar label, input, select, button, message hai.</td></tr>
+<tr><td><span class="inline-code">id="expenseForm"</span></td><td>JavaScript form submit event isi id se attach karega. Agar id spelling wrong hogi toh submit logic kaam nahi karega.</td></tr>
+<tr><td><span class="inline-code">for="expenseTitle"</span></td><td>Label ko title input se connect karta hai. Label click karne par input focus ho sakta hai.</td></tr>
+<tr><td><span class="inline-code">placeholder="Example: Lunch"</span></td><td>Input ke andar hint text. Learner/user ko example milta hai ki expense title kaise likhna hai.</td></tr>
+<tr><td><span class="inline-code">type="number"</span></td><td>Amount field mein numeric input expected hai. Browser number keyboard/controls show kar sakta hai.</td></tr>
+<tr><td><span class="inline-code">value="Food"</span></td><td>Dropdown option ka actual value. JavaScript category compare karte time isi value ko read karta hai.</td></tr>
+<tr><td><span class="inline-code">class="expense-panel"</span></td><td>Right side panel jahan filter, summary cards, and expense list show hoti hai.</td></tr>
+<tr><td><span class="inline-code">class="summary-grid"</span></td><td>Total items and highest expense ko two small cards mein arrange karta hai.</td></tr>
+<tr><td><span class="inline-code">id="expenseList"</span></td><td>JavaScript dynamically expense cards isi div ke andar add karega.</td></tr>
+<tr><td><span class="inline-code">class="empty"</span></td><td>Jab no expense hai tab placeholder message ko soft dashed box style deta hai.</td></tr>
 </table>
 
 <div class="module-header" id="css">
@@ -497,6 +518,31 @@ h1 {
 <tr><td><span class="inline-code">@media (max-width: 820px)</span></td><td>Mobile screens par layout one column karta hai.</td></tr>
 </table>
 
+<h2 class="topic">CSS Extra Detail - Every Small Styling Idea</h2>
+<table>
+<tr><th>CSS Line</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">color: #172033;</span></td><td>Default text color dark blue-grey set karta hai. Pure black se thoda softer lagta hai.</td></tr>
+<tr><td><span class="inline-code">line-height: 1.6;</span></td><td>Text lines ke beech breathing space deta hai. Notes and dashboard dono readable lagte hain.</td></tr>
+<tr><td><span class="inline-code">max-width: 1120px;</span></td><td>Large screens par content bahut spread nahi hota. Dashboard center mein professional width par rehta hai.</td></tr>
+<tr><td><span class="inline-code">margin: 0 auto;</span></td><td>Container ko horizontally center karta hai. Auto left/right margin equal space banata hai.</td></tr>
+<tr><td><span class="inline-code">padding: 32px 20px;</span></td><td>Container ke andar top/bottom 32px and left/right 20px space deta hai.</td></tr>
+<tr><td><span class="inline-code">gap: 24px;</span></td><td>Grid items ke beech clean space deta hai. Manual margin lagane ki zaroorat kam hoti hai.</td></tr>
+<tr><td><span class="inline-code">align-items: center;</span></td><td>Hero ke text and total card ko vertically center align karta hai.</td></tr>
+<tr><td><span class="inline-code">text-transform: uppercase;</span></td><td>Eyebrow label ko capital letters mein convert karta hai. Label important dikhta hai.</td></tr>
+<tr><td><span class="inline-code">letter-spacing: 1px;</span></td><td>Letters ke beech thoda space deta hai. Small label premium look deta hai.</td></tr>
+<tr><td><span class="inline-code">font-weight: 800;</span></td><td>Text ko bold banata hai. Labels and buttons clearly visible hote hain.</td></tr>
+<tr><td><span class="inline-code">border: 1px solid #dbe3ee;</span></td><td>Cards ko light boundary deta hai, jisse sections separate dikhen.</td></tr>
+<tr><td><span class="inline-code">border-radius: 18px;</span></td><td>Cards ke corners rounded karta hai. Dashboard modern app jaisa lagta hai.</td></tr>
+<tr><td><span class="inline-code">display: block;</span></td><td>Element ko full line block banata hai. Span/strong ko card mein separate line par show karne ke liye.</td></tr>
+<tr><td><span class="inline-code">grid-template-columns: 360px 1fr;</span></td><td>Dashboard mein left form fixed 360px, right panel remaining space leta hai.</td></tr>
+<tr><td><span class="inline-code">align-items: start;</span></td><td>Form and panel top se align hote hain. Content uneven height ho toh bhi top clean rahta hai.</td></tr>
+<tr><td><span class="inline-code">border-left: 5px solid #2563eb;</span></td><td>Message box ke left side colored indicator deta hai. User ka attention message par jata hai.</td></tr>
+<tr><td><span class="inline-code">justify-content: space-between;</span></td><td>Panel header mein title left aur filter right side par push hota hai.</td></tr>
+<tr><td><span class="inline-code">text-align: right;</span></td><td>Amount ko right align karta hai. Money values generally right side aligned readable hoti hain.</td></tr>
+<tr><td><span class="inline-code">border: 1px dashed #cbd5e1;</span></td><td>Empty state ko dashed border deta hai, jo placeholder/empty message jaisa feel deta hai.</td></tr>
+<tr><td><span class="inline-code">grid-template-columns: 1fr;</span></td><td>Mobile par columns ko single column bana deta hai. Isse content small screen par squeeze nahi hota.</td></tr>
+</table>
+
 <div class="module-header" id="js">
   <h1>Step 3 - JavaScript Code and Explanation</h1>
   <p>Goal: Dashboard ko fully interactive banana.</p>
@@ -646,7 +692,7 @@ renderExpenses();</code></pre>
 <tr><td><span class="inline-code">const filterCategory = ...</span></td><td>Filter dropdown select karta hai.</td></tr>
 <tr><td><span class="inline-code">const expenseList = ...</span></td><td>Expense cards render karne ka container select karta hai.</td></tr>
 <tr><td><span class="inline-code">const totalAmount = ...</span></td><td>Total spent output element select karta hai.</td></tr>
-<tr><td><span class="inline-code">let expenses = JSON.parse(...) || [];</span></td><td>localStorage se old data read karta hai. Agar data nahi hai toh empty array use hota hai.</td></tr>
+<tr><td><span class="inline-code">let expenses = JSON.parse(...) || [];</span></td><td>localStorage se saved data read karta hai. Agar data nahi hai toh empty array use hota hai.</td></tr>
 <tr><td><span class="inline-code">localStorage.getItem("expenses")</span></td><td>Browser storage se expenses string read karta hai.</td></tr>
 <tr><td><span class="inline-code">JSON.parse(...)</span></td><td>Stored string ko JavaScript array/object mein convert karta hai.</td></tr>
 <tr><td><span class="inline-code">function saveExpenses()</span></td><td>Expenses array ko browser storage mein save karne ka reusable function.</td></tr>
@@ -660,7 +706,7 @@ renderExpenses();</code></pre>
 <tr><td><span class="inline-code">expenses.reduce(...)</span></td><td>All expense amounts ko add karke total banata hai.</td></tr>
 <tr><td><span class="inline-code">Math.max(...expenses.map(...))</span></td><td>Expense amounts ki list se highest value find karta hai.</td></tr>
 <tr><td><span class="inline-code">renderExpenses()</span></td><td>Expense array ko HTML cards mein convert karta hai.</td></tr>
-<tr><td><span class="inline-code">expenseList.innerHTML = "";</span></td><td>Old cards clear karta hai taaki duplicate cards na banein.</td></tr>
+<tr><td><span class="inline-code">expenseList.innerHTML = "";</span></td><td>Existing cards clear karta hai taaki duplicate cards na banein.</td></tr>
 <tr><td><span class="inline-code">document.createElement("article")</span></td><td>JavaScript se new expense card element create karta hai.</td></tr>
 <tr><td><span class="inline-code">card.innerHTML = `...`</span></td><td>Template literal se dynamic card HTML set karta hai.</td></tr>
 <tr><td><span class="inline-code">data-id="${expense.id}"</span></td><td>Delete button ke andar expense id store karta hai.</td></tr>
@@ -678,6 +724,36 @@ renderExpenses();</code></pre>
 <tr><td><span class="inline-code">expense.id !== expenseId</span></td><td>Delete wale id ko chhodkar baaki expenses keep karta hai.</td></tr>
 <tr><td><span class="inline-code">filterCategory.addEventListener("change", ...)</span></td><td>Filter dropdown change hone par list dobara render hoti hai.</td></tr>
 <tr><td><span class="inline-code">renderExpenses();</span></td><td>Page load par existing stored data render karta hai.</td></tr>
+</table>
+
+<h2 class="topic">JavaScript Extra Detail - Every Logic Block Story</h2>
+<table>
+<tr><th>Code / Logic</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">document.getElementById(...)</span></td><td>HTML element ko id ke through pakadta hai. Story mein JS ko form, input, button, list jaise parts se baat karni hai, isliye pehle unko select karta hai.</td></tr>
+<tr><td><span class="inline-code">const</span></td><td>Aisi variable jiska reference change nahi karna. HTML elements ko select karne ke baad usually const use karte hain.</td></tr>
+<tr><td><span class="inline-code">let expenses</span></td><td>Expenses list change hoti rahegi, new expense add/delete hoga, isliye let use hua.</td></tr>
+<tr><td><span class="inline-code">|| []</span></td><td>Fallback logic. Agar localStorage mein data nahi mila toh empty array start karo, taaki app crash na ho.</td></tr>
+<tr><td><span class="inline-code">localStorage.setItem</span></td><td>Browser ke permanent small storage mein data save karta hai. Refresh ke baad data wapas mil sakta hai.</td></tr>
+<tr><td><span class="inline-code">message.textContent</span></td><td>Message paragraph ke visible text ko change karta hai. User ko error/success feedback dikhata hai.</td></tr>
+<tr><td><span class="inline-code">filterCategory.value</span></td><td>Dropdown mein currently selected value read karta hai. Is value se decide hota hai kaunsi category show hogi.</td></tr>
+<tr><td><span class="inline-code">return expenses;</span></td><td>Function se complete expenses list wapas bhejta hai. All selected hone par filtering ki zaroorat nahi.</td></tr>
+<tr><td><span class="inline-code">return expense.category === selectedCategory;</span></td><td>Filter ke andar har expense check hota hai. Category match hui toh woh record final list mein rahega.</td></tr>
+<tr><td><span class="inline-code">reduce(function (sum, expense) {...}, 0)</span></td><td>Total calculate karne ka pattern. Sum 0 se start hota hai, phir har expense amount add hota hai.</td></tr>
+<tr><td><span class="inline-code">expenses.length === 0 ? 0 : ...</span></td><td>Ternary condition. Agar list empty hai toh highest 0; warna actual highest calculate karo.</td></tr>
+<tr><td><span class="inline-code">...expenses.map(...)</span></td><td>Spread operator array values ko Math.max ke arguments mein expand karta hai.</td></tr>
+<tr><td><span class="inline-code">filteredExpenses.length === 0</span></td><td>Check karta hai selected category mein koi record hai ya nahi. Agar nahi hai toh empty message show hota hai.</td></tr>
+<tr><td><span class="inline-code">return;</span></td><td>Function ko yahin stop karta hai. Empty case mein aage card loop chalane ki zaroorat nahi.</td></tr>
+<tr><td><span class="inline-code">forEach(function (expense) {...})</span></td><td>Har expense ke liye card create karta hai. List mein jitne records, utne cards.</td></tr>
+<tr><td><span class="inline-code">card.className = "expense-card";</span></td><td>Created article ko CSS class deta hai, taaki card design apply ho.</td></tr>
+<tr><td><span class="inline-code">${expense.title}</span></td><td>Template literal ke andar dynamic expense title insert karta hai.</td></tr>
+<tr><td><span class="inline-code">expenseList.appendChild(card)</span></td><td>JavaScript-created card ko actual page par add karta hai. Is line ke baad card visible hota hai.</td></tr>
+<tr><td><span class="inline-code">event.preventDefault()</span></td><td>Form ka default reload stop karta hai. Dashboard single-page app ki tarah behave karta hai.</td></tr>
+<tr><td><span class="inline-code">trim()</span></td><td>User ke input ke start/end spaces remove karta hai. Sirf spaces ko valid title nahi maana jayega.</td></tr>
+<tr><td><span class="inline-code">Date.now()</span></td><td>Current time number return karta hai. Isko unique id ke liye use kiya gaya.</td></tr>
+<tr><td><span class="inline-code">expenses.push(expense)</span></td><td>New expense object ko array ke end mein add karta hai.</td></tr>
+<tr><td><span class="inline-code">event.target</span></td><td>Jis exact element par click hua, usko represent karta hai. Delete button detect karne ke liye use hua.</td></tr>
+<tr><td><span class="inline-code">dataset.id</span></td><td>HTML ke data-id attribute ki value read karta hai. Isse pata chalta hai kaunsa expense delete karna hai.</td></tr>
+<tr><td><span class="inline-code">expense.id !== expenseId</span></td><td>Jo expense delete karna hai usko remove karta hai; baaki records array mein keep hote hain.</td></tr>
 </table>
 
 <div class="module-header" id="testing">
