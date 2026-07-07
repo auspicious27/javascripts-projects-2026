@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillBridge Academy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="#" class="logo">SkillBridge</a>
+      <button class="menu-button" id="menuButton" type="button">Menu</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#courses">Courses</a>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="theme-button" id="themeButton" type="button">Dark Mode</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">HTML + CSS + JavaScript Project</p>
+        <h1>Build skills with practical web development classes.</h1>
+        <p class="hero-text">
+          Learn frontend basics through real projects, clean layouts, interactive forms,
+          and beginner-friendly classroom practice.
+        </p>
+        <a href="#contact" class="primary-button">Join Free Demo</a>
+      </div>
+      <div class="hero-card">
+        <h2>Today&apos;s Goal</h2>
+        <p>Create a responsive website and make it interactive using JavaScript.</p>
+        <span class="score">3 Files</span>
+      </div>
+    </section>
+
+    <section class="section" id="courses">
+      <div class="section-heading">
+        <p class="eyebrow">Courses</p>
+        <h2>Choose your learning path</h2>
+      </div>
+      <div class="course-grid">
+        <article class="course-card">
+          <h3>HTML Foundation</h3>
+          <p>Page structure, semantic tags, forms, links, and content layout.</p>
+        </article>
+        <article class="course-card">
+          <h3>CSS Design</h3>
+          <p>Colors, spacing, cards, flexbox, grid, and responsive design.</p>
+        </article>
+        <article class="course-card">
+          <h3>JavaScript Basics</h3>
+          <p>Events, DOM updates, validation, theme toggle, and menu logic.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section feature-section" id="features">
+      <div>
+        <p class="eyebrow">Why this project?</p>
+        <h2>One website covers the full beginner frontend flow.</h2>
+      </div>
+      <ul class="feature-list">
+        <li>Responsive navbar with mobile menu</li>
+        <li>Course cards using CSS Grid</li>
+        <li>Dark mode using JavaScript class toggle</li>
+        <li>Contact form validation with live message</li>
+      </ul>
+    </section>
+
+    <section class="section faq-section">
+      <div class="section-heading">
+        <p class="eyebrow">FAQ</p>
+        <h2>Common learner questions</h2>
+      </div>
+      <div class="faq-list">
+        <button class="faq-question" type="button">Do I need coding experience?</button>
+        <p class="faq-answer">No. This project starts from structure, then styling, then JavaScript.</p>
+        <button class="faq-question" type="button">Can I run this in VS Code?</button>
+        <p class="faq-answer">Yes. Create three files and open index.html with Live Server.</p>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div>
+        <p class="eyebrow">Demo Class</p>
+        <h2>Register for a free demo</h2>
+        <p>Fill the form. JavaScript will validate your input before showing success.</p>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <label for="fullName">Full Name</label>
+        <input id="fullName" type="text" placeholder="Enter your name">
+
+        <label for="email">Email Address</label>
+        <input id="email" type="email" placeholder="Enter your email">
+
+        <label for="course">Select Course</label>
+        <select id="course">
+          <option value="">Choose course</option>
+          <option value="HTML Foundation">HTML Foundation</option>
+          <option value="CSS Design">CSS Design</option>
+          <option value="JavaScript Basics">JavaScript Basics</option>
+        </select>
+
+        <button type="submit">Submit Request</button>
+        <p class="form-message" id="formMessage">Please fill the form.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>SkillBridge Academy. Built with HTML, CSS, and JavaScript.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

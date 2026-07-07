@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HTML CSS JavaScript Complete Website Project Notes</title>
+<style>
+  :root{--navy:#10243d;--blue:#2563eb;--line:#d7e2ec;--soft:#eef6ff;--code:#0f172a;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#172033;background:#f7faff;line-height:1.7;}
+  .titlepage{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 24px;background:linear-gradient(135deg,#10243d,#2563eb);color:white;}
+  .titlepage h1{font-size:42px;margin:0 0 12px;}
+  .titlepage h2{font-size:20px;font-weight:400;color:#dbeafe;}
+  .badge{margin-top:30px;padding:18px 24px;border:1px solid rgba(255,255,255,.35);border-radius:10px;background:rgba(255,255,255,.12);text-align:left;}
+  .page{max-width:1080px;margin:0 auto;padding:32px 40px 70px;background:white;}
+  .toc,.box{border:1px solid var(--line);border-radius:10px;padding:22px;margin:24px 0;background:white;}
+  .info{background:var(--soft);border-left:5px solid var(--blue);}
+  .warn{background:#fff7ed;border-left:5px solid #f97316;}
+  .module-header{background:var(--navy);color:white;padding:24px;border-radius:10px;margin:48px 0 24px;}
+  .module-header h1{margin:0;font-size:26px;}
+  .module-header p{margin:6px 0 0;color:#dbeafe;}
+  h2.topic{color:var(--navy);border-bottom:3px solid var(--blue);padding-bottom:8px;margin-top:38px;}
+  h3.subtopic{color:var(--blue);margin-top:26px;}
+  .run-loc{display:inline-block;background:var(--navy);color:white;font-family:monospace;font-size:12px;padding:4px 10px;border-radius:6px 6px 0 0;}
+  pre{margin:0 0 18px;background:var(--code);color:#e5edf7;padding:18px;border-radius:0 10px 10px 10px;overflow:auto;line-height:1.55;}
+  code,.inline-code{font-family:Consolas,Monaco,monospace;}
+  .inline-code{background:#eef3f8;color:#10243d;padding:2px 6px;border-radius:5px;}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px;}
+  th,td{border:1px solid var(--line);padding:11px 12px;text-align:left;vertical-align:top;}
+  th{background:var(--navy);color:white;}
+  tr:nth-child(even){background:#f8fbff;}
+  .steps li{margin-bottom:8px;}
+</style>
+</head>
+<body>
+
+<div class="titlepage">
+  <h1>Complete Website Project</h1>
+  <h2>HTML + CSS + JavaScript Classroom Notes</h2>
+  <div class="badge">
+    Project Name: SkillBridge Academy Website<br>
+    Files: index.html, styles.css, script.js<br>
+    Focus: Structure + Design + Interaction<br>
+    Style: Simple Hinglish, step-by-step, beginner friendly
+  </div>
+</div>
+
+<div class="page">
+<div class="toc">
+<h2>Table of Contents</h2>
+<ol>
+  <li><a href="#intro">What We Will Build</a></li>
+  <li><a href="#setup">Setup and Run Guide</a></li>
+  <li><a href="#html">Part 1 - HTML Structure</a></li>
+  <li><a href="#css">Part 2 - CSS Styling</a></li>
+  <li><a href="#js">Part 3 - JavaScript Interaction</a></li>
+  <li><a href="#syntax">Small Syntax Explanation</a></li>
+  <li><a href="#testing">Testing and Common Errors</a></li>
+</ol>
+</div>
+
+<div class="module-header" id="intro">
+  <h1>What We Will Build</h1>
+  <p>Goal: Ek complete responsive and interactive website banana.</p>
+</div>
+
+<p>Is project mein hum <strong>SkillBridge Academy</strong> naam ki ek clean educational website banayenge. Website mein navbar, hero section, course cards, feature list, FAQ accordion, contact form, mobile menu, and dark mode hoga. Matlab learner HTML se structure banayega, CSS se design karega, aur JavaScript se page ko interactive banayega.</p>
+<p>Story type se samjho: Ek institute ko landing page chahiye jahan students courses dekh sakein, demo class ke liye form fill kar sakein, FAQ open-close kar sakein, mobile par menu open kar sakein, aur dark mode use kar sakein. Yeh real-world frontend website ka beginner version hai.</p>
+
+<table>
+<tr><th>Website Part</th><th>Technology</th><th>Learning</th></tr>
+<tr><td>Navbar and sections</td><td>HTML</td><td>Semantic structure, links, ids, classes.</td></tr>
+<tr><td>Cards and responsive layout</td><td>CSS</td><td>Flexbox, Grid, spacing, colors, media queries.</td></tr>
+<tr><td>Menu, dark mode, FAQ, form validation</td><td>JavaScript</td><td>DOM selection, events, conditions, functions.</td></tr>
+</table>
+
+<div class="module-header" id="setup">
+  <h1>Setup and Run Guide</h1>
+  <p>Goal: Project ko VS Code mein correctly run karna.</p>
+</div>
+
+<ol class="steps">
+<li>VS Code open karo.</li>
+<li>Ek folder banao: <span class="inline-code">skillbridge-website</span>.</li>
+<li>Folder ke andar 3 files banao: <span class="inline-code">index.html</span>, <span class="inline-code">styles.css</span>, <span class="inline-code">script.js</span>.</li>
+<li>HTML code ko <span class="inline-code">index.html</span> mein paste karo.</li>
+<li>CSS code ko <span class="inline-code">styles.css</span> mein paste karo.</li>
+<li>JavaScript code ko <span class="inline-code">script.js</span> mein paste karo.</li>
+<li>Right click on <span class="inline-code">index.html</span> and choose <span class="inline-code">Open with Live Server</span>.</li>
+</ol>
+
+<div class="box info">
+<strong>Expected Output:</strong> Browser mein professional landing page open hoga. Navbar, hero, course cards, FAQ, contact form and footer dikhega. Mobile size par menu button kaam karega, dark mode button theme change karega, FAQ click par answer open hoga, and form submit par validation message show hoga.
+</div>
+
+<span class="run-loc">Folder Structure</span>
+<pre><code>skillbridge-website/
+  index.html
+  styles.css
+  script.js</code></pre>
+
+<div class="module-header" id="html">
+  <h1>Part 1 - HTML Structure</h1>
+  <p>Goal: Page ka skeleton banana.</p>
+</div>
+
+<p>HTML website ka structure hota hai. Jaise building mein rooms, doors, windows ka structure hota hai, waise website mein header, nav, main, section, form, footer ka structure hota hai. CSS and JavaScript baad mein isi structure par kaam karte hain.</p>
+
+<h2 class="topic">HTML Code Explanation - Line by Line</h2>
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">&lt;!DOCTYPE html&gt;</span></td><td>Browser ko batata hai ki yeh HTML5 document hai. Isko file ki first line par likhna best practice hai.</td></tr>
+<tr><td><span class="inline-code">&lt;html lang="en"&gt;</span></td><td>Complete HTML page ka root element. <span class="inline-code">lang="en"</span> page language English set karta hai.</td></tr>
+<tr><td><span class="inline-code">&lt;head&gt;</span></td><td>Browser settings, title, meta tags, and CSS link yahan rakhe jaate hain. Yeh content direct page par visible nahi hota.</td></tr>
+<tr><td><span class="inline-code">&lt;meta charset="UTF-8"&gt;</span></td><td>Text encoding set karta hai taaki characters properly show hon.</td></tr>
+<tr><td><span class="inline-code">&lt;meta name="viewport"...&gt;</span></td><td>Mobile responsive design ke liye important. Page ko device width ke according scale karta hai.</td></tr>
+<tr><td><span class="inline-code">&lt;title&gt;SkillBridge Academy&lt;/title&gt;</span></td><td>Browser tab mein website ka title show karta hai.</td></tr>
+<tr><td><span class="inline-code">&lt;link rel="stylesheet" href="styles.css"&gt;</span></td><td>HTML file ko CSS file se connect karta hai. Agar yeh wrong hoga toh design apply nahi hoga.</td></tr>
+<tr><td><span class="inline-code">&lt;body&gt;</span></td><td>Visible website content body ke andar hota hai.</td></tr>
+<tr><td><span class="inline-code">&lt;header class="site-header"&gt;</span></td><td>Top header area. Isme navbar rakha gaya hai.</td></tr>
+<tr><td><span class="inline-code">&lt;nav class="navbar"&gt;</span></td><td>Navigation section. Logo, links, menu button, theme button yahin aate hain.</td></tr>
+<tr><td><span class="inline-code">&lt;a href="#" class="logo"&gt;</span></td><td>Website logo link. <span class="inline-code">class="logo"</span> se CSS isko style karega.</td></tr>
+<tr><td><span class="inline-code">&lt;button id="menuButton"&gt;</span></td><td>Mobile menu open/close button. JavaScript is id se button select karega.</td></tr>
+<tr><td><span class="inline-code">&lt;div class="nav-links" id="navLinks"&gt;</span></td><td>Navigation links ka wrapper. CSS layout dega, JS mobile par open class toggle karega.</td></tr>
+<tr><td><span class="inline-code">&lt;button id="themeButton"&gt;</span></td><td>Dark mode toggle button. Click par JavaScript body mein dark class add/remove karega.</td></tr>
+<tr><td><span class="inline-code">&lt;main&gt;</span></td><td>Page ka main content wrapper. Header/footer ke beech ka important content yahan hota hai.</td></tr>
+<tr><td><span class="inline-code">&lt;section class="hero"&gt;</span></td><td>Website ka first main section. User ko page ka primary message yahin dikhta hai.</td></tr>
+<tr><td><span class="inline-code">&lt;p class="eyebrow"&gt;</span></td><td>Small uppercase label. Project/topic ko visually introduce karta hai.</td></tr>
+<tr><td><span class="inline-code">&lt;h1&gt;</span></td><td>Page ka main heading. SEO and readability ke liye important.</td></tr>
+<tr><td><span class="inline-code">&lt;a href="#contact" class="primary-button"&gt;</span></td><td>Call-to-action link. Click par contact section par jump karega.</td></tr>
+<tr><td><span class="inline-code">&lt;article class="course-card"&gt;</span></td><td>Independent course card. Har card ek separate content block hai.</td></tr>
+<tr><td><span class="inline-code">&lt;ul class="feature-list"&gt;</span></td><td>Features ko bullet list mein show karta hai.</td></tr>
+<tr><td><span class="inline-code">&lt;button class="faq-question"&gt;</span></td><td>FAQ question clickable button. JavaScript click par answer open/close karega.</td></tr>
+<tr><td><span class="inline-code">&lt;p class="faq-answer"&gt;</span></td><td>FAQ ka hidden answer. JS open class add karega toh answer visible hoga.</td></tr>
+<tr><td><span class="inline-code">&lt;form id="contactForm"&gt;</span></td><td>Contact form. JavaScript submit event listen karega.</td></tr>
+<tr><td><span class="inline-code">&lt;label for="fullName"&gt;</span></td><td>Input ka label. <span class="inline-code">for</span> value input id se match honi chahiye.</td></tr>
+<tr><td><span class="inline-code">&lt;input id="fullName" type="text"&gt;</span></td><td>Name input field. JS yahan se user ka name read karega.</td></tr>
+<tr><td><span class="inline-code">&lt;select id="course"&gt;</span></td><td>Dropdown field. User course select karega.</td></tr>
+<tr><td><span class="inline-code">&lt;p id="formMessage"&gt;</span></td><td>Validation message area. JS success/error text yahan show karega.</td></tr>
+<tr><td><span class="inline-code">&lt;script src="script.js"&gt;&lt;/script&gt;</span></td><td>External JavaScript file connect karta hai. Body ke end mein rakha gaya hai taaki HTML pehle load ho jaaye.</td></tr>
+</table>
+
+<div class="module-header" id="css">
+  <h1>Part 2 - CSS Styling</h1>
+  <p>Goal: Plain HTML ko professional website design dena.</p>
+</div>
+
+<p>CSS website ka look and feel control karta hai. Colors, spacing, fonts, cards, navbar, responsive layout, hover states, and dark mode design CSS se banta hai. HTML content deta hai, CSS us content ko attractive and readable banata hai.</p>
+
+<h2 class="topic">CSS Code Explanation - Important Lines</h2>
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">* { box-sizing: border-box; }</span></td><td>Sab elements par predictable width calculation apply karta hai. Padding/border width ke andar count hote hain.</td></tr>
+<tr><td><span class="inline-code">body { margin: 0; }</span></td><td>Browser ka default page gap remove karta hai.</td></tr>
+<tr><td><span class="inline-code">font-family: Arial...</span></td><td>Complete page ka font set karta hai.</td></tr>
+<tr><td><span class="inline-code">body.dark</span></td><td>Dark mode ke liye body par dark class lagne par alternate colors apply hote hain.</td></tr>
+<tr><td><span class="inline-code">position: sticky;</span></td><td>Header ko scroll ke time top par chipka kar rakhta hai.</td></tr>
+<tr><td><span class="inline-code">z-index: 10;</span></td><td>Header ko dusre elements ke upar layer priority deta hai.</td></tr>
+<tr><td><span class="inline-code">display: flex;</span></td><td>Navbar items ko row mein align karta hai.</td></tr>
+<tr><td><span class="inline-code">justify-content: space-between;</span></td><td>Navbar ke items ko left/right spread karta hai.</td></tr>
+<tr><td><span class="inline-code">display: grid;</span></td><td>Hero and card layout ko columns mein arrange karta hai.</td></tr>
+<tr><td><span class="inline-code">grid-template-columns: 1.5fr 1fr;</span></td><td>Hero mein left content ko zyada space, right card ko kam space deta hai.</td></tr>
+<tr><td><span class="inline-code">border-radius</span></td><td>Cards/buttons ke corners rounded karta hai.</td></tr>
+<tr><td><span class="inline-code">box-shadow</span></td><td>Cards ko soft depth effect deta hai.</td></tr>
+<tr><td><span class="inline-code">.course-grid</span></td><td>Course cards ko grid columns mein show karta hai.</td></tr>
+<tr><td><span class="inline-code">.faq-answer { display: none; }</span></td><td>FAQ answers by default hidden rakhta hai.</td></tr>
+<tr><td><span class="inline-code">.faq-answer.open</span></td><td>Jab JS open class add karta hai toh answer visible hota hai.</td></tr>
+<tr><td><span class="inline-code">.form-message.error</span></td><td>Error message ke liye red style apply karta hai.</td></tr>
+<tr><td><span class="inline-code">.form-message.success</span></td><td>Success message ke liye green style apply karta hai.</td></tr>
+<tr><td><span class="inline-code">@media (max-width: 760px)</span></td><td>Mobile screen ke liye responsive CSS start hota hai.</td></tr>
+<tr><td><span class="inline-code">.nav-links.open</span></td><td>Mobile par menu open class milne ke baad links show karta hai.</td></tr>
+</table>
+
+<div class="module-header" id="js">
+  <h1>Part 3 - JavaScript Interaction</h1>
+  <p>Goal: Website ko interactive banana.</p>
+</div>
+
+<p>JavaScript user actions handle karta hai. Is project mein JavaScript menu open/close karega, dark mode toggle karega, FAQ answers show/hide karega, and contact form validate karega. Simple words mein: HTML page banata hai, CSS page sajata hai, JavaScript page ko react karna sikhata hai.</p>
+
+<h2 class="topic">JavaScript Code Explanation - Line by Line</h2>
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">const menuButton = document.getElementById("menuButton");</span></td><td>HTML ke menu button ko select karke variable mein store karta hai.</td></tr>
+<tr><td><span class="inline-code">const navLinks = document.getElementById("navLinks");</span></td><td>Navigation links wrapper select karta hai. Mobile menu open/close isi par hoga.</td></tr>
+<tr><td><span class="inline-code">const themeButton = ...</span></td><td>Dark mode button select karta hai.</td></tr>
+<tr><td><span class="inline-code">document.querySelectorAll(".faq-question")</span></td><td>Saare FAQ question buttons select karta hai. Result NodeList hota hai.</td></tr>
+<tr><td><span class="inline-code">const contactForm = ...</span></td><td>Contact form select karta hai taaki submit event handle kar sakein.</td></tr>
+<tr><td><span class="inline-code">fullName, email, course</span></td><td>Form ke input fields select karte hain. JS inki values read karega.</td></tr>
+<tr><td><span class="inline-code">menuButton.addEventListener("click", ...)</span></td><td>Menu button par click event attach karta hai.</td></tr>
+<tr><td><span class="inline-code">navLinks.classList.toggle("open")</span></td><td>Open class add/remove karta hai. CSS open class par menu show karega.</td></tr>
+<tr><td><span class="inline-code">document.body.classList.toggle("dark")</span></td><td>Body par dark class add/remove karta hai. CSS dark mode colors apply karega.</td></tr>
+<tr><td><span class="inline-code">classList.contains("dark")</span></td><td>Check karta hai body par dark class present hai ya nahi.</td></tr>
+<tr><td><span class="inline-code">themeButton.textContent = "Light Mode"</span></td><td>Button ka text change karta hai taaki user ko current action samajh aaye.</td></tr>
+<tr><td><span class="inline-code">faqQuestions.forEach(...)</span></td><td>Har FAQ question par one-by-one event listener lagata hai.</td></tr>
+<tr><td><span class="inline-code">question.nextElementSibling</span></td><td>Clicked question ke just next element ko select karta hai. Yahan next element answer paragraph hai.</td></tr>
+<tr><td><span class="inline-code">contactForm.addEventListener("submit", ...)</span></td><td>Form submit event handle karta hai.</td></tr>
+<tr><td><span class="inline-code">event.preventDefault()</span></td><td>Form submit hone par page reload ko stop karta hai.</td></tr>
+<tr><td><span class="inline-code">fullName.value.trim()</span></td><td>Name input ki value read karta hai and extra spaces remove karta hai.</td></tr>
+<tr><td><span class="inline-code">if (nameValue === "")</span></td><td>Blank name validation check karta hai.</td></tr>
+<tr><td><span class="inline-code">!emailValue.includes("@")</span></td><td>Email mein @ missing hai ya nahi check karta hai.</td></tr>
+<tr><td><span class="inline-code">if (courseValue === "")</span></td><td>Course dropdown select hua ya nahi check karta hai.</td></tr>
+<tr><td><span class="inline-code">showMessage(..., "error")</span></td><td>Error message show karta hai and red style apply karta hai.</td></tr>
+<tr><td><span class="inline-code">showMessage(..., "success")</span></td><td>Success message show karta hai and green style apply karta hai.</td></tr>
+<tr><td><span class="inline-code">contactForm.reset()</span></td><td>Successful submit ke baad form fields clear karta hai.</td></tr>
+<tr><td><span class="inline-code">function showMessage(text, type)</span></td><td>Reusable function hai. Text and type input lekar message area update karta hai.</td></tr>
+<tr><td><span class="inline-code">formMessage.className = "form-message " + type;</span></td><td>Message paragraph ki class update karta hai. Type error/success ke basis par CSS color change hota hai.</td></tr>
+</table>
+
+<div class="module-header" id="syntax">
+  <h1>Small Syntax Explanation</h1>
+  <p>Goal: Code ke small symbols ko clearly samajhna.</p>
+</div>
+
+<table>
+<tr><th>Syntax</th><th>Meaning</th><th>Example</th></tr>
+<tr><td><span class="inline-code">class</span></td><td>CSS styling ke liye reusable name.</td><td><span class="inline-code">class="hero"</span></td></tr>
+<tr><td><span class="inline-code">id</span></td><td>Unique element selector, JS ke liye useful.</td><td><span class="inline-code">id="contactForm"</span></td></tr>
+<tr><td><span class="inline-code">.</span></td><td>CSS mein class selector, JS mein property/method access.</td><td><span class="inline-code">.hero</span>, <span class="inline-code">document.body</span></td></tr>
+<tr><td><span class="inline-code">#</span></td><td>CSS mein id selector.</td><td><span class="inline-code">#contactForm</span></td></tr>
+<tr><td><span class="inline-code">const</span></td><td>JavaScript variable jo reassign nahi hoga.</td><td><span class="inline-code">const email = ...</span></td></tr>
+<tr><td><span class="inline-code">if / else</span></td><td>Decision making.</td><td>Valid email hai ya nahi.</td></tr>
+<tr><td><span class="inline-code">function</span></td><td>Reusable block of code.</td><td><span class="inline-code">showMessage()</span></td></tr>
+<tr><td><span class="inline-code">addEventListener</span></td><td>User action listen karta hai.</td><td>Click, submit.</td></tr>
+<tr><td><span class="inline-code">template literal</span></td><td>Backtick wali string jisme variables insert kar sakte hain.</td><td><span class="inline-code">`Thank you ${nameValue}`</span></td></tr>
+</table>
+
+<div class="module-header" id="testing">
+  <h1>Testing and Common Errors</h1>
+  <p>Goal: Project run karna and errors fix karna.</p>
+</div>
+
+<table>
+<tr><th>Test</th><th>Action</th><th>Expected Result</th></tr>
+<tr><td>Dark mode</td><td>Dark Mode button click karo.</td><td>Page dark theme mein change hoga.</td></tr>
+<tr><td>Mobile menu</td><td>Screen narrow karo and Menu click karo.</td><td>Nav links open/close honge.</td></tr>
+<tr><td>FAQ</td><td>FAQ question click karo.</td><td>Answer show/hide hoga.</td></tr>
+<tr><td>Blank form</td><td>Submit empty form.</td><td>Red error message show hoga.</td></tr>
+<tr><td>Invalid email</td><td>Email without @ enter karo.</td><td>Email error show hoga.</td></tr>
+<tr><td>Valid form</td><td>Name, email, course fill karo.</td><td>Green success message show hoga and form reset hoga.</td></tr>
+</table>
+
+<table>
+<tr><th>Error</th><th>Reason</th><th>Fix</th></tr>
+<tr><td>CSS not working</td><td>CSS file name/path wrong.</td><td><span class="inline-code">&lt;link href="styles.css"&gt;</span> check karo.</td></tr>
+<tr><td>JS not working</td><td>Script file connect nahi hui.</td><td><span class="inline-code">&lt;script src="script.js"&gt;</span> body end mein check karo.</td></tr>
+<tr><td>Cannot read properties of null</td><td>JS id select kar raha hai but HTML mein id wrong/missing hai.</td><td>HTML id and JS spelling same karo.</td></tr>
+<tr><td>Menu not opening</td><td>Open class CSS ya JS toggle missing.</td><td><span class="inline-code">navLinks.classList.toggle("open")</span> check karo.</td></tr>
+</table>
+
+</div>
+</body>
+</html>
