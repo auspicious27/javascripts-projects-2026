@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Expense Tracker Project Notes</title>
+<style>
+  :root{--navy:#10243d;--blue:#2563eb;--green:#16a34a;--line:#d7e2ec;--soft:#eef6ff;--code:#0f172a;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#172033;background:#f7faff;line-height:1.7;}
+  .titlepage{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 24px;background:linear-gradient(135deg,#10243d,#2563eb);color:white;}
+  .titlepage h1{font-size:42px;margin:0 0 12px;}
+  .titlepage h2{font-size:20px;font-weight:400;color:#dbeafe;}
+  .badge{margin-top:30px;padding:18px 24px;border:1px solid rgba(255,255,255,.35);border-radius:10px;background:rgba(255,255,255,.12);text-align:left;}
+  .page{max-width:1120px;margin:0 auto;padding:32px 40px 70px;background:white;}
+  .toc,.box{border:1px solid var(--line);border-radius:10px;padding:22px;margin:24px 0;background:white;}
+  .info{background:var(--soft);border-left:5px solid var(--blue);}
+  .module-header{background:var(--navy);color:white;padding:24px;border-radius:10px;margin:48px 0 24px;}
+  .module-header h1{margin:0;font-size:26px;}
+  .module-header p{margin:6px 0 0;color:#dbeafe;}
+  h2.topic{color:var(--navy);border-bottom:3px solid var(--blue);padding-bottom:8px;margin-top:38px;}
+  h3.subtopic{color:var(--blue);margin-top:26px;}
+  .run-loc{display:inline-block;background:var(--navy);color:white;font-family:monospace;font-size:12px;padding:4px 10px;border-radius:6px 6px 0 0;}
+  pre{margin:0 0 18px;background:var(--code);color:#e5edf7;padding:18px;border-radius:0 10px 10px 10px;overflow:auto;line-height:1.55;}
+  code,.inline-code{font-family:Consolas,Monaco,monospace;}
+  .inline-code{background:#eef3f8;color:#10243d;padding:2px 6px;border-radius:5px;}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px;}
+  th,td{border:1px solid var(--line);padding:11px 12px;text-align:left;vertical-align:top;}
+  th{background:var(--navy);color:white;}
+  tr:nth-child(even){background:#f8fbff;}
+  .steps li{margin-bottom:8px;}
+</style>
+</head>
+<body>
+
+<div class="titlepage">
+  <h1>Smart Expense Tracker</h1>
+  <h2>New HTML + CSS + JavaScript Project Notes</h2>
+  <div class="badge">
+    Project Type: Dashboard Application<br>
+    Main Learning: Form input, arrays, objects, filtering, delete, localStorage<br>
+    Files: index.html, styles.css, script.js<br>
+    Style: Simple Hinglish + story type explanation
+  </div>
+</div>
+
+<div class="page">
+<div class="toc">
+<h2>Table of Contents</h2>
+<ol>
+  <li><a href="#intro">What Project Are We Building?</a></li>
+  <li><a href="#learn">What New Things Will Learners Learn?</a></li>
+  <li><a href="#run">How to Build and Run</a></li>
+  <li><a href="#html">Step 1 - HTML Code and Explanation</a></li>
+  <li><a href="#css">Step 2 - CSS Code and Explanation</a></li>
+  <li><a href="#js">Step 3 - JavaScript Code and Explanation</a></li>
+  <li><a href="#testing">Testing and Common Errors</a></li>
+</ol>
+</div>
+
+<div class="module-header" id="intro">
+  <h1>What Project Are We Building?</h1>
+  <p>Goal: Expense management dashboard banana jo browser mein data save kare.</p>
+</div>
+
+<p>Is project mein hum <strong>Smart Expense Tracker</strong> banayenge. User expense title, amount, and category enter karega. JavaScript input validate karega. Valid expense list mein add hoga. Dashboard total spent, total items, highest expense, category filter, and delete button show karega.</p>
+<p>Story type se samjho: Ek student ya office employee apne daily expenses track karna chahta hai. Usne lunch, travel, shopping, course fee jaise expenses add kiye. Website automatically total calculate karegi, highest expense batayegi, category filter karegi, aur browser close karne ke baad bhi data localStorage mein save rahega.</p>
+
+<table>
+<tr><th>Feature</th><th>Use</th><th>JavaScript Concept</th></tr>
+<tr><td>Add Expense</td><td>Form se new record add karna.</td><td>Form submit event, value read.</td></tr>
+<tr><td>Total Spent</td><td>All expense amount ka sum.</td><td>Array reduce.</td></tr>
+<tr><td>Category Filter</td><td>Food/Travel/Shopping wise records show karna.</td><td>Array filter.</td></tr>
+<tr><td>Delete Expense</td><td>Specific record remove karna.</td><td>Event delegation, dataset id.</td></tr>
+<tr><td>Browser Save</td><td>Refresh ke baad data keep karna.</td><td>localStorage, JSON.</td></tr>
+</table>
+
+<div class="module-header" id="learn">
+  <h1>What New Things Will Learners Learn?</h1>
+  <p>Goal: Old landing page se aage badhkar dashboard logic samajhna.</p>
+</div>
+
+<p>Is project mein learners sirf button click nahi seekhenge. Yahan woh complete data flow seekhenge: form se data lena, object banana, array mein store karna, localStorage mein save karna, filter apply karna, cards render karna, and delete action handle karna.</p>
+
+<table>
+<tr><th>Topic</th><th>Simple Meaning</th><th>Project Use</th></tr>
+<tr><td>Array</td><td>Multiple records ki list.</td><td><span class="inline-code">expenses</span> array.</td></tr>
+<tr><td>Object</td><td>One record with properties.</td><td>One expense: id, title, amount, category.</td></tr>
+<tr><td>reduce()</td><td>Array se single result banana.</td><td>Total amount calculate.</td></tr>
+<tr><td>filter()</td><td>Array se selected records nikalna.</td><td>Category filter and delete logic.</td></tr>
+<tr><td>map()</td><td>Array values ko transform karna.</td><td>Amounts list for highest expense.</td></tr>
+<tr><td>localStorage</td><td>Browser mein data save karna.</td><td>Refresh ke baad expenses keep.</td></tr>
+<tr><td>JSON</td><td>Data ko string/object mein convert karna.</td><td>localStorage ke saath use.</td></tr>
+</table>
+
+<div class="module-header" id="run">
+  <h1>How to Build and Run</h1>
+  <p>Goal: VS Code mein step-by-step project execute karna.</p>
+</div>
+
+<ol class="steps">
+<li>VS Code open karo.</li>
+<li>New folder banao: <span class="inline-code">smart-expense-tracker</span>.</li>
+<li>Folder ke andar 3 files banao: <span class="inline-code">index.html</span>, <span class="inline-code">styles.css</span>, <span class="inline-code">script.js</span>.</li>
+<li>Pehle HTML code paste karo and save karo.</li>
+<li>Phir CSS code paste karo and save karo.</li>
+<li>Last mein JavaScript code paste karo and save karo.</li>
+<li><span class="inline-code">index.html</span> par right click karke <span class="inline-code">Open with Live Server</span> select karo.</li>
+</ol>
+
+<div class="box info">
+<strong>Expected Output:</strong> Browser mein expense tracker dashboard open hoga. Form fill karne par expense card add hoga. Total spent update hoga. Filter dropdown se category wise records show honge. Delete button se record remove hoga.
+</div>
+
+<span class="run-loc">Folder Structure</span>
+<pre><code>smart-expense-tracker/
+  index.html
+  styles.css
+  script.js</code></pre>
+
+<div class="module-header" id="html">
+  <h1>Step 1 - HTML Code and Explanation</h1>
+  <p>Goal: Dashboard ka structure banana.</p>
+</div>
+
+<p>HTML mein hum page ka skeleton banate hain. Is project mein HTML form, total card, summary cards, filter dropdown, and expense list area create karega. JavaScript baad mein ids use karke in elements ko control karega.</p>
+
+<span class="run-loc">index.html</span>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Smart Expense Tracker&lt;/title&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main class="app"&gt;
+    &lt;section class="hero"&gt;
+      &lt;div&gt;
+        &lt;p class="eyebrow"&gt;JavaScript Practical Project&lt;/p&gt;
+        &lt;h1&gt;Smart Expense Tracker&lt;/h1&gt;
+        &lt;p class="hero-text"&gt;Add expenses, filter by category, calculate totals, and save data in the browser.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="total-card"&gt;
+        &lt;span&gt;Total Spent&lt;/span&gt;
+        &lt;strong id="totalAmount"&gt;Rs. 0&lt;/strong&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class="dashboard"&gt;
+      &lt;form class="expense-form" id="expenseForm"&gt;
+        &lt;h2&gt;Add New Expense&lt;/h2&gt;
+        &lt;label for="expenseTitle"&gt;Expense Title&lt;/label&gt;
+        &lt;input id="expenseTitle" type="text" placeholder="Example: Lunch"&gt;
+        &lt;label for="expenseAmount"&gt;Amount&lt;/label&gt;
+        &lt;input id="expenseAmount" type="number" placeholder="Example: 250"&gt;
+        &lt;label for="expenseCategory"&gt;Category&lt;/label&gt;
+        &lt;select id="expenseCategory"&gt;
+          &lt;option value=""&gt;Choose category&lt;/option&gt;
+          &lt;option value="Food"&gt;Food&lt;/option&gt;
+          &lt;option value="Travel"&gt;Travel&lt;/option&gt;
+          &lt;option value="Shopping"&gt;Shopping&lt;/option&gt;
+          &lt;option value="Learning"&gt;Learning&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;button type="submit"&gt;Add Expense&lt;/button&gt;
+        &lt;p class="message" id="message"&gt;Fill the form to add your first expense.&lt;/p&gt;
+      &lt;/form&gt;
+
+      &lt;section class="expense-panel"&gt;
+        &lt;div class="panel-header"&gt;
+          &lt;div&gt;
+            &lt;p class="eyebrow"&gt;Expense List&lt;/p&gt;
+            &lt;h2&gt;Your Records&lt;/h2&gt;
+          &lt;/div&gt;
+          &lt;select id="filterCategory"&gt;
+            &lt;option value="All"&gt;All Categories&lt;/option&gt;
+            &lt;option value="Food"&gt;Food&lt;/option&gt;
+            &lt;option value="Travel"&gt;Travel&lt;/option&gt;
+            &lt;option value="Shopping"&gt;Shopping&lt;/option&gt;
+            &lt;option value="Learning"&gt;Learning&lt;/option&gt;
+          &lt;/select&gt;
+        &lt;/div&gt;
+
+        &lt;div class="summary-grid"&gt;
+          &lt;article&gt;
+            &lt;span&gt;Total Items&lt;/span&gt;
+            &lt;strong id="totalItems"&gt;0&lt;/strong&gt;
+          &lt;/article&gt;
+          &lt;article&gt;
+            &lt;span&gt;Highest Expense&lt;/span&gt;
+            &lt;strong id="highestExpense"&gt;Rs. 0&lt;/strong&gt;
+          &lt;/article&gt;
+        &lt;/div&gt;
+
+        &lt;div class="expense-list" id="expenseList"&gt;
+          &lt;p class="empty"&gt;No expenses added yet.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<h2 class="topic">HTML Line-by-Line Explanation</h2>
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">&lt;!DOCTYPE html&gt;</span></td><td>Browser ko batata hai ki yeh HTML5 document hai.</td></tr>
+<tr><td><span class="inline-code">&lt;html lang="en"&gt;</span></td><td>Complete HTML document start hota hai. Language English set hoti hai.</td></tr>
+<tr><td><span class="inline-code">&lt;head&gt;</span></td><td>Page settings, title, and CSS link yahan aate hain.</td></tr>
+<tr><td><span class="inline-code">&lt;meta charset="UTF-8"&gt;</span></td><td>Text encoding set karta hai taaki symbols and text properly show hon.</td></tr>
+<tr><td><span class="inline-code">&lt;meta name="viewport"...&gt;</span></td><td>Mobile responsive behavior ke liye important line hai.</td></tr>
+<tr><td><span class="inline-code">&lt;title&gt;</span></td><td>Browser tab ka title set karta hai.</td></tr>
+<tr><td><span class="inline-code">&lt;link rel="stylesheet"...&gt;</span></td><td>CSS file connect karta hai.</td></tr>
+<tr><td><span class="inline-code">&lt;main class="app"&gt;</span></td><td>Complete app ka main wrapper. CSS max width and padding dega.</td></tr>
+<tr><td><span class="inline-code">&lt;section class="hero"&gt;</span></td><td>Top introduction area. Isme heading and total card hai.</td></tr>
+<tr><td><span class="inline-code">&lt;p class="eyebrow"&gt;</span></td><td>Small label text. Project context clear karta hai.</td></tr>
+<tr><td><span class="inline-code">&lt;h1&gt;</span></td><td>Main heading. User ko page ka purpose batata hai.</td></tr>
+<tr><td><span class="inline-code">&lt;strong id="totalAmount"&gt;</span></td><td>Total spent amount yahan update hoga. JavaScript id se isko select karega.</td></tr>
+<tr><td><span class="inline-code">&lt;form id="expenseForm"&gt;</span></td><td>Expense add karne ka form. Submit event JavaScript handle karega.</td></tr>
+<tr><td><span class="inline-code">&lt;label for="expenseTitle"&gt;</span></td><td>Input field ka label. Accessibility ke liye useful.</td></tr>
+<tr><td><span class="inline-code">&lt;input id="expenseTitle"...&gt;</span></td><td>Expense title input. Example: Lunch, Bus Ticket, Book.</td></tr>
+<tr><td><span class="inline-code">&lt;input id="expenseAmount" type="number"&gt;</span></td><td>Amount input. Number type use hua because amount numeric hota hai.</td></tr>
+<tr><td><span class="inline-code">&lt;select id="expenseCategory"&gt;</span></td><td>Category dropdown. User category choose karega.</td></tr>
+<tr><td><span class="inline-code">&lt;option value=""&gt;</span></td><td>Default empty option. Validation ke liye useful hai.</td></tr>
+<tr><td><span class="inline-code">&lt;button type="submit"&gt;</span></td><td>Form submit button. Click par submit event fire hota hai.</td></tr>
+<tr><td><span class="inline-code">&lt;p id="message"&gt;</span></td><td>Error/success message area. JS text and class update karega.</td></tr>
+<tr><td><span class="inline-code">&lt;select id="filterCategory"&gt;</span></td><td>Filter dropdown. Category wise records show karne ke liye.</td></tr>
+<tr><td><span class="inline-code">&lt;strong id="totalItems"&gt;</span></td><td>Total expense records count yahan show hoga.</td></tr>
+<tr><td><span class="inline-code">&lt;strong id="highestExpense"&gt;</span></td><td>Highest expense amount yahan show hoga.</td></tr>
+<tr><td><span class="inline-code">&lt;div id="expenseList"&gt;</span></td><td>Expense cards dynamically yahin add honge.</td></tr>
+<tr><td><span class="inline-code">&lt;script src="script.js"&gt;</span></td><td>JavaScript file connect karta hai. Body ke end mein rakha hai taaki HTML pehle load ho.</td></tr>
+</table>
+
+<div class="module-header" id="css">
+  <h1>Step 2 - CSS Code and Explanation</h1>
+  <p>Goal: Dashboard ko clean and responsive design dena.</p>
+</div>
+
+<p>CSS se hum layout, colors, spacing, cards, messages, and mobile responsiveness control karenge. Is project ka CSS dashboard ko modern app jaisa look dega.</p>
+
+<span class="run-loc">styles.css</span>
+<pre><code>* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f3f7fb;
+  color: #172033;
+  line-height: 1.6;
+}
+
+.app {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 46px;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+
+.hero-text {
+  color: #526173;
+  font-size: 18px;
+}
+
+.total-card,
+.expense-form,
+.expense-panel,
+.summary-grid article,
+.expense-card {
+  background: #ffffff;
+  border: 1px solid #dbe3ee;
+  border-radius: 18px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+}
+
+.total-card {
+  padding: 28px;
+}
+
+.total-card span,
+.summary-grid span {
+  color: #64748b;
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.total-card strong {
+  color: #16a34a;
+  display: block;
+  font-size: 38px;
+  margin-top: 8px;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.expense-form,
+.expense-panel {
+  padding: 24px;
+}
+
+.expense-form {
+  display: grid;
+  gap: 10px;
+}
+
+.expense-form label {
+  font-weight: 800;
+}
+
+.expense-form input,
+.expense-form select,
+.panel-header select {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 15px;
+  padding: 12px;
+}
+
+.expense-form button,
+.delete-btn {
+  border: 0;
+  border-radius: 10px;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 800;
+  padding: 12px 16px;
+}
+
+.expense-form button {
+  background: #2563eb;
+  margin-top: 8px;
+}
+
+.message {
+  background: #eff6ff;
+  border-left: 5px solid #2563eb;
+  border-radius: 8px;
+  margin: 8px 0 0;
+  padding: 10px;
+}
+
+.message.error {
+  background: #fee2e2;
+  border-left-color: #dc2626;
+  color: #991b1b;
+}
+
+.message.success {
+  background: #dcfce7;
+  border-left-color: #16a34a;
+  color: #166534;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.summary-grid article {
+  padding: 18px;
+}
+
+.summary-grid strong {
+  display: block;
+  font-size: 24px;
+  margin-top: 6px;
+}
+
+.expense-list {
+  display: grid;
+  gap: 12px;
+}
+
+.expense-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  padding: 16px;
+}
+
+.expense-card h3 {
+  margin: 0 0 4px;
+}
+
+.expense-meta {
+  color: #64748b;
+  font-size: 14px;
+  margin: 0;
+}
+
+.amount {
+  color: #16a34a;
+  font-size: 20px;
+  font-weight: 900;
+  text-align: right;
+}
+
+.delete-btn {
+  background: #dc2626;
+  margin-top: 8px;
+}
+
+.empty {
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  color: #64748b;
+  padding: 18px;
+  text-align: center;
+}
+
+@media (max-width: 820px) {
+  .hero,
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  .panel-header {
+    display: grid;
+  }
+}</code></pre>
+
+<h2 class="topic">CSS Line-by-Line Explanation</h2>
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">* { box-sizing: border-box; }</span></td><td>Sab elements ka width calculation predictable banata hai.</td></tr>
+<tr><td><span class="inline-code">body { margin: 0; }</span></td><td>Browser ka default margin remove karta hai.</td></tr>
+<tr><td><span class="inline-code">font-family</span></td><td>Page ka font set karta hai.</td></tr>
+<tr><td><span class="inline-code">background: #f3f7fb;</span></td><td>Page ko light background deta hai.</td></tr>
+<tr><td><span class="inline-code">.app</span></td><td>Main container ko max-width and center alignment deta hai.</td></tr>
+<tr><td><span class="inline-code">.hero</span></td><td>Top section ko grid layout deta hai.</td></tr>
+<tr><td><span class="inline-code">grid-template-columns: 1.5fr 1fr;</span></td><td>Left content ko zyada, right total card ko kam width deta hai.</td></tr>
+<tr><td><span class="inline-code">.eyebrow</span></td><td>Small uppercase label styling.</td></tr>
+<tr><td><span class="inline-code">h1, h2, p</span></td><td>Headings and paragraph ka top margin reset karta hai.</td></tr>
+<tr><td><span class="inline-code">.total-card, .expense-form...</span></td><td>Multiple components ko same card design deta hai.</td></tr>
+<tr><td><span class="inline-code">box-shadow</span></td><td>Cards ko soft depth effect deta hai.</td></tr>
+<tr><td><span class="inline-code">.dashboard</span></td><td>Form and expense panel ko 2 columns mein arrange karta hai.</td></tr>
+<tr><td><span class="inline-code">.expense-form</span></td><td>Form fields ko grid spacing deta hai.</td></tr>
+<tr><td><span class="inline-code">input, select</span></td><td>Form controls ka common style.</td></tr>
+<tr><td><span class="inline-code">.message.error</span></td><td>Error message ko red style deta hai.</td></tr>
+<tr><td><span class="inline-code">.message.success</span></td><td>Success message ko green style deta hai.</td></tr>
+<tr><td><span class="inline-code">.summary-grid</span></td><td>Total items and highest expense cards ko grid mein show karta hai.</td></tr>
+<tr><td><span class="inline-code">.expense-card</span></td><td>Each expense record ko card layout deta hai.</td></tr>
+<tr><td><span class="inline-code">.delete-btn</span></td><td>Delete button ko red background deta hai.</td></tr>
+<tr><td><span class="inline-code">@media (max-width: 820px)</span></td><td>Mobile screens par layout one column karta hai.</td></tr>
+</table>
+
+<div class="module-header" id="js">
+  <h1>Step 3 - JavaScript Code and Explanation</h1>
+  <p>Goal: Dashboard ko fully interactive banana.</p>
+</div>
+
+<p>JavaScript project ka brain hai. Yeh form values read karega, validation karega, object create karega, array update karega, localStorage mein save karega, cards render karega, filter apply karega, and delete action handle karega.</p>
+
+<span class="run-loc">script.js</span>
+<pre><code>const expenseForm = document.getElementById("expenseForm");
+const expenseTitle = document.getElementById("expenseTitle");
+const expenseAmount = document.getElementById("expenseAmount");
+const expenseCategory = document.getElementById("expenseCategory");
+const filterCategory = document.getElementById("filterCategory");
+const expenseList = document.getElementById("expenseList");
+const totalAmount = document.getElementById("totalAmount");
+const totalItems = document.getElementById("totalItems");
+const highestExpense = document.getElementById("highestExpense");
+const message = document.getElementById("message");
+
+let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+function saveExpenses() {
+  localStorage.setItem("expenses", JSON.stringify(expenses));
+}
+
+function showMessage(text, type) {
+  message.textContent = text;
+  message.className = "message " + type;
+}
+
+function getFilteredExpenses() {
+  const selectedCategory = filterCategory.value;
+
+  if (selectedCategory === "All") {
+    return expenses;
+  }
+
+  return expenses.filter(function (expense) {
+    return expense.category === selectedCategory;
+  });
+}
+
+function updateSummary() {
+  const total = expenses.reduce(function (sum, expense) {
+    return sum + expense.amount;
+  }, 0);
+
+  const highest = expenses.length === 0 ? 0 : Math.max(...expenses.map(function (expense) {
+    return expense.amount;
+  }));
+
+  totalAmount.textContent = "Rs. " + total;
+  totalItems.textContent = expenses.length;
+  highestExpense.textContent = "Rs. " + highest;
+}
+
+function renderExpenses() {
+  const filteredExpenses = getFilteredExpenses();
+  expenseList.innerHTML = "";
+
+  if (filteredExpenses.length === 0) {
+    expenseList.innerHTML = '&lt;p class="empty"&gt;No expenses found for this category.&lt;/p&gt;';
+    updateSummary();
+    return;
+  }
+
+  filteredExpenses.forEach(function (expense) {
+    const card = document.createElement("article");
+    card.className = "expense-card";
+    card.innerHTML = `
+      &lt;div&gt;
+        &lt;h3&gt;${expense.title}&lt;/h3&gt;
+        &lt;p class="expense-meta"&gt;${expense.category}&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;div class="amount"&gt;Rs. ${expense.amount}&lt;/div&gt;
+        &lt;button class="delete-btn" data-id="${expense.id}"&gt;Delete&lt;/button&gt;
+      &lt;/div&gt;
+    `;
+    expenseList.appendChild(card);
+  });
+
+  updateSummary();
+}
+
+expenseForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const titleValue = expenseTitle.value.trim();
+  const amountValue = Number(expenseAmount.value);
+  const categoryValue = expenseCategory.value;
+
+  if (titleValue === "") {
+    showMessage("Please enter expense title.", "error");
+    return;
+  }
+
+  if (amountValue &lt;= 0) {
+    showMessage("Please enter a valid amount.", "error");
+    return;
+  }
+
+  if (categoryValue === "") {
+    showMessage("Please choose a category.", "error");
+    return;
+  }
+
+  const expense = {
+    id: Date.now(),
+    title: titleValue,
+    amount: amountValue,
+    category: categoryValue
+  };
+
+  expenses.push(expense);
+  saveExpenses();
+  renderExpenses();
+  showMessage("Expense added successfully.", "success");
+  expenseForm.reset();
+});
+
+expenseList.addEventListener("click", function (event) {
+  if (event.target.classList.contains("delete-btn")) {
+    const expenseId = Number(event.target.dataset.id);
+    expenses = expenses.filter(function (expense) {
+      return expense.id !== expenseId;
+    });
+    saveExpenses();
+    renderExpenses();
+    showMessage("Expense deleted successfully.", "success");
+  }
+});
+
+filterCategory.addEventListener("change", function () {
+  renderExpenses();
+});
+
+renderExpenses();</code></pre>
+
+<h2 class="topic">JavaScript Line-by-Line Explanation</h2>
+<table>
+<tr><th>Line / Code</th><th>Detailed Simple Hinglish Explanation</th></tr>
+<tr><td><span class="inline-code">const expenseForm = document.getElementById("expenseForm");</span></td><td>HTML form ko select karta hai. Submit event isi par lagega.</td></tr>
+<tr><td><span class="inline-code">const expenseTitle = ...</span></td><td>Title input select karta hai.</td></tr>
+<tr><td><span class="inline-code">const expenseAmount = ...</span></td><td>Amount input select karta hai.</td></tr>
+<tr><td><span class="inline-code">const expenseCategory = ...</span></td><td>Category dropdown select karta hai.</td></tr>
+<tr><td><span class="inline-code">const filterCategory = ...</span></td><td>Filter dropdown select karta hai.</td></tr>
+<tr><td><span class="inline-code">const expenseList = ...</span></td><td>Expense cards render karne ka container select karta hai.</td></tr>
+<tr><td><span class="inline-code">const totalAmount = ...</span></td><td>Total spent output element select karta hai.</td></tr>
+<tr><td><span class="inline-code">let expenses = JSON.parse(...) || [];</span></td><td>localStorage se old data read karta hai. Agar data nahi hai toh empty array use hota hai.</td></tr>
+<tr><td><span class="inline-code">localStorage.getItem("expenses")</span></td><td>Browser storage se expenses string read karta hai.</td></tr>
+<tr><td><span class="inline-code">JSON.parse(...)</span></td><td>Stored string ko JavaScript array/object mein convert karta hai.</td></tr>
+<tr><td><span class="inline-code">function saveExpenses()</span></td><td>Expenses array ko browser storage mein save karne ka reusable function.</td></tr>
+<tr><td><span class="inline-code">JSON.stringify(expenses)</span></td><td>Array ko string mein convert karta hai, kyunki localStorage string save karta hai.</td></tr>
+<tr><td><span class="inline-code">showMessage(text, type)</span></td><td>Error/success message show karne ka reusable function.</td></tr>
+<tr><td><span class="inline-code">message.className = "message " + type;</span></td><td>Message class update karta hai. Type error/success ke basis par color badalta hai.</td></tr>
+<tr><td><span class="inline-code">getFilteredExpenses()</span></td><td>Selected category ke according expense list return karta hai.</td></tr>
+<tr><td><span class="inline-code">if (selectedCategory === "All")</span></td><td>Agar All selected hai toh complete expenses array return hota hai.</td></tr>
+<tr><td><span class="inline-code">expenses.filter(...)</span></td><td>Sirf matching category wale expenses nikalta hai.</td></tr>
+<tr><td><span class="inline-code">updateSummary()</span></td><td>Total spent, total items, highest expense update karta hai.</td></tr>
+<tr><td><span class="inline-code">expenses.reduce(...)</span></td><td>All expense amounts ko add karke total banata hai.</td></tr>
+<tr><td><span class="inline-code">Math.max(...expenses.map(...))</span></td><td>Expense amounts ki list se highest value find karta hai.</td></tr>
+<tr><td><span class="inline-code">renderExpenses()</span></td><td>Expense array ko HTML cards mein convert karta hai.</td></tr>
+<tr><td><span class="inline-code">expenseList.innerHTML = "";</span></td><td>Old cards clear karta hai taaki duplicate cards na banein.</td></tr>
+<tr><td><span class="inline-code">document.createElement("article")</span></td><td>JavaScript se new expense card element create karta hai.</td></tr>
+<tr><td><span class="inline-code">card.innerHTML = `...`</span></td><td>Template literal se dynamic card HTML set karta hai.</td></tr>
+<tr><td><span class="inline-code">data-id="${expense.id}"</span></td><td>Delete button ke andar expense id store karta hai.</td></tr>
+<tr><td><span class="inline-code">expenseForm.addEventListener("submit", ...)</span></td><td>Form submit hone par validation and add logic run karta hai.</td></tr>
+<tr><td><span class="inline-code">event.preventDefault()</span></td><td>Page reload hone se rokta hai.</td></tr>
+<tr><td><span class="inline-code">Number(expenseAmount.value)</span></td><td>Amount input string ko number mein convert karta hai.</td></tr>
+<tr><td><span class="inline-code">if (titleValue === "")</span></td><td>Blank title validation.</td></tr>
+<tr><td><span class="inline-code">if (amountValue &lt;= 0)</span></td><td>Amount zero ya negative hai toh invalid.</td></tr>
+<tr><td><span class="inline-code">const expense = { ... }</span></td><td>Validated input se one expense object create karta hai.</td></tr>
+<tr><td><span class="inline-code">id: Date.now()</span></td><td>Unique id create karta hai current timestamp se.</td></tr>
+<tr><td><span class="inline-code">expenses.push(expense)</span></td><td>New expense object ko array mein add karta hai.</td></tr>
+<tr><td><span class="inline-code">expenseList.addEventListener("click", ...)</span></td><td>Expense list par click event listen karta hai. Delete buttons dynamic hain, isliye event delegation use hua.</td></tr>
+<tr><td><span class="inline-code">event.target.classList.contains("delete-btn")</span></td><td>Check karta hai clicked element delete button hai ya nahi.</td></tr>
+<tr><td><span class="inline-code">event.target.dataset.id</span></td><td>Clicked delete button ka stored expense id read karta hai.</td></tr>
+<tr><td><span class="inline-code">expense.id !== expenseId</span></td><td>Delete wale id ko chhodkar baaki expenses keep karta hai.</td></tr>
+<tr><td><span class="inline-code">filterCategory.addEventListener("change", ...)</span></td><td>Filter dropdown change hone par list dobara render hoti hai.</td></tr>
+<tr><td><span class="inline-code">renderExpenses();</span></td><td>Page load par existing stored data render karta hai.</td></tr>
+</table>
+
+<div class="module-header" id="testing">
+  <h1>Testing and Common Errors</h1>
+  <p>Goal: Project ko class mein confidently test karna.</p>
+</div>
+
+<table>
+<tr><th>Test</th><th>Action</th><th>Expected Result</th></tr>
+<tr><td>Blank title</td><td>Title blank rakh kar submit karo.</td><td>Red error message show hoga.</td></tr>
+<tr><td>Invalid amount</td><td>Amount 0 ya negative enter karo.</td><td>Amount error show hoga.</td></tr>
+<tr><td>No category</td><td>Category choose mat karo.</td><td>Category error show hoga.</td></tr>
+<tr><td>Valid expense</td><td>Lunch, 250, Food add karo.</td><td>Expense card add hoga, total update hoga.</td></tr>
+<tr><td>Filter</td><td>Filter dropdown se Food select karo.</td><td>Sirf Food expenses show honge.</td></tr>
+<tr><td>Delete</td><td>Delete button click karo.</td><td>Expense remove hoga and total update hoga.</td></tr>
+<tr><td>Refresh</td><td>Browser refresh karo.</td><td>Data localStorage se wapas show hoga.</td></tr>
+</table>
+
+<table>
+<tr><th>Error</th><th>Reason</th><th>Fix</th></tr>
+<tr><td>CSS not applying</td><td>CSS file name/path wrong.</td><td><span class="inline-code">href="styles.css"</span> check karo.</td></tr>
+<tr><td>JS not working</td><td>Script file connect nahi hui.</td><td><span class="inline-code">src="script.js"</span> check karo.</td></tr>
+<tr><td>Cannot read properties of null</td><td>HTML id and JS id mismatch.</td><td>Both spelling same karo.</td></tr>
+<tr><td>Data save nahi ho raha</td><td>localStorage code missing ya browser storage blocked.</td><td>Console check karo and localStorage lines verify karo.</td></tr>
+</table>
+
+</div>
+</body>
+</html>

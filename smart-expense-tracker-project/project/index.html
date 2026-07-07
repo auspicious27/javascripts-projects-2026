@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Expense Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">JavaScript Practical Project</p>
+        <h1>Smart Expense Tracker</h1>
+        <p class="hero-text">Add expenses, filter by category, calculate totals, and save data in the browser.</p>
+      </div>
+      <div class="total-card">
+        <span>Total Spent</span>
+        <strong id="totalAmount">Rs. 0</strong>
+      </div>
+    </section>
+
+    <section class="dashboard">
+      <form class="expense-form" id="expenseForm">
+        <h2>Add New Expense</h2>
+
+        <label for="expenseTitle">Expense Title</label>
+        <input id="expenseTitle" type="text" placeholder="Example: Lunch">
+
+        <label for="expenseAmount">Amount</label>
+        <input id="expenseAmount" type="number" placeholder="Example: 250">
+
+        <label for="expenseCategory">Category</label>
+        <select id="expenseCategory">
+          <option value="">Choose category</option>
+          <option value="Food">Food</option>
+          <option value="Travel">Travel</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Learning">Learning</option>
+        </select>
+
+        <button type="submit">Add Expense</button>
+        <p class="message" id="message">Fill the form to add your first expense.</p>
+      </form>
+
+      <section class="expense-panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Expense List</p>
+            <h2>Your Records</h2>
+          </div>
+          <select id="filterCategory">
+            <option value="All">All Categories</option>
+            <option value="Food">Food</option>
+            <option value="Travel">Travel</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Learning">Learning</option>
+          </select>
+        </div>
+
+        <div class="summary-grid">
+          <article>
+            <span>Total Items</span>
+            <strong id="totalItems">0</strong>
+          </article>
+          <article>
+            <span>Highest Expense</span>
+            <strong id="highestExpense">Rs. 0</strong>
+          </article>
+        </div>
+
+        <div class="expense-list" id="expenseList">
+          <p class="empty">No expenses added yet.</p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
